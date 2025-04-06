@@ -1,11 +1,25 @@
 import React from "react";
 import "./App.css";
+import { Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import Register from "./components/Register";
+import Error from "./pages/Error";
+import Login from "./components/Login";
+
 
 function App() {
-
   return (
     <>
-      <h1 class="text-3xl font-bold text-white bg-black p-8">Tsting to see if Tailwind works</h1>
+      {/* Common components like Navbar can be included here */}
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="*" element={<Error />} />
+      </Routes>
+
+      {/* Common components like Footer can be included here */}
     </>
   );
 }
