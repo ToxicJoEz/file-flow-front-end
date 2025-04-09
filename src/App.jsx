@@ -7,6 +7,8 @@ import Home from "./pages/Home";
 import Register from "./components/Register";
 import Error from "./pages/Error";
 import Login from "./components/Login";
+import Dashboard from "./pages/Dashboard";
+import EditProfile from "./components/EditProfile";
 
 function App() {
   const dispatch = useDispatch();
@@ -29,6 +31,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/EditProfile" element={<EditProfile />} />
         <Route path="*" element={<Error />} />
       </Routes>
 

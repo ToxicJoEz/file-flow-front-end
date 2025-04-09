@@ -59,7 +59,7 @@ function Login() {
 
         setErrorMessage("");
         // Redirect after login (for example, to a dashboard)
-        navigate("/");
+        navigate("/dashboard");
       } catch (error) {
         setErrorMessage(error.response?.data?.message || "Login failed");
         console.error("Login failed:", error.response?.data || error.message);
