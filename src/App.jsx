@@ -1,43 +1,77 @@
 import React, { useEffect } from "react";
-import "./App.css";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { setToken } from "./authSlice";  // Import the setToken action
+import { setToken } from "./authSlice";
+import Navbar from "./components/Navbar"; // Your persistent Navbar
 import Home from "./pages/Home";
 import Register from "./components/Register";
-import Error from "./pages/Error";
 import Login from "./components/Login";
 import Dashboard from "./pages/Dashboard";
 import EditProfile from "./components/EditProfile";
+import ProtectedRoute from "./components/ProtectedRoute";
+import PublicRoute from "./components/PublicRoute";
+import Error from "./pages/Error";
+import Footer from "./components/Footer"; // Your persistent Footer
 
 function App() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Get the token from localStorage when the app is initialized
     const tokenFromStorage = localStorage.getItem("auth");
     if (tokenFromStorage) {
-      // Dispatch action to store the token in Redux state
       dispatch(setToken(tokenFromStorage));
     }
   }, [dispatch]);
 
   return (
-    <>
-      {/* Common components like Navbar can be included here */}
-      
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/EditProfile" element={<EditProfile />} />
-        <Route path="*" element={<Error />} />
-      </Routes>
+    <div className="min-h-screen flex flex-col">
+      {/* Persistent Navbar */}
+      <Navbar />
 
-      {/* Common components like Footer can be included here */}
-    </>
+      {/* Main content which changes based on route */}
+      <main className="flex-grow">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route
+            path="/register"
+            element={
+              <PublicRoute>
+                <Register />
+              </PublicRoute>
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              <PublicRoute>
+                <Login />
+              </PublicRoute>
+            }
+          />
+          <Route
+            path="/dashboard"
+            element={
+              <ProtectedRoute>
+                <Dashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/EditProfile"
+            element={
+              <ProtectedRoute>
+                <EditProfile />
+              </ProtectedRoute>
+            }
+          />
+          <Route path="*" element={<Error />} />
+        </Routes>
+      </main>
+
+      {/* Persistent Footer */}
+      <Footer />
+    </div>
   );
 }
 

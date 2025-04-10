@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import LogoutButton from "../components/LogoutButton";
 
 export default function Dashboard() {
   const token = useSelector((state) => state.auth.token);
@@ -35,6 +36,7 @@ export default function Dashboard() {
   return (
     <div>
       <h2 className="bg-black text-white p-8 font-bold">Dashboard</h2>
+      <LogoutButton></LogoutButton>
 
       {error && <p className="text-red-500 p-4">{error}</p>}
 
