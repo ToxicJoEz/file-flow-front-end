@@ -1,233 +1,233 @@
-$primary-color: #47297B;
-$secondary-color: #F5BD1F;
-$primary-color-hover: #5D2689;
-$secondary-color-hover: #FFD93D;
-$primary-color2: #8736AA;
-$secondary-color2: #FFE863;
-
-
+$primary-color: #47297b;
+$secondary-color: #f5bd1f;
+$primary-color-hover: #5d2689;
+$secondary-color-hover: #ffd93d;
+$primary-color2: #8736aa;
+$secondary-color2: #ffe863;
 
 /* Registration / Login form styles */
 .form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    width: 350px;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 20px;
-    position: relative;
-  }
-  
-  .title {
-    font-size: 28px;
-    color: $primary-color;
-    font-weight: 600;
-    letter-spacing: -1px;
-    position: relative;
-    display: flex;
-    align-items: center;
-    padding-left: 30px;
-  }
-  
-  .title::before,
-  .title::after {
-    position: absolute;
-    content: "";
-    height: 16px;
-    width: 16px;
-    border-radius: 50%;
-    left: 0px;
-    background-color: $primary-color;
-  }
-  
-  .title::before {
-    width: 18px;
-    height: 18px;
-  }
-  
-  .title::after {
-    width: 18px;
-    height: 18px;
-    animation: pulse 1s linear infinite;
-  }
-  
-  .message,
-  .signin {
-    color: rgba(88, 87, 87, 0.822);
-    font-size: 14px;
-  }
-  
-  .signin {
-    text-align: center;
-  }
-  
-  .signin a {
-    color: $primary-color;
-  }
-  
-  .signin a:hover {
-    text-decoration: underline;
-  }
-  
-  .form label {
-    position: relative;
-  }
-  
-  .form label .input {
-    width: 100%;
-    padding: 10px 10px 20px 10px;
-    outline: 0;
-    border: 1px solid rgba(105, 105, 105, 0.397);
-    border-radius: 10px;
-  }
-  
-  .form label .input + span {
-    position: absolute;
-    left: 10px;
-    top: 15px;
-    color: grey;
-    font-size: 0.9em;
-    cursor: text;
-    transition: 0.3s ease;
-  }
-  
-  .form label .input:placeholder-shown + span {
-    top: 15px;
-    font-size: 0.9em;
-  }
-  
-  .form label .input:focus + span,
-  .form label .input:valid + span {
-    top: 30px;
-    font-size: 0.7em;
-    font-weight: 600;
-  }
-  
-  .form label .input:focus {
-    border-color: $secondary-color;
-  }
-  
-  .submit {
-    border: none;
-    outline: none;
-    background-color: $primary-color;
-    padding: 10px;
-    border-radius: 10px;
-    color: #fff;
-    font-size: 16px;
-    transform: 0.3s ease;
-  }
-  
-  .submit:hover {
-    background-color: $primary-color-hover;
-  }
-  
-  @keyframes pulse {
-    from {
-      transform: scale(0.9);
-      opacity: 1;
-    }
-  
-    to {
-      transform: scale(1.8);
-      opacity: 0;
-    }
-  }
-  
-  .error {
-    color: red;
-    font-size: 0.875rem;
-    margin-top: 0.25rem;
-  }
-  
-/* Registration / Login Loading Styles */ 
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 350px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 20px;
+  position: relative;
+}
 
-.loading-indicator{
-    position: relative;
+.title {
+  font-size: 28px;
+  color: $primary-color;
+  font-weight: 600;
+  letter-spacing: -1px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-left: 30px;
+}
+
+.title::before,
+.title::after {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  left: 0px;
+  background-color: $primary-color;
+}
+
+.title::before {
+  width: 18px;
+  height: 18px;
+}
+
+.title::after {
+  width: 18px;
+  height: 18px;
+  animation: pulse 1s linear infinite;
+}
+
+.message,
+.signin {
+  color: rgba(88, 87, 87, 0.822);
+  font-size: 14px;
+}
+
+.signin {
+  text-align: center;
+}
+
+.signin a {
+  color: $primary-color;
+}
+
+.signin a:hover {
+  text-decoration: underline;
+}
+
+.form label {
+  position: relative;
+}
+
+.form label .input {
+  width: 100%;
+  padding: 10px 10px 20px 10px;
+  outline: 0;
+  border: 1px solid rgba(105, 105, 105, 0.397);
+  border-radius: 10px;
+}
+
+.form label .input + span {
+  position: absolute;
+  left: 10px;
+  top: 15px;
+  color: grey;
+  font-size: 0.9em;
+  cursor: text;
+  transition: 0.3s ease;
+}
+
+.form label .input:placeholder-shown + span {
+  top: 15px;
+  font-size: 0.9em;
+}
+
+.form label .input:focus + span,
+.form label .input:valid + span {
+  top: 30px;
+  font-size: 0.7em;
+  font-weight: 600;
+}
+
+.form label .input:focus {
+  border-color: $secondary-color;
+}
+
+.submit {
+  border: none;
+  outline: none;
+  background-color: $primary-color;
+  padding: 10px;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 16px;
+  transform: 0.3s ease;
+}
+
+.submit:hover {
+  background-color: $primary-color-hover;
+}
+
+@keyframes pulse {
+  from {
+    transform: scale(0.9);
+    opacity: 1;
+  }
+
+  to {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+
+.error {
+  color: red;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+/* Registration / Login Loading Styles */
+
+.loading-indicator {
+  position: relative;
 }
 .loader {
-    position: relative;
-    width: 2.5em;
-    height: 2.5em;
-    transform: rotate(165deg);
-   }
-   
-   .loader:before, .loader:after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    display: block;
-    width: 0.5em;
-    height: 0.5em;
-    border-radius: 0.25em;
-    transform: translate(-50%, -50%);
-   }
-   
-   .loader:before {
-    animation: before8 2s infinite;
-   }
-   
-   .loader:after {
-    animation: after6 2s infinite;
-   }
-   
-   @keyframes before8 {
-    0% {
-     width: 0.5em;
-     box-shadow: 1em -0.5em $primary-color, -1em 0.5em $primary-color2;
-    }
-   
-    35% {
-     width: 2.5em;
-     box-shadow: 0 -0.5em $primary-color, 0 0.5em $primary-color2;
-    }
-   
-    70% {
-     width: 0.5em;
-     box-shadow: -1em -0.5em $primary-color, 1em 0.5em $primary-color2;
-    }
-   
-    100% {
-     box-shadow: 1em -0.5em $primary-color, -1em 0.5em $primary-color2;
-    }
-   }
-   
-   @keyframes after6 {
-    0% {
-     height: 0.5em;
-     box-shadow: 0.5em 1em $secondary-color, -0.5em -1em $secondary-color2;
-    }
-   
-    35% {
-     height: 2.5em;
-     box-shadow: 0.5em 0 $secondary-color, -0.5em 0 $secondary-color2;
-    }
-   
-    70% {
-     height: 0.5em;
-     box-shadow: 0.5em -1em $secondary-color, -0.5em 1em $secondary-color2;
-    }
-   
-    100% {
-     box-shadow: 0.5em 1em $secondary-color, -0.5em -1em $secondary-color2;
-    }
-   }
-   
-   .loader {
-    margin-top: 4%;
-    margin-bottom: 4%;
-    top: calc(50% - 1.25em);
-    left: calc(50% - 1.25em);
-   }
+  position: relative;
+  width: 2.5em;
+  height: 2.5em;
+  transform: rotate(165deg);
+}
 
-   /* Profile Card */ 
+.loader:before,
+.loader:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: block;
+  width: 0.5em;
+  height: 0.5em;
+  border-radius: 0.25em;
+  transform: translate(-50%, -50%);
+}
+
+.loader:before {
+  animation: before8 2s infinite;
+}
+
+.loader:after {
+  animation: after6 2s infinite;
+}
+
+@keyframes before8 {
+  0% {
+    width: 0.5em;
+    box-shadow: 1em -0.5em $primary-color, -1em 0.5em $primary-color2;
+  }
+
+  35% {
+    width: 2.5em;
+    box-shadow: 0 -0.5em $primary-color, 0 0.5em $primary-color2;
+  }
+
+  70% {
+    width: 0.5em;
+    box-shadow: -1em -0.5em $primary-color, 1em 0.5em $primary-color2;
+  }
+
+  100% {
+    box-shadow: 1em -0.5em $primary-color, -1em 0.5em $primary-color2;
+  }
+}
+
+@keyframes after6 {
+  0% {
+    height: 0.5em;
+    box-shadow: 0.5em 1em $secondary-color, -0.5em -1em $secondary-color2;
+  }
+
+  35% {
+    height: 2.5em;
+    box-shadow: 0.5em 0 $secondary-color, -0.5em 0 $secondary-color2;
+  }
+
+  70% {
+    height: 0.5em;
+    box-shadow: 0.5em -1em $secondary-color, -0.5em 1em $secondary-color2;
+  }
+
+  100% {
+    box-shadow: 0.5em 1em $secondary-color, -0.5em -1em $secondary-color2;
+  }
+}
+
+.loader {
+  margin-top: 4%;
+  margin-bottom: 4%;
+  top: calc(50% - 1.25em);
+  left: calc(50% - 1.25em);
+}
+
+/* Profile Card */
 .card {
   --main-color: #000;
-  --submain-color: #78858F;
+  --submain-color: #78858f;
   --bg-color: #fff;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   position: relative;
   width: 300px;
   height: 384px;
@@ -307,4 +307,21 @@ $secondary-color2: #FFE863;
 .card__btn-solid:hover {
   background: var(--bg-color);
   color: var(--main-color);
+}
+
+/* Navigation Bar */
+
+.ActiveLink {
+  color: red;
+}
+
+/* Toast Notification */
+
+.my-toast {
+  border-radius: 8px;
+  color: $primary-color !important;
+}
+.my-toast-body {
+  color: #fff;
+  font-family: "Arial", sans-serif;
 }

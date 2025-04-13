@@ -6,6 +6,8 @@ import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import { useDispatch } from "react-redux"; // Import useDispatch
 import { login } from "../authSlice"; // Go one level up to access authSlice.js
+import { toast } from "react-toastify";
+import PageWrapper from "../components/PageWrapper";
 
 // Define the validation schema for login
 const validationSchema = Yup.object({
@@ -44,6 +46,7 @@ function Login() {
           values
         );
         console.log("Login successful:", response.data);
+        toast.success("Login successful!");
 
         // Extract the token from the response
         const token = response.data.token;
@@ -63,6 +66,7 @@ function Login() {
       } catch (error) {
         setErrorMessage(error.response?.data?.message || "Login failed");
         console.error("Login failed:", error.response?.data || error.message);
+        toast.error("Login failed, please try again.");
       } finally {
         setLoading(false);
       }
@@ -70,60 +74,62 @@ function Login() {
   });
 
   return (
-    <div className="bg-[url('src/assets/background1.png')] h-full bg-cover bg-center flex items-center justify-center h-screen">
-      <form
-        className="form border border-gray-300"
-        onSubmit={formik.handleSubmit}
-      >
-        <p className="title">Login</p>
-        <p className="message">Login to access our cool features!</p>
+    <PageWrapper>
+      <div className="bg-[url('src/assets/background1.png')] h-full bg-cover bg-center flex items-center justify-center h-screen">
+        <form
+          className="form border border-gray-300"
+          onSubmit={formik.handleSubmit}
+        >
+          <p className="title">Login</p>
+          <p className="message">Login to access our cool features!</p>
 
-        <label>
-          <input
-            required
-            type="email"
-            className="input"
-            {...formik.getFieldProps("email")}
-          />
-          <span>Email</span>
-        </label>
-        {formik.touched.email && formik.errors.email && (
-          <div className="error">{formik.errors.email}</div>
-        )}
+          <label>
+            <input
+              required
+              type="email"
+              className="input"
+              {...formik.getFieldProps("email")}
+            />
+            <span>Email</span>
+          </label>
+          {formik.touched.email && formik.errors.email && (
+            <div className="error">{formik.errors.email}</div>
+          )}
 
-        <label>
-          <input
-            required
-            type="password"
-            className="input"
-            {...formik.getFieldProps("password")}
-          />
-          <span>Password</span>
-        </label>
-        {formik.touched.password && formik.errors.password && (
-          <div className="error">{formik.errors.password}</div>
-        )}
+          <label>
+            <input
+              required
+              type="password"
+              className="input"
+              {...formik.getFieldProps("password")}
+            />
+            <span>Password</span>
+          </label>
+          {formik.touched.password && formik.errors.password && (
+            <div className="error">{formik.errors.password}</div>
+          )}
 
-        {/* Conditionally render the submit button or the loader div */}
-        {!loading ? (
-          <button type="submit" className="submit">
-            Login
-          </button>
-        ) : (
-          <div className="loading-indicator">
-            <div className="loader" />
-          </div>
-        )}
+          {/* Conditionally render the submit button or the loader div */}
+          {!loading ? (
+            <button type="submit" className="submit">
+              Login
+            </button>
+          ) : (
+            <div className="loading-indicator">
+              <div className="loader" />
+            </div>
+          )}
 
-        {errorMessage && <div className="error">{errorMessage}</div>}
-        <p className="signin">
-          Don't have an account?{" "}
-          <Link to="/register" className="login-link">
-            Register
-          </Link>
-        </p>
-      </form>
-    </div>
+          {errorMessage && <div className="error">{errorMessage}</div>}
+          <p className="signin">
+            Don't have an account?{" "}
+            <Link to="/register" className="login-link">
+              Register
+            </Link>
+          </p>
+        </form>
+      </div>
+    </PageWrapper>
   );
 }
 

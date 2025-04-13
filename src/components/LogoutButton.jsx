@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { logout } from "../authSlice"; // adjust path if needed
+import { toast } from 'react-toastify';
 
 const LogoutButton = ({ className = "" }) => {
   const dispatch = useDispatch();
@@ -11,6 +12,7 @@ const LogoutButton = ({ className = "" }) => {
     localStorage.removeItem("token");
     dispatch(logout()); // resets the Redux auth state
     navigate("/login"); // or "/" depending on your flow
+    toast.success("Logout successful!");
   };
 
   return (
