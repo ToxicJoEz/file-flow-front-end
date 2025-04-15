@@ -251,14 +251,18 @@ $secondary-color2: #ffe863;
 
 .card__avatar {
   position: absolute;
-  width: 114px;
-  height: 114px;
-  background: var(--bg-color);
+  width: 130px;
+  height: 130px;
   border-radius: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   top: calc(50% - 57px);
+}
+
+.card__avatar-img{
+  width: 90%;
+transform: translate(0%, -25%);
 }
 
 .card__avatar svg {

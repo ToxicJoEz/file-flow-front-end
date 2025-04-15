@@ -48,20 +48,18 @@ function Login() {
         console.log("Login successful:", response.data);
         toast.success("Login successful!");
 
-        // Extract the token from the response
-        const token = response.data.token;
+        // Extract the token and avatar from the response
+        const { token, avatar } = response.data;
 
-        // If the token exists, store it in both Redux and localStorage
         if (token) {
-          // Dispatch to Redux store
-          dispatch(login(token));
+          // Dispatch both token and avatar to Redux store
+          dispatch(login({ token, avatar }));
 
           // Store the token in localStorage
           localStorage.setItem("auth", token);
         }
 
         setErrorMessage("");
-        // Redirect after login (for example, to a dashboard)
         navigate("/dashboard");
       } catch (error) {
         setErrorMessage(error.response?.data?.message || "Login failed");

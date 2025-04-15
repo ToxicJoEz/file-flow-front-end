@@ -112,7 +112,7 @@ function Navbar() {
               </Link>
             </>
           ) : (
-            <LogoutButton className="ml-4" />
+              <LogoutButton className="ml-4" />
           )}
         </div>
       </div>
