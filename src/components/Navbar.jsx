@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Link, NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
+import LogoutButton from "../components/LogoutButton"; // Import the reusable component
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const { token } = useSelector((state) => state.auth);
+  const isLoggedIn = Boolean(token);
   const toggleMenu = () => setIsOpen(!isOpen);
 
   return (
@@ -76,22 +80,40 @@ function Navbar() {
           >
             Contact us
           </NavLink>
+          {isLoggedIn && (
+            <NavLink
+              to="/dashboard"
+              className={({ isActive }) =>
+                isActive
+                  ? "ActiveLink"
+                  : "text-gray-700 hover:text-blue-500 transition"
+              }
+            >
+              Dashboard
+            </NavLink>
+          )}
         </div>
 
         {/* Auth Buttons (Desktop) */}
         <div className="hidden md:flex space-x-4">
-          <Link
-            to="/login"
-            className="text-sm font-medium text-gray-700 hover:text-blue-500 transition px-4 py-1.5"
-          >
-            Login
-          </Link>
-          <Link
-            to="/register"
-            className="text-sm font-medium bg-blue-500 text-white px-4 py-1.5 rounded hover:bg-blue-600 transition"
-          >
-            Register
-          </Link>
+          {!isLoggedIn ? (
+            <>
+              <Link
+                to="/login"
+                className="text-sm font-medium text-gray-700 hover:text-blue-500 transition px-4 py-1.5"
+              >
+                Login
+              </Link>
+              <Link
+                to="/register"
+                className="text-sm font-medium bg-blue-500 text-white px-4 py-1.5 rounded hover:bg-blue-600 transition"
+              >
+                Register
+              </Link>
+            </>
+          ) : (
+            <LogoutButton className="ml-4" />
+          )}
         </div>
       </div>
 
@@ -144,17 +166,34 @@ function Navbar() {
         >
           Contact us
         </NavLink>
-        <div className="pt-2 border-t mt-2 flex items-center space-x-4">
-          <Link to="/login" className="text-gray-700 hover:text-blue-500">
-            Login
-          </Link>
-          <Link
-            to="/register"
-            className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+        {isLoggedIn && (
+          <NavLink
+            to="/dashboard"
+            className={({ isActive }) =>
+              isActive
+                ? "ActiveLink block"
+                : "text-gray-700 hover:text-blue-500 transition block"
+            }
           >
-            Register
-          </Link>
-        </div>
+            Dashboard
+          </NavLink>
+        )}
+
+        {!isLoggedIn ? (
+          <div className="pt-2 border-t mt-2 flex items-center space-x-4">
+            <Link to="/login" className="text-gray-700 hover:text-blue-500">
+              Login
+            </Link>
+            <Link
+              to="/register"
+              className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+            >
+              Register
+            </Link>
+          </div>
+        ) : (
+          <LogoutButton className="ml-4" />
+        )}
       </div>
     </nav>
   );

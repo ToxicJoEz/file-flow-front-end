@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import LogoutButton from "../components/LogoutButton";
 import PageWrapper from "../components/PageWrapper";
 
 export default function Dashboard() {
@@ -38,8 +37,6 @@ export default function Dashboard() {
     <PageWrapper>
       <div>
         <h2 className="bg-black text-white p-8 font-bold">Dashboard</h2>
-        <LogoutButton></LogoutButton>
-
         {error && <p className="text-red-500 p-4">{error}</p>}
 
         {profile ? (
