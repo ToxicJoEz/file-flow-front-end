@@ -75,7 +75,7 @@ function Login() {
 
   return (
     <PageWrapper>
-      <div className="bg-[url('src/assets/background1.png')] h-full bg-cover bg-center flex items-center justify-center h-screen">
+      <div className="bg-[url('/assets/background1.png')] h-full bg-cover bg-center flex items-center justify-center h-screen">
         <form
           className="form border border-gray-300"
           onSubmit={formik.handleSubmit}
