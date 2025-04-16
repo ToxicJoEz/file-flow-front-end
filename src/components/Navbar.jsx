@@ -1,14 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Link, NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import LogoutButton from "../components/LogoutButton"; // Import the reusable component
+import { useNavigate } from "react-router-dom"; // For Edit Profile link
+import { motion, AnimatePresence } from "framer-motion";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const { token } = useSelector((state) => state.auth);
   const isLoggedIn = Boolean(token);
   const toggleMenu = () => setIsOpen(!isOpen);
+  const avatar = useSelector((state) => state.auth.avatar);
+  const [avatarDropdownOpen, setAvatarDropdownOpen] = useState(false);
 
   return (
     <nav className="w-full bg-black shadow-md relative">
@@ -112,7 +116,40 @@ function Navbar() {
               </Link>
             </>
           ) : (
-              <LogoutButton className="ml-4" />
+            <div className="flex items-center relative">
+              <button
+                onClick={() => setAvatarDropdownOpen((prev) => !prev)}
+                className="focus:outline-none"
+              >
+                <img
+                  src={avatar}
+                  alt="User Avatar"
+                  className="w-12 h-12 rounded-full border border-white"
+                />
+              </button>
+
+              <AnimatePresence>
+                {avatarDropdownOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.2 }}
+                    className="absolute right-0 top-14 bg-white border border-gray-200 rounded shadow-lg w-40 z-50"
+                  >
+                    <Link
+                      to="/EditProfile"
+                      className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                      onClick={() => setAvatarDropdownOpen(false)}
+                    >
+                      Edit Profile
+                    </Link>
+                    <div className="border-t" />
+                    <LogoutButton className="w-full text-left px-4 py-2 hover:bg-gray-100 text-red-600" />
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
           )}
         </div>
       </div>
@@ -192,7 +229,14 @@ function Navbar() {
             </Link>
           </div>
         ) : (
-          <LogoutButton className="ml-4" />
+          <div className="flex">
+            <img
+              src={avatar}
+              alt="User Avatar"
+              className="w-12 h-12 rounded-full"
+            />
+            <LogoutButton className="ml-4" />
+          </div>
         )}
       </div>
     </nav>

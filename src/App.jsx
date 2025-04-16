@@ -15,11 +15,14 @@ import Footer from "./components/Footer";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { AnimatePresence } from "framer-motion"; // <-- Added for page animations
+import useFetchProfile from "./hooks/useFetchProfile";
 
 function App() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation(); // <-- Get current route location for AnimatePresence
+  
+  useFetchProfile(); // Automatically fetch profile (and avatar) if token exists
 
   // Run this once when the app loads — it fetches the saved token (if any) from localStorage
   useEffect(() => {

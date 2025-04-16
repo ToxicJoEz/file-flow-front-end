@@ -53,7 +53,7 @@ function Login() {
 
         if (token) {
           // Dispatch both token and avatar to Redux store
-          dispatch(login({ token, avatar }));
+          dispatch(login({ token }));
 
           // Store the token in localStorage
           localStorage.setItem("auth", token);
