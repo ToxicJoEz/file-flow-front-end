@@ -8,10 +8,14 @@ function Home() {
 
   return (
     <PageWrapper>
-      <div>
-        <h2 className="bg-black text-white p-8 font-bold test">
-          Home
-        </h2>
+      <div className="h-screen bg-[url('/assets/background1.png')]">
+       <h1 className="text-white">Home</h1>
+       <h1 className="text-white">Home</h1>
+       <h1 className="text-white">Home</h1>
+       <h1 className="text-white">Home</h1>
+       <h1 className="text-white">Home</h1>
+       <h1 className="text-white">Home</h1>
+       <h1 className="text-white">Home</h1>
       </div>
     </PageWrapper>
   );

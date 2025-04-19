@@ -13,9 +13,23 @@ function Navbar() {
   const toggleMenu = () => setIsOpen(!isOpen);
   const avatar = useSelector((state) => state.auth.avatar);
   const [avatarDropdownOpen, setAvatarDropdownOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 0);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <nav className="w-full bg-black shadow-md relative">
+    <nav
+      className={`w-full bg-black shadow-md fixed top-0 left-0 right-0 z-50 transition-opacity duration-300 ${
+        scrolled ? "opacity-50" : "opacity-100"
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
         {/* Logo */}
         <Link
