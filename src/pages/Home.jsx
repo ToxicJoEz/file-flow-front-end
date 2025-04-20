@@ -8,14 +8,16 @@ function Home() {
 
   return (
     <PageWrapper>
-      <div className="h-screen bg-[url('/assets/background1.png')]">
-       <h1 className="text-white">Home</h1>
-       <h1 className="text-white">Home</h1>
-       <h1 className="text-white">Home</h1>
-       <h1 className="text-white">Home</h1>
-       <h1 className="text-white">Home</h1>
-       <h1 className="text-white">Home</h1>
-       <h1 className="text-white">Home</h1>
+      <div className="h-screen bg-[url('/assets/background1.png')] bg-no-repeat bg-center bg-cover">
+        <div className="pt-24">
+          <h1 className="text-white">Home</h1>
+          <h1 className="text-white">Home</h1>
+          <h1 className="text-white">Home</h1>
+          <h1 className="text-white">Home</h1>
+          <h1 className="text-white">Home</h1>
+          <h1 className="text-white">Home</h1>
+          <h1 className="text-white">Home</h1>
+        </div>
       </div>
     </PageWrapper>
   );

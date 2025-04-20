@@ -26,8 +26,8 @@ function Navbar() {
 
   return (
     <nav
-      className={`w-full bg-black shadow-md fixed top-0 left-0 right-0 z-50 transition-opacity duration-300 ${
-        scrolled ? "opacity-50" : "opacity-100"
+      className={`w-full bg-black shadow-md fixed top-0 left-0 right-0 z-50 transition-colors duration-200 p-2 ${
+        scrolled ? "bg-black/100" : "bg-black/40"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
@@ -41,7 +41,7 @@ function Navbar() {
             className="h-12"
             alt="Flowbite Logo"
           />
-          <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
+          <span className="self-center text-2xl font-semibold whitespace-nowrap text-white ">
             File Flow
           </span>
         </Link>
@@ -50,20 +50,20 @@ function Navbar() {
         <div className="md:hidden z-50">
           <button
             onClick={toggleMenu}
-            className="text-gray-700 focus:outline-none"
+            className="text-white  focus:outline-none"
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
 
         {/* Center Links (Desktop only) */}
-        <div className="hidden md:flex space-x-8 text-gray-700 text-sm font-medium absolute left-1/2 transform -translate-x-1/2">
+        <div className="hidden md:flex space-x-8 text-white  text-sm font-medium absolute left-1/2 transform -translate-x-1/2">
           <NavLink
             to="/"
             className={({ isActive }) =>
               isActive
                 ? "ActiveLink"
-                : "text-gray-700 hover:text-blue-500 transition"
+                : "text-white  hover:text-blue-500 transition"
             }
           >
             Home
@@ -73,7 +73,7 @@ function Navbar() {
             className={({ isActive }) =>
               isActive
                 ? "ActiveLink"
-                : "text-gray-700 hover:text-blue-500 transition"
+                : "text-white  hover:text-blue-500 transition"
             }
           >
             Services
@@ -83,7 +83,7 @@ function Navbar() {
             className={({ isActive }) =>
               isActive
                 ? "ActiveLink"
-                : "text-gray-700 hover:text-blue-500 transition"
+                : "text-white  hover:text-blue-500 transition"
             }
           >
             Plans
@@ -93,7 +93,7 @@ function Navbar() {
             className={({ isActive }) =>
               isActive
                 ? "ActiveLink"
-                : "text-gray-700 hover:text-blue-500 transition"
+                : "text-white  hover:text-blue-500 transition"
             }
           >
             Contact us
@@ -104,7 +104,7 @@ function Navbar() {
               className={({ isActive }) =>
                 isActive
                   ? "ActiveLink"
-                  : "text-gray-700 hover:text-blue-500 transition"
+                  : "text-white  hover:text-blue-500 transition"
               }
             >
               Dashboard
@@ -118,7 +118,7 @@ function Navbar() {
             <>
               <Link
                 to="/login"
-                className="text-sm font-medium text-gray-700 hover:text-blue-500 transition px-4 py-1.5"
+                className="text-sm font-medium text-white  hover:text-blue-500 transition px-4 py-1.5"
               >
                 Login
               </Link>
@@ -153,7 +153,7 @@ function Navbar() {
                   >
                     <Link
                       to="/EditProfile"
-                      className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                      className="block px-4 py-2 text-white  hover:bg-gray-100"
                       onClick={() => setAvatarDropdownOpen(false)}
                     >
                       Edit Profile
@@ -182,7 +182,7 @@ function Navbar() {
           className={({ isActive }) =>
             isActive
               ? "ActiveLink block"
-              : "text-gray-700 hover:text-blue-500 transition block"
+              : "text-black  hover:text-blue-500 transition block"
           }
         >
           Home
@@ -192,7 +192,7 @@ function Navbar() {
           className={({ isActive }) =>
             isActive
               ? "ActiveLink block"
-              : "text-gray-700 hover:text-blue-500 transition block"
+              : "text-black  hover:text-blue-500 transition block"
           }
         >
           Services
@@ -202,7 +202,7 @@ function Navbar() {
           className={({ isActive }) =>
             isActive
               ? "ActiveLink block"
-              : "text-gray-700 hover:text-blue-500 transition block"
+              : "text-black  hover:text-blue-500 transition block"
           }
         >
           Plans
@@ -212,7 +212,7 @@ function Navbar() {
           className={({ isActive }) =>
             isActive
               ? "ActiveLink block"
-              : "text-gray-700 hover:text-blue-500 transition block"
+              : "text-black  hover:text-blue-500 transition block"
           }
         >
           Contact us
@@ -223,7 +223,7 @@ function Navbar() {
             className={({ isActive }) =>
               isActive
                 ? "ActiveLink block"
-                : "text-gray-700 hover:text-blue-500 transition block"
+                : "text-black  hover:text-blue-500 transition block"
             }
           >
             Dashboard
@@ -232,7 +232,7 @@ function Navbar() {
 
         {!isLoggedIn ? (
           <div className="pt-2 border-t mt-2 flex items-center space-x-4">
-            <Link to="/login" className="text-gray-700 hover:text-blue-500">
+            <Link to="/login" className="text-white  hover:text-blue-500">
               Login
             </Link>
             <Link
