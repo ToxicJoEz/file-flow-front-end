@@ -62,8 +62,8 @@ function Navbar() {
             to="/"
             className={({ isActive }) =>
               isActive
-                ? "ActiveLink"
-                : "text-white  hover:text-blue-500 transition"
+                ? "ActiveLink p-2"
+                : "text-white  hover:text-[#f5bd1f] transition p-2"
             }
           >
             Home
@@ -72,8 +72,8 @@ function Navbar() {
             to="/Services"
             className={({ isActive }) =>
               isActive
-                ? "ActiveLink"
-                : "text-white  hover:text-blue-500 transition"
+                ? "ActiveLink p-2"
+                : "text-white  hover:text-[#f5bd1f] transition p-2"
             }
           >
             Services
@@ -82,8 +82,8 @@ function Navbar() {
             to="/Plans"
             className={({ isActive }) =>
               isActive
-                ? "ActiveLink"
-                : "text-white  hover:text-blue-500 transition"
+                ? "ActiveLink p-2"
+                : "text-white  hover:text-[#f5bd1f] transition p-2"
             }
           >
             Plans
@@ -92,8 +92,8 @@ function Navbar() {
             to="/Contact"
             className={({ isActive }) =>
               isActive
-                ? "ActiveLink"
-                : "text-white  hover:text-blue-500 transition"
+                ? "ActiveLink p-2"
+                : "text-white  hover:text-[#f5bd1f] transition p-2"
             }
           >
             Contact us
@@ -104,7 +104,7 @@ function Navbar() {
               className={({ isActive }) =>
                 isActive
                   ? "ActiveLink"
-                  : "text-white  hover:text-blue-500 transition"
+                  : "text-white  hover:text-[#f5bd1f] transition"
               }
             >
               Dashboard
@@ -116,16 +116,10 @@ function Navbar() {
         <div className="hidden md:flex space-x-4">
           {!isLoggedIn ? (
             <>
-              <Link
-                to="/login"
-                className="text-sm font-medium text-white  hover:text-blue-500 transition px-4 py-1.5"
-              >
+              <Link to="/login" className="custom-login-link">
                 Login
               </Link>
-              <Link
-                to="/register"
-                className="text-sm font-medium bg-blue-500 text-white px-4 py-1.5 rounded hover:bg-blue-600 transition"
-              >
+              <Link to="/register" className="custom-register-link">
                 Register
               </Link>
             </>
@@ -170,19 +164,19 @@ function Navbar() {
 
       {/* Mobile Menu with Smooth Transition */}
       <div
-        className={`md:hidden transition-all duration-300 ease-in-out absolute top-full left-0 right-0 bg-white shadow-lg px-4 pb-4 space-y-2 ${
+        className={`md:hidden transition-all duration-300 ease-in-out absolute top-full left-0 right-0 bg-[#47297b] shadow-lg px-4 pb-4 space-y-2 ${
           isOpen
             ? "opacity-100 translate-y-0"
             : "opacity-0 -translate-y-4 pointer-events-none"
-        }`}
+        } flex flex-col items-center text-center`}
         style={{ zIndex: 40 }}
       >
         <NavLink
           to="/"
           className={({ isActive }) =>
             isActive
-              ? "ActiveLink block"
-              : "text-black  hover:text-blue-500 transition block"
+              ? "ActiveLink block p-2"
+              : "text-white  hover:text-[#f5bd1f] transition block p-2"
           }
         >
           Home
@@ -191,8 +185,8 @@ function Navbar() {
           to="/Services"
           className={({ isActive }) =>
             isActive
-              ? "ActiveLink block"
-              : "text-black  hover:text-blue-500 transition block"
+              ? "ActiveLink block p-2"
+              : "text-white  hover:text-[#f5bd1f] transition block p-2"
           }
         >
           Services
@@ -201,8 +195,8 @@ function Navbar() {
           to="/Plans"
           className={({ isActive }) =>
             isActive
-              ? "ActiveLink block"
-              : "text-black  hover:text-blue-500 transition block"
+              ? "ActiveLink block p-2"
+              : "text-white  hover:text-[#f5bd1f] transition block p-2"
           }
         >
           Plans
@@ -211,8 +205,8 @@ function Navbar() {
           to="/Contact"
           className={({ isActive }) =>
             isActive
-              ? "ActiveLink block"
-              : "text-black  hover:text-blue-500 transition block"
+              ? "ActiveLink block p-2"
+              : "text-white  hover:text-[#f5bd1f] transition block p-2"
           }
         >
           Contact us
@@ -222,8 +216,8 @@ function Navbar() {
             to="/dashboard"
             className={({ isActive }) =>
               isActive
-                ? "ActiveLink block"
-                : "text-black  hover:text-blue-500 transition block"
+                ? "ActiveLink block p-2"
+                : "text-white  hover:text-[#f5bd1f] transition block p-2"
             }
           >
             Dashboard
@@ -232,13 +226,10 @@ function Navbar() {
 
         {!isLoggedIn ? (
           <div className="pt-2 border-t mt-2 flex items-center space-x-4">
-            <Link to="/login" className="text-white  hover:text-blue-500">
+            <Link to="/login" className="custom-login-link">
               Login
             </Link>
-            <Link
-              to="/register"
-              className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-            >
+            <Link to="/register" className="custom-register-link">
               Register
             </Link>
           </div>
