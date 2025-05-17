@@ -11,17 +11,19 @@ import EditProfile from "./components/EditProfile";
 import ProtectedRoute from "./components/ProtectedRoute";
 import PublicRoute from "./components/PublicRoute";
 import Error from "./pages/Error";
+import AppLogin from "./pages/AppLogin"; // <-- Added AppLogin import
 import Footer from "./components/Footer";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { AnimatePresence } from "framer-motion"; // <-- Added for page animations
 import useFetchProfile from "./hooks/useFetchProfile";
+import mainBgImage from "./assets/mainBackground.png"; // adjust path if needed
 
 function App() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation(); // <-- Get current route location for AnimatePresence
-  
+
   useFetchProfile(); // Automatically fetch profile (and avatar) if token exists
 
   // Run this once when the app loads — it fetches the saved token (if any) from localStorage
@@ -33,7 +35,14 @@ function App() {
   }, [dispatch]);
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div
+      className="min-h-screen flex flex-col"
+      style={{
+        backgroundImage: `url(${mainBgImage})`,
+        backgroundSize: "auto",
+        backgroundRepeat: "repeat",
+        backgroundAttachment: "fixed",
+      }}    >
       {/* Persistent Navbar at the top */}
       <Navbar />
 
@@ -61,6 +70,16 @@ function App() {
               element={
                 <PublicRoute>
                   <Login />
+                </PublicRoute>
+              }
+            />
+
+            {/* App Public Login Route */}
+            <Route
+              path="/app-login"
+              element={
+                <PublicRoute>
+                  <AppLogin />
                 </PublicRoute>
               }
             />
