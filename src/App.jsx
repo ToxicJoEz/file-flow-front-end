@@ -36,7 +36,7 @@ function App() {
 
   return (
     <div
-      className="min-h-screen flex flex-col"
+      className="min-h-screen flex flex-col overflow-hidden"
       style={{
         backgroundImage: `url(${mainBgImage})`,
         backgroundSize: "auto",
