@@ -9,6 +9,7 @@ import aboutUsImg1 from "../assets/AboutUs1.png";
 import aboutUsImg2 from "../assets/AboutUs2.png";
 import background2 from "../assets/background2.png";
 import background3 from "../assets/background3.png";
+import background4 from "../assets/background4.png";
 import logo1 from "../assets/logoipsum1.svg";
 import logo2 from "../assets/logoipsum2.svg";
 import logo3 from "../assets/logoipsum3.svg";
@@ -20,7 +21,7 @@ import featured2 from "../assets/Featured2.png";
 import featured3 from "../assets/Featured3.png";
 import featured4 from "../assets/Featured4.png";
 import featured5 from "../assets/Featured5.png";
-
+import contactImg from "../assets/contact us.png";
 
 function Home() {
   const token = useSelector((state) => state.auth.token);
@@ -206,105 +207,177 @@ function Home() {
             {/* Title + Description */}
             <div className="text-center max-w-2xl mx-auto mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-[#47297B] mb-4">
-                What Do We Offer ?
+                What Do We Offer?
               </h2>
-              <p className="text-base md:text-lg opacity-90">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Suspendisse varius enim in eros elementum tristique. Duis
-                cursus, mi quis viverra ornare, eros dolor interdum nulla.
+              <p className="text-base md:text-lg opacity-90 text-black">
+                Instantly search through your documents with our powerful
+                keyword detection tool. FileFlow also offers secure unlocking,
+                clean previews, and more — built for speed and simplicity.
               </p>
             </div>
 
             {/* Top Row: 3 Cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
-              <div className="bg-[#2D0066] rounded-2xl p-6 shadow-xl text-center">
-                <img
-                  src={featured1}
-                  alt="Icon 1"
-                  className="mx-auto h-12 mb-4"
-                />
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
+              <div
+                className="rounded-2xl p-6 shadow-xl bg-center py-8 px-12 py-8 px-12"
+                style={{ backgroundImage: `url(${background4})` }}
+              >
+                <img src={featured1} alt="Icon 1" className="w-[25%] mb-4" />
                 <h3 className="text-yellow-400 text-xl font-bold mb-3">
-                  Service One
+                  Keyword search
                 </h3>
-                <p className="text-sm opacity-90 mb-6">
-                  Description for service one. Useful, clean, and to the point.
+                <p className="opacity-90 mb-6">
+                  Quickly locate the exact information you need with smart
+                  keyword detection. Search across your files without opening a
+                  single one.
                 </p>
-                <button className="bg-[#7A5FFF] text-white px-4 py-2 rounded-lg text-sm">
-                  Learn more
-                </button>
+                <button className="learn-more-btn">Learn more</button>
               </div>
 
-              <div className="bg-[#2D0066] rounded-2xl p-6 shadow-xl text-center">
-                <img
-                  src={featured2}
-                  alt="Icon 2"
-                  className="mx-auto h-12 mb-4"
-                />
+              <div
+                className="rounded-2xl p-6 shadow-xl bg-center py-8 px-12"
+                style={{ backgroundImage: `url(${background4})` }}
+              >
+                <img src={featured2} alt="Icon 2" className="w-[25%] mb-4" />
                 <h3 className="text-yellow-400 text-xl font-bold mb-3">
-                  Service Two
+                  We focus on your file needs!
                 </h3>
-                <p className="text-sm opacity-90 mb-6">
-                  Description for service two. Reliable, simple, and effective.
+                <p className="opacity-90 mb-6">
+                  FileFlow brings all your tools together in one clean platform.
+                  Manage, search, convert, and create — effortlessly.
                 </p>
-                <button className="bg-[#7A5FFF] text-white px-4 py-2 rounded-lg text-sm">
-                  Learn more
-                </button>
+                <button className="learn-more-btn">Learn more</button>
               </div>
 
-              <div className="bg-[#2D0066] rounded-2xl p-6 shadow-xl text-center">
-                <img
-                  src={featured3}
-                  alt="Icon 3"
-                  className="mx-auto h-12 mb-4"
-                />
-                <h3 className="text-yellow-400 text-xl font-bold mb-3">
-                  Service Three
-                </h3>
-                <p className="text-sm opacity-90 mb-6">
-                  Description for service three. Streamlined and powerful.
+              <div
+                className="rounded-2xl p-6 shadow-xl bg-center py-8 px-12"
+                style={{ backgroundImage: `url(${background4})` }}
+              >
+                <img src={featured3} alt="Icon 3" className="w-[25%] mb-4" />
+                <h3 className="text-yellow-400 text-xl font-bold mb-3">OCR</h3>
+                <p className="opacity-90 mb-6">
+                  Convert scanned images and PDFs into editable, searchable
+                  text. Our OCR engine is fast, accurate, and built for
+                  real-world documents.
                 </p>
-                <button className="bg-[#7A5FFF] text-white px-4 py-2 rounded-lg text-sm">
-                  Learn more
-                </button>
+                <button className="learn-more-btn">Learn more</button>
               </div>
             </div>
 
             {/* Bottom Row: 2 Cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8">
-              <div className="bg-[#2D0066] rounded-2xl p-6 shadow-xl text-center">
-                <img
-                  src={featured4}
-                  alt="Icon 4"
-                  className="mx-auto h-12 mb-4"
-                />
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4">
+              <div
+                className="rounded-2xl p-6 shadow-xl bg-center py-8 px-12"
+                style={{ backgroundImage: `url(${background4})` }}
+              >
+                <img src={featured4} alt="Icon 4" className="w-[15%] mb-4" />
                 <h3 className="text-yellow-400 text-xl font-bold mb-3">
-                  Service Four
+                  Ai-driven file creation
                 </h3>
-                <p className="text-sm opacity-90 mb-6">
-                  Description for service four. Organized, fast, and intuitive.
+                <p className="opacity-90 mb-6">
+                  Create structured, professional documents with just a few
+                  clicks. Our AI understands your input and turns it into clean,
+                  usable files instantly.
                 </p>
-                <button className="bg-[#7A5FFF] text-white px-4 py-2 rounded-lg text-sm">
-                  Learn more
-                </button>
+                <button className="learn-more-btn">Learn more</button>
               </div>
 
-              <div className="bg-[#2D0066] rounded-2xl p-6 shadow-xl text-center">
-                <img
-                  src={featured5}
-                  alt="Icon 5"
-                  className="mx-auto h-12 mb-4"
-                />
+              <div
+                className="rounded-2xl p-6 shadow-xl bg-center py-8 px-12"
+                style={{ backgroundImage: `url(${background4})` }}
+              >
+                <img src={featured5} alt="Icon 5" className="w-[15%] mb-4" />
                 <h3 className="text-yellow-400 text-xl font-bold mb-3">
-                  Service Five
+                  File unlocking
                 </h3>
-                <p className="text-sm opacity-90 mb-6">
-                  Description for service five. A complete solution made simple.
+                <p className="opacity-90 mb-6">
+                  Remove passwords and restrictions from locked files in
+                  seconds. Regain full control and access without hassle.
                 </p>
-                <button className="bg-[#7A5FFF] text-white px-4 py-2 rounded-lg text-sm">
-                  Learn more
-                </button>
+                <button className="learn-more-btn">Learn more</button>
               </div>
             </div>
+
+            <div className="text-center max-w-2xl mx-auto mt-12">
+              <p className="text-base md:text-lg opacity-90 text-black">
+                Want to check more details about what else we got to offer ?
+              </p>
+              <button className="border border-black text-black rounded-md px-4 py-2 bg-transparent hover:bg-black hover:text-white transition-colors duration-300 mt-4">
+                Learn more
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Contact us section */}
+        <div className="mx-auto w-[75%] py-16 px-4">
+          <div className="flex rounded-2xl">
+            <div className="w-1/3">
+              <img
+                src={contactImg}
+                alt=""
+                className="w-[100%] rounded-tl-2xl rounded-bl-2xl"
+              />
+            </div>
+            <form className="contact-form w-2/3">
+              <p className="contact-title">Contact Us</p>
+              <p className="contact-message">We’d love to hear from you.</p>
+
+              {/* Name + Email */}
+              <div className="contact-flex">
+                <label>
+                  <input
+                    required
+                    type="text"
+                    className="contact-input"
+                    placeholder=" "
+                  />
+                  <span>Name</span>
+                </label>
+                <label>
+                  <input
+                    required
+                    type="email"
+                    className="contact-input"
+                    placeholder=" "
+                  />
+                  <span>Email</span>
+                </label>
+              </div>
+
+              {/* Phone + Business (optional) */}
+              <div className="contact-flex">
+                <label>
+                  <input
+                    type="text"
+                    className="contact-input"
+                    placeholder=" "
+                  />
+                  <span>Phone (optional)</span>
+                </label>
+                <label>
+                  <input
+                    type="text"
+                    className="contact-input"
+                    placeholder=" "
+                  />
+                  <span>Business Name (optional)</span>
+                </label>
+              </div>
+
+              {/* Message */}
+              <label>
+                <textarea
+                  className="contact-input"
+                  placeholder=" "
+                  rows={12}
+                  required
+                />
+                <span>Message</span>
+              </label>
+
+              <button className="contact-submit">Send Message</button>
+            </form>
           </div>
         </div>
       </div>
