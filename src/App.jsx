@@ -11,6 +11,7 @@ import EditProfile from "./components/EditProfile";
 import ProtectedRoute from "./components/ProtectedRoute";
 import PublicRoute from "./components/PublicRoute";
 import Error from "./pages/Error";
+import Plans from "./pages/Plans";
 import AppLogin from "./pages/AppLogin"; // <-- Added AppLogin import
 import Footer from "./components/Footer";
 import { ToastContainer } from "react-toastify";
@@ -42,7 +43,8 @@ function App() {
         backgroundSize: "auto",
         backgroundRepeat: "repeat",
         backgroundAttachment: "fixed",
-      }}    >
+      }}
+    >
       {/* Persistent Navbar at the top */}
       <Navbar />
 
@@ -80,6 +82,16 @@ function App() {
               element={
                 <PublicRoute>
                   <AppLogin />
+                </PublicRoute>
+              }
+            />
+
+            {/* Public Plans Route */}
+            <Route
+              path="/plans"
+              element={
+                <PublicRoute>
+                  <Plans />
                 </PublicRoute>
               }
             />
