@@ -522,13 +522,13 @@ $secondary-color2: #ffe863;
   border: 2px solid #d1d5db; // default border color
   border-radius: 1rem;
   background-color: white; // gray-100
-  box-shadow: 12px 10px 24px rgba(0, 0, 0, 0.5);
+  box-shadow: 12px 10px 24px rgba(0, 0, 0, 0.4);
   transition: all 0.3s ease;
 
   &:hover {
     border-color: $primary-color; // purple-600
     background-color: #ffffff;
-    box-shadow: 12px 10px 24px rgba(0, 0, 0, 0.7);
+    box-shadow: 12px 10px 24px rgba(0, 0, 0, 0.2);
     transform: translateY(-1rem);
   }
 
@@ -597,7 +597,7 @@ $secondary-color2: #ffe863;
 .plan-card.active {
   border-color: $primary-color;
   background-color: #ffffff;
-  box-shadow: 12px 10px 24px rgba(0, 0, 0, 0.7);
+  box-shadow: 12px 10px 24px rgba(0, 0, 0, 0.4);
   transform: translateY(-1rem);
 }
 
@@ -611,8 +611,7 @@ $secondary-color2: #ffe863;
   border-radius: 1rem;
   background-color: white;
   margin-top: 3rem;
-  box-shadow: 12px 10px 24px rgba(0, 0, 0, 0.5);
-
+  box-shadow: 12px 10px 24px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease;
 
   button {
@@ -671,6 +670,112 @@ $secondary-color2: #ffe863;
       left: 0;
       color: #10b981;
       font-weight: bold;
+    }
+  }
+}
+
+/* Services page */
+
+.service-card {
+  background-color: white;
+  border-radius: 1rem;
+  box-shadow: 12px 10px 24px rgba(0, 0, 0, 0.2);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  border: 1px solid #9d9ea0;
+  transition: all 0.3s ease;
+
+  &:hover {
+    box-shadow: 12px 10px 24px rgba(0, 0, 0, 0.3);
+    transform: translateY(-4px);
+  }
+
+  .icon-image {
+    width: 24%;
+    margin-bottom: 1rem;
+  }
+
+  h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #47297b;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    font-size: 0.875rem;
+    color: #6b7280; // gray-600
+  }
+}
+
+.service-carousel {
+  background-color: white;
+  border-radius: 1rem;
+  box-shadow: 12px 10px 24px rgba(0, 0, 0, 0.2);
+  padding: 2rem;
+  width: 100%;
+  height: 300px;
+    border: 1px solid #9d9ea0;
+  text-align: left;
+
+  h4 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #47297b;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    color: #6b7280;
+  }
+  
+}
+
+/* Carousel track styles */
+.service-carousel {
+  position: relative;
+  overflow: hidden; // this hides the overflowing slides
+
+  .carousel-track {
+    display: flex;
+    width: 400%; // 4 slides
+    transition: transform 0.5s ease-in-out;
+  }
+
+  .carousel-slide {
+    flex: 0 0 100%; // each slide takes full width
+    box-sizing: border-box;
+    padding: 1.5rem;
+    text-align: center;
+  }
+
+  .carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: $primary-color;
+    color: white;
+    border: none;
+    font-size: 2rem;
+    padding: 0.5rem 1rem;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+
+    &.prev {
+      left: 10px;
+    }
+
+    &.next {
+      right: 10px;
+    }
+
+    &:hover {
+      background-color: $primary-color-hover;
     }
   }
 }

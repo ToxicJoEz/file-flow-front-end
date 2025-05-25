@@ -19,6 +19,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { AnimatePresence } from "framer-motion"; // <-- Added for page animations
 import useFetchProfile from "./hooks/useFetchProfile";
 import mainBgImage from "./assets/mainBackground.png"; // adjust path if needed
+import Services from "./pages/Services";
 
 function App() {
   const dispatch = useDispatch();
@@ -92,6 +93,16 @@ function App() {
               element={
                 <PublicRoute>
                   <Plans />
+                </PublicRoute>
+              }
+            />
+
+            {/* Public services Route */}
+            <Route
+              path="/services"
+              element={
+                <PublicRoute>
+                  <Services />
                 </PublicRoute>
               }
             />
