@@ -91,9 +91,7 @@ function App() {
             <Route
               path="/plans"
               element={
-                <PublicRoute>
                   <Plans />
-                </PublicRoute>
               }
             />
 
@@ -101,9 +99,7 @@ function App() {
             <Route
               path="/services"
               element={
-                <PublicRoute>
                   <Services />
-                </PublicRoute>
               }
             />
 
