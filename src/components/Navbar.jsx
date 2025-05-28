@@ -103,8 +103,8 @@ function Navbar() {
               to="/dashboard"
               className={({ isActive }) =>
                 isActive
-                  ? "ActiveLink"
-                  : "text-white  hover:text-[#f5bd1f] transition"
+                  ? "ActiveLink p-2"
+                  : "text-white  hover:text-[#f5bd1f] transition p-2"
               }
             >
               Dashboard
@@ -132,7 +132,7 @@ function Navbar() {
                 <img
                   src={avatar}
                   alt="User Avatar"
-                  className="w-12 h-12 rounded-full border border-white"
+                  className="w-12 h-12 rounded-full"
                 />
               </button>
 
@@ -146,8 +146,8 @@ function Navbar() {
                     className="absolute right-0 top-14 bg-white border border-gray-200 rounded shadow-lg w-40 z-50"
                   >
                     <Link
-                      to="/EditProfile"
-                      className="block px-4 py-2 text-white  hover:bg-gray-100"
+                      to="dashboard/EditProfile"
+                      className="block px-4 py-2 hover:bg-gray-100"
                       onClick={() => setAvatarDropdownOpen(false)}
                     >
                       Edit Profile

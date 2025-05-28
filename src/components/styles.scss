@@ -5,6 +5,10 @@ $secondary-color-hover: #ffd93d;
 $primary-color2: #8736aa;
 $secondary-color2: #ffe863;
 
+* {
+  box-sizing: border-box;
+}
+
 /* Registration / Login form styles */
 .form {
   display: flex;
@@ -226,21 +230,23 @@ $secondary-color2: #ffe863;
   --main-color: #000;
   --submain-color: #78858f;
   --bg-color: #fff;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   position: relative;
-  width: 300px;
+  width: 100%;
   height: 384px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 1px solid grey;
+  border: 1px solid #d9dadb;
   border-radius: 20px;
   background: var(--bg-color);
 }
 
+.card2 {
+  height: 184px;
+}
+
 .card__img {
-  height: 192px;
+  height: 50%;
   width: 100%;
 }
 
@@ -251,7 +257,7 @@ $secondary-color2: #ffe863;
 
 .card__avatar {
   position: absolute;
-  width: 130px;
+  width: 12rem;
   height: 130px;
   border-radius: 100%;
   display: flex;
@@ -261,7 +267,6 @@ $secondary-color2: #ffe863;
 }
 
 .card__avatar-img {
-  width: 90%;
   transform: translate(0%, -25%);
 }
 
@@ -271,10 +276,14 @@ $secondary-color2: #ffe863;
 }
 
 .card__title {
-  margin-top: 60px;
+  margin-top: 12px;
   font-weight: 500;
   font-size: 18px;
   color: var(--main-color);
+}
+
+.Profile__card__title {
+  margin-top: 62px;
 }
 
 .card__subtitle {
@@ -796,4 +805,123 @@ $secondary-color2: #ffe863;
 .cta-button:hover {
   background-color: #5d2689;
   transform: scale(1.05);
+}
+
+/* Dashboard  */
+
+.sidebar {
+  background-color: #111827;
+  color: #d1d5db;
+  border-radius: 0px 20px 20px 0px;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar nav {
+  flex: 1; /* take up all vertical space */
+  display: flex;
+  flex-direction: column;
+}
+
+.side-link-active {
+  background-color: $primary-color;
+  color: white !important;
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.375rem;
+  text-decoration: none;
+  color: inherit;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.sidebar-link:hover {
+  background-color: $secondary-color;
+  color: black;
+}
+
+.icon-placeholder {
+  width: 1.25rem;
+  height: 1.25rem;
+  background-color: #4b5563;
+  border-radius: 50%;
+}
+
+.sidebar-label {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.sidebar-link:last-child {
+  background-color: $secondary-color;
+  color: black;
+  margin-top: auto;
+}
+
+.sidebar-link:last-child:hover {
+  background-color: $primary-color;
+  color: white;
+}
+
+/* DashboardLayout.css */
+
+/* Sidebar */
+.dashboard-sidebar {
+  position: fixed;
+  top: 7rem; /* height of your header */
+  left: 0;
+  width: 16rem; /* same as Tailwind w-60 */
+  height: calc(100vh - 7rem); /* full viewport minus header */
+  overflow-y: auto;
+  z-index: 10;
+}
+
+/* Main content */
+.dashboard-main {
+  margin-left: 15rem; /* push right beside the sidebar */
+  margin-top: 7rem; /* drop below the header */
+  padding: 0rem 2rem; /* same as Tailwind p-6 */
+  overflow: auto; /* allow page scroll */
+}
+
+/* Mobile: collapse sidebar into a top nav bar */
+@media (max-width: 768px) {
+  /* Sidebar becomes a horizontal nav bar under the header */
+  .dashboard-sidebar {
+    position: fixed;
+    top: 7rem; /* same offset under your main navbar */
+    left: 0;
+    width: 100%;
+    height: 12rem; /* height of the mobile nav bar */
+    flex-direction: column;
+    align-items: center;
+    overflow-x: auto; /* allow scrolling if there are many links */
+    background-color: #1f2937;
+    z-index: 10;
+  }
+
+  /* Ensure each link doesn’t wrap and has some breathing room */
+  .sidebar-link {
+    white-space: nowrap;
+    padding: 0 1rem;
+  }
+
+  /* Main content takes full width, pushed below header + mobile nav */
+  .dashboard-main {
+    margin-left: 0; /* no sidebar indent */
+    margin-top: calc(7rem + 3rem); /* header (7rem) + mobile nav (3rem) */
+  }
+  .dashboard-sidebar nav {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem; /* space between items */
+  }
+  .dashboard-sidebar .sidebar-link {
+    display: flex;
+    margin: 0; /* clear Tailwind’s space-y-2 */
+  }
 }

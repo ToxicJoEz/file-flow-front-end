@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
-    <div className="p-4">
+    <div className="p-4 z-20">
       <footer className="bg-white rounded-lg shadow-sm dark:bg-gray-900">
         <div className="w-full max-w-screen-xl mx-auto p-4 md:py-8">
           <div className="sm:flex sm:items-center sm:justify-between">

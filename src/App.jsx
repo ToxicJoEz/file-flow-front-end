@@ -6,7 +6,6 @@ import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Register from "./components/Register";
 import Login from "./components/Login";
-import Dashboard from "./pages/Dashboard";
 import EditProfile from "./components/EditProfile";
 import ProtectedRoute from "./components/ProtectedRoute";
 import PublicRoute from "./components/PublicRoute";
@@ -20,6 +19,8 @@ import { AnimatePresence } from "framer-motion"; // <-- Added for page animation
 import useFetchProfile from "./hooks/useFetchProfile";
 import mainBgImage from "./assets/mainBackground.png"; // adjust path if needed
 import Services from "./pages/Services";
+import DashboardLayout from "./pages/DashboardLayout";
+import DashboardHome from "./pages/DashboardHome";
 
 function App() {
   const dispatch = useDispatch();
@@ -53,7 +54,14 @@ function App() {
       <main className="flex-grow">
         {/* AnimatePresence allows pages to animate in and out */}
         <AnimatePresence mode="wait">
-          <Routes location={location} key={location.pathname}>
+          <Routes
+            location={location}
+            key={(() => {
+              // pull out the first path segment (or “home” if none):
+              const seg = location.pathname.split("/")[1];
+              return seg || "home";
+            })()}
+          >
             {/* Public Home Route */}
             <Route path="/" element={<Home />} />
 
@@ -88,40 +96,23 @@ function App() {
             />
 
             {/* Public Plans Route */}
-            <Route
-              path="/plans"
-              element={
-                  <Plans />
-              }
-            />
+            <Route path="/plans" element={<Plans />} />
 
             {/* Public services Route */}
-            <Route
-              path="/services"
-              element={
-                  <Services />
-              }
-            />
+            <Route path="/services" element={<Services />} />
 
             {/* Protected Dashboard Route */}
             <Route
               path="/dashboard"
               element={
                 <ProtectedRoute>
-                  <Dashboard />
+                  <DashboardLayout />
                 </ProtectedRoute>
               }
-            />
-
-            {/* Protected Edit Profile Route */}
-            <Route
-              path="/EditProfile"
-              element={
-                <ProtectedRoute>
-                  <EditProfile />
-                </ProtectedRoute>
-              }
-            />
+            >
+              <Route index element={<DashboardHome />} />
+              <Route path="EditProfile" element={<EditProfile />} />
+            </Route>
 
             {/* Catch-All Error Route */}
             <Route path="*" element={<Error />} />
