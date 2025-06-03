@@ -20,7 +20,7 @@ export default function Sidebar() {
           />
           <span className="sidebar-label">Dashboard home</span>
         </NavLink>
-        <a href="/dashboard/kanban" className="sidebar-link">
+        <a href="#" className="sidebar-link">
           <FontAwesomeIcon
             icon="fa-solid fa-unlock-keyhole"
             size="lg"
@@ -28,7 +28,7 @@ export default function Sidebar() {
           />
           <span className="sidebar-label">Files unlocked</span>
         </a>
-        <a href="/dashboard/inbox" className="sidebar-link">
+        <a href="#" className="sidebar-link">
           <FontAwesomeIcon
             icon="fa-solid fa-search"
             size="lg"
@@ -36,7 +36,7 @@ export default function Sidebar() {
           />
           <span className="sidebar-label">Keywords Searched</span>
         </a>
-        <a href="/dashboard/users" className="sidebar-link">
+        <a href="#" className="sidebar-link">
           <FontAwesomeIcon
             icon="fa-solid fa-file"
             size="lg"
@@ -44,7 +44,7 @@ export default function Sidebar() {
           />
           <span className="sidebar-label">My files</span>
         </a>
-        <a href="/dashboard/products" className="sidebar-link">
+        <a href="#" className="sidebar-link">
           <FontAwesomeIcon
             icon="fa-solid fa-sack-dollar"
             size="lg"

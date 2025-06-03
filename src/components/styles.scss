@@ -238,6 +238,7 @@ $secondary-color2: #ffe863;
   align-items: center;
   border: 1px solid #d9dadb;
   border-radius: 20px;
+  box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.3);
   background: var(--bg-color);
 }
 
@@ -278,7 +279,7 @@ $secondary-color2: #ffe863;
 .card__title {
   margin-top: 12px;
   font-weight: 500;
-  font-size: 18px;
+  font-size: 22px;
   color: var(--main-color);
 }
 
@@ -924,4 +925,34 @@ $secondary-color2: #ffe863;
     display: flex;
     margin: 0; /* clear Tailwind’s space-y-2 */
   }
+}
+
+.recent_activity_events {
+  width: 95%;
+  overflow: auto;
+}
+
+.recent_activity_event {
+  margin-top: 14px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.recent_activity_event_icon {
+  background-color: $primary-color;
+  width: 42px;
+  height: 42px;
+  padding: 6px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.recent_activity_event_time {
+  color: #575656;
+  padding: 12px;
+  margin-left: auto;
 }
