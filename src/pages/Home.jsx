@@ -231,7 +231,9 @@ function Home() {
                   keyword detection. Search across your files without opening a
                   single one.
                 </p>
-                <button className="learn-more-btn">Learn more</button>
+                <button className="fancy-button-alt learn-more-btn">
+                  Learn more
+                </button>
               </div>
 
               <div
@@ -246,7 +248,7 @@ function Home() {
                   FileFlow brings all your tools together in one clean platform.
                   Manage, search, convert, and create — effortlessly.
                 </p>
-                <button className="learn-more-btn">Learn more</button>
+                <button className="fancy-button-alt learn-more-btn">Learn more</button>
               </div>
 
               <div
@@ -260,7 +262,7 @@ function Home() {
                   text. Our OCR engine is fast, accurate, and built for
                   real-world documents.
                 </p>
-                <button className="learn-more-btn">Learn more</button>
+                <button className="fancy-button-alt learn-more-btn">Learn more</button>
               </div>
             </div>
 
@@ -279,7 +281,7 @@ function Home() {
                   clicks. Our AI understands your input and turns it into clean,
                   usable files instantly.
                 </p>
-                <button className="learn-more-btn">Learn more</button>
+                <button className="fancy-button-alt learn-more-btn">Learn more</button>
               </div>
 
               <div
@@ -294,7 +296,7 @@ function Home() {
                   Remove passwords and restrictions from locked files in
                   seconds. Regain full control and access without hassle.
                 </p>
-                <button className="learn-more-btn">Learn more</button>
+                <button className="fancy-button-alt learn-more-btn">Learn more</button>
               </div>
             </div>
 
@@ -310,7 +312,7 @@ function Home() {
         </div>
 
         {/* Contact us section */}
-        <div className="mx-auto w-[75%] py-16 px-4">
+        <div className="mx-auto w-[75%] py-16 px-4" id="contact">
           <div className="flex rounded-2xl">
             <div className="w-1/3">
               <img

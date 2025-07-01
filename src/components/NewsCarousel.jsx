@@ -18,7 +18,7 @@ export default function NewsCarousel() {
   }, []);
 
   return (
-    <div className="h-full p-6">
+    <div className="h-full p-6 w-full">
       {/* 1) Carousel viewport: fixed height, hides overflow */}
       <div className="relative overflow-hidden h-full">
         {/* 2) Track: a flex container that slides left/right */}

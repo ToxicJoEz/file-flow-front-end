@@ -48,7 +48,7 @@ function Register() {
       const { confirmPassword, ...userData } = values;
       try {
         const response = await axios.post(
-          "https://main-fileflow-backend-production.up.railway.app/register",
+          "http://localhost:3001/register",
           userData
         );
         console.log("Registration successful:", response.data);
@@ -134,7 +134,7 @@ function Register() {
 
           {/* Conditionally render the submit button or loading indicator */}
           {!loading ? (
-            <button type="submit" className="submit">
+            <button type="submit" className="fancy-button-alt">
               Register
             </button>
           ) : (
@@ -145,7 +145,7 @@ function Register() {
 
           {errorMessage && <div className="error">{errorMessage}</div>}
           <p className="signin">
-            Already have an account?{" "}
+            Already have an account?
             <Link to="/login" className="login-link">
               Login
             </Link>

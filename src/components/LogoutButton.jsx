@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { logout } from "../authSlice"; // adjust path if needed
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 
 const LogoutButton = ({ className = "" }) => {
   const dispatch = useDispatch();
@@ -16,7 +16,7 @@ const LogoutButton = ({ className = "" }) => {
   };
 
   return (
-    <button onClick={handleLogout} className={`bg-red-500 text-white px-4 py-2 rounded ${className}`}>
+    <button onClick={handleLogout} className="fancy-logout-button">
       Logout
     </button>
   );

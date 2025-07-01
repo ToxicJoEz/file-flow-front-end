@@ -98,11 +98,9 @@ export default function Services() {
                           search queries, making your document retrieval smarter
                           and more intuitive than ever.
                         </p>
-                        <div className="cta-button-wrapper">
-                          <Link to="/plans" className="cta-button">
-                            See Pricing & Plans
-                          </Link>
-                        </div>
+                        <button className="cta-button-wrapper fancy-button-alt">
+                          <Link to="/plans">See Pricing & Plans</Link>
+                        </button>
                       </div>
                       <div className="services-details-2">
                         <img src={featured1} alt="" />
@@ -138,11 +136,9 @@ export default function Services() {
                           regain full editing, copying, and printing
                           capabilities instantly.
                         </p>
-                        <div className="cta-button-wrapper">
-                          <Link to="/plans" className="cta-button">
-                            See Pricing & Plans
-                          </Link>
-                        </div>
+                        <button className="cta-button-wrapper fancy-button-alt">
+                          <Link to="/plans">See Pricing & Plans</Link>
+                        </button>
                       </div>
                       <div className="services-details-2">
                         <img src={featured5} alt="" />
@@ -181,11 +177,9 @@ export default function Services() {
                           and more, our OCR tool transforms static images into
                           dynamic, usable content with minimal effort.
                         </p>
-                        <div className="cta-button-wrapper">
-                          <Link to="/plans" className="cta-button">
-                            See Pricing & Plans
-                          </Link>
-                        </div>
+                        <button className="cta-button-wrapper fancy-button-alt">
+                          <Link to="/plans">See Pricing & Plans</Link>
+                        </button>
                       </div>
                       <div className="services-details-2">
                         <img src={featured3} alt="" />
@@ -221,11 +215,9 @@ export default function Services() {
                           creativity — all while maintaining full control over
                           the final output.
                         </p>
-                        <div className="cta-button-wrapper">
-                          <Link to="/plans" className="cta-button">
-                            See Pricing & Plans
-                          </Link>
-                        </div>
+                        <button className="cta-button-wrapper fancy-button-alt">
+                          <Link to="/plans">See Pricing & Plans</Link>
+                        </button>
                       </div>
                       <div className="services-details-2">
                         <img src={featured4} alt="" />

@@ -238,12 +238,25 @@ $secondary-color2: #ffe863;
   align-items: center;
   border: 1px solid #d9dadb;
   border-radius: 20px;
-  box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.3);
+  box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.2);
   background: var(--bg-color);
 }
 
 .card2 {
   height: 184px;
+}
+
+.card3 {
+  height: 84px;
+}
+.card4 {
+  height: 788px;
+}
+
+.card4 h1 {
+  margin-top: 12px;
+  font-size: larger;
+  font-weight: 600;
 }
 
 .card__img {
@@ -328,36 +341,166 @@ $secondary-color2: #ffe863;
   color: $secondary-color; // secondary color
   border-bottom: 2px solid $secondary-color;
 }
-.custom-register-link {
-  display: inline-block;
-  font-size: 0.875rem; /* equivalent to text-sm */
-  font-weight: 500;
-  background-color: $secondary-color; /* Tailwind blue-500 */
-  color: black;
+
+.star-button {
+  position: relative;
   padding: 0.6rem 1.5rem;
-  border-radius: 0.375rem;
-  text-decoration: none;
-  transition: all 0.4s ease;
-}
-
-.custom-register-link:hover {
-  background-color: white; /* Tailwind blue-600 */
-}
-
-.custom-login-link {
-  display: inline-block;
+  background: $primary-color;
   font-size: 0.875rem;
   font-weight: 500;
   color: white;
-  text-decoration: none;
-  padding: 0.6rem 1.5rem;
+  border: 3px solid $primary-color;
   border-radius: 0.375rem;
-  transition: all 0.4s ease;
+  box-shadow: 0 0 0 #fec1958c;
+  transition: all 1s ease-in-out;
+  cursor: pointer;
 }
 
-.custom-login-link:hover {
-  background-color: #f5bd1f; /* Your secondary color */
+.star-1 {
+  position: absolute;
+  top: 20%;
+  left: 20%;
+  width: 25px;
+  height: auto;
+  filter: drop-shadow(0 0 0 $secondary-color);
+  z-index: -5;
+  transition: all 1s cubic-bezier(0.05, 0.83, 0.43, 0.96);
+}
+
+.star-2 {
+  position: absolute;
+  top: 45%;
+  left: 45%;
+  width: 15px;
+  height: auto;
+  filter: drop-shadow(0 0 0 $secondary-color);
+  z-index: -5;
+  transition: all 1s cubic-bezier(0, 0.4, 0, 1.01);
+}
+
+.star-3 {
+  position: absolute;
+  top: 40%;
+  left: 40%;
+  width: 5px;
+  height: auto;
+  filter: drop-shadow(0 0 0 $secondary-color);
+  z-index: -5;
+  transition: all 1s cubic-bezier(0, 0.4, 0, 1.01);
+}
+
+.star-4 {
+  position: absolute;
+  top: 20%;
+  left: 40%;
+  width: 8px;
+  height: auto;
+  filter: drop-shadow(0 0 0 $secondary-color);
+  z-index: -5;
+  transition: all 0.8s cubic-bezier(0, 0.4, 0, 1.01);
+}
+
+.star-5 {
+  position: absolute;
+  top: 25%;
+  left: 45%;
+  width: 15px;
+  height: auto;
+  filter: drop-shadow(0 0 0 $secondary-color);
+  z-index: -5;
+  transition: all 0.6s cubic-bezier(0, 0.4, 0, 1.01);
+}
+
+.star-6 {
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  width: 5px;
+  height: auto;
+  filter: drop-shadow(0 0 0 $secondary-color);
+  z-index: -5;
+  transition: all 0.8s ease;
+}
+
+.star-button:hover {
+  background: transparent;
+  box-shadow: 0 0 25px $primary-color-hover;
+}
+
+.star-button:hover .star-1 {
+  position: absolute;
+  top: -30%;
+  left: -30%;
+  width: 25px;
+  height: auto;
+  filter: drop-shadow(0 0 10px $secondary-color);
+  z-index: 2;
+}
+
+.star-button:hover .star-2 {
+  position: absolute;
+  top: -5%;
+  left: 10%;
+  width: 15px;
+  height: auto;
+  filter: drop-shadow(0 0 10px $secondary-color);
+  z-index: 2;
+}
+
+.star-button:hover .star-3 {
+  position: absolute;
+  top: 75%;
+  left: 25%;
+  width: 5px;
+  height: auto;
+  filter: drop-shadow(0 0 10px $secondary-color);
+  z-index: 2;
+}
+
+.star-button:hover .star-4 {
+  position: absolute;
+  top: 30%;
+  left: 80%;
+  width: 8px;
+  height: auto;
+  filter: drop-shadow(0 0 10px $secondary-color);
+  z-index: 2;
+}
+
+.star-button:hover .star-5 {
+  position: absolute;
+  top: -10%;
+  left: 100%;
+  width: 15px;
+  height: auto;
+  filter: drop-shadow(0 0 10px $secondary-color);
+  z-index: 2;
+}
+
+.star-button:hover .star-6 {
+  position: absolute;
+  top: 5%;
+  left: 60%;
+  width: 5px;
+  height: auto;
+  filter: drop-shadow(0 0 10px $secondary-color);
+  z-index: 2;
+}
+
+.fil0 {
+  fill: white;
+}
+
+.custom-register-link {
+  background-color: $secondary-color;
   color: black;
+  transition: all 1s ease;
+  border: 3px solid $secondary-color;
+}
+
+.custom-register-link:hover {
+  background-color: $secondary-color-hover;
+  border: 3px solid $secondary-color-hover;
 }
 
 /* Toast Notification */
@@ -387,19 +530,12 @@ $secondary-color2: #ffe863;
 }
 
 .learn-more-btn {
-  background-color: #7a5fff;
-  color: white;
-  padding: 6px 14px;
-  border-radius: 5px;
-  text-decoration: none;
-  font-size: 16px;
-  transition: background-color 0.6s ease, transform 0.3s ease-in-out;
-  display: inline-block;
+  background-color: #7a5fff !important;
+  transition: transform 1s ease-in-out;
   transform: scale(1);
 }
 
 .learn-more-btn:hover {
-  background-color: $secondary-color; /* or use $secondary-color if it's defined */
   transform: scale(1.1);
 }
 
@@ -584,21 +720,6 @@ $secondary-color2: #ffe863;
 
       li {
         margin-bottom: 0.5rem;
-      }
-    }
-
-    button {
-      width: 100%;
-      background-color: $primary-color; // orange-500
-      color: white;
-      padding: 0.5rem 0;
-      border-radius: 0.375rem;
-      font-weight: 600;
-      transition: scale 0.3s ease;
-
-      &:hover {
-        background-color: $primary-color;
-        scale: 1.1;
       }
     }
   }
@@ -789,25 +910,6 @@ $secondary-color2: #ffe863;
   margin-top: 2rem;
 }
 
-.cta-button {
-  background-color: $primary-color;
-  color: white;
-  padding: 12px 28px;
-  font-weight: 700;
-  font-size: 1.1rem;
-  border-radius: 8px;
-  text-decoration: none;
-  display: inline-block;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  cursor: pointer;
-  user-select: none;
-}
-
-.cta-button:hover {
-  background-color: #5d2689;
-  transform: scale(1.05);
-}
-
 /* Dashboard  */
 
 .sidebar {
@@ -838,6 +940,10 @@ $secondary-color2: #ffe863;
   text-decoration: none;
   color: inherit;
   transition: background-color 0.2s, color 0.2s;
+}
+
+.sidebar-download{
+  background-color: transparent !important;
 }
 
 .sidebar-link:hover {
@@ -955,4 +1061,391 @@ $secondary-color2: #ffe863;
   color: #575656;
   padding: 12px;
   margin-left: auto;
+}
+
+.quick_access {
+  text-align: center;
+  font-size: large;
+  padding: 18px;
+  width: 100%;
+}
+
+.quick_access_item {
+  background-color: $primary-color;
+  color: white;
+  width: 64px;
+  height: 64px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s ease;
+}
+
+.quick_access_item:hover {
+  background-color: $secondary-color;
+  scale: 1.2;
+  color: #000;
+}
+
+.quick_info {
+  background: linear-gradient(135deg, $primary-color, $primary-color2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  min-width: 52px;
+  min-height: 52px;
+  border-radius: 12px;
+  font-size: 24px;
+}
+
+.quick_info_card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px;
+}
+.quick_info_text h1 {
+  color: rgb(88, 88, 88);
+}
+.quick_info_text p {
+  font-weight: 600;
+  font-size: larger;
+}
+
+/* Files Unlocked Page */
+
+.donut-chart {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: conic-gradient(
+    $primary-color2 0% 40%,
+    /* PDF */ $secondary-color 40% 75%,
+    /* Word */ $secondary-color2 75% 100% /* Excel */
+  );
+  margin: auto;
+}
+
+.donut-chart::after {
+  content: "";
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  background: white;
+}
+
+.legend {
+  text-align: center;
+  font-family: sans-serif;
+  font-size: 14px;
+}
+
+.dot {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 6px;
+}
+
+.pdf {
+  background: $primary-color2;
+}
+.word {
+  background: $secondary-color;
+}
+.excel {
+  background: $secondary-color2;
+}
+
+.monthly_unlocks h1 {
+  margin-top: 12px;
+  font-size: larger;
+  font-weight: 600;
+}
+
+.monthly_unlocks h2 {
+  color: rgb(88, 88, 88);
+}
+
+.monthly_unlocks p {
+  font-size: larger;
+  font-weight: 600;
+}
+
+.file-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  color: white;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+}
+
+/* Specific styles for each file type */
+.pdf-icon {
+  background-color: #e53935; // red
+}
+
+.word-icon {
+  background-color: #1e88e5; // blue
+}
+
+.excel-icon {
+  background-color: #43a047; // green
+}
+
+.time {
+  color: rgb(88, 88, 88);
+  margin-left: auto;
+}
+
+.activity_unlocks h1 {
+  margin-top: 12px;
+  font-size: larger;
+  font-weight: 600;
+}
+
+.activity-list {
+  margin-top: 16px;
+  width: 90%;
+  padding-right: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.activity-item {
+  background-color: #f9f9f9;
+  border-left: 4px solid $secondary-color; /* blue stripe */
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  max-height: 45px;
+  overflow: hidden;
+  position: relative;
+}
+
+.activity-item:hover {
+  background-color: #eef2ff; /* light hover effect */
+  border-left: 4px solid $primary-color; /* blue stripe */
+  max-height: 65px;
+  padding-bottom: 16px;
+}
+
+.activity-item a {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(5px);
+  font-size: 13px;
+  color: $primary-color;
+  text-decoration: underline;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  margin-top: 6px;
+}
+
+.activity-item:hover a {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.Dashboard_Item {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: color 0.4s ease;
+  z-index: 0;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 0;
+    background-color: #ecebeb;
+    z-index: -1;
+    transition: width 0.4s ease;
+  }
+
+  &:hover::before {
+    width: 100%;
+  }
+}
+
+/* Billing information styles */
+.status.paid {
+  color: green;
+  font-weight: bold;
+}
+
+.history-list li {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 0;
+  font-size: 14px;
+}
+
+.btn {
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.btn-secondary {
+  background-color: $primary-color2;
+  color: white;
+  transition: all 0.4s ease;
+}
+
+.btn-secondary:hover {
+  background-color: $primary-color-hover;
+  transform: scale(1.05);
+}
+
+.btn-outline {
+  border: 1px solid #ccc;
+  background-color: transparent;
+  color: #333;
+  transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+  background-color: #f3f4f6; /* Light gray on hover */
+  transform: scale(1.05); /* Slight zoom on hover */
+}
+
+.billing-section .card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+.billing-section .card h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.billing-section .card:hover {
+  background-color: #ecebeb;
+}
+
+.billing-section .card-inner {
+  text-align: left;
+  width: 90%;
+  max-width: 300px;
+}
+
+/* logout button styles */
+.fancy-logout-button {
+  padding: 0.5em 1em;
+  border: none;
+  border-radius: 12px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  cursor: pointer;
+  color: white;
+  background-color: #ef4444;
+  transition: all 1s ease;
+  font-size: 16px;
+  position: relative;
+  overflow: hidden;
+  outline: 2px solid #b91c1c; /* Tailwind red-500 */
+  z-index: 0;
+}
+
+.fancy-logout-button:hover {
+  color: #fff;
+  transform: scale(1.05);
+  outline: 2px solid #dc2626; /* Tailwind red-400 */
+  box-shadow: 4px 5px 17px -4px black;
+}
+
+.fancy-logout-button::before {
+  content: "";
+  position: absolute;
+  left: -50px;
+  top: 0;
+  width: 0;
+  height: 100%;
+  background-color: #dc2626; /* Tailwind red-500 */
+  transform: skewX(45deg);
+  z-index: -1;
+  transition: width 1s ease;
+}
+
+.fancy-logout-button:hover::before {
+  width: 250%;
+}
+
+/* Fancy Buttons */
+.fancy-button-alt {
+  padding: 0.5em 1em;
+  border: none;
+  border-radius: 12px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  cursor: pointer;
+  color: white;
+  background-color: $primary-color;
+  transition: all 1s ease;
+  font-size: 16px;
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.fancy-button-alt:hover {
+  color: #fff;
+  transform: scale(1.05);
+  box-shadow: 4px 5px 17px -4px black;
+}
+
+.fancy-button-alt::before {
+  content: "";
+  position: absolute;
+  left: -50px;
+  top: 0;
+  width: 0;
+  height: 100%;
+  background-color: $primary-color2;
+  transform: skewX(45deg);
+  z-index: -1;
+  transition: width 1s ease;
+}
+
+.fancy-button-alt:hover::before {
+  width: 250%;
+}
+
+/* Password reset */
+
+.reset {
+  border: 1px solid #d9dadb;
+  border-radius: 20px;
+  background-color: white;
+  box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.2);
+  width: 40%;
+  padding: 5rem;
+}
+
+.reset2{
+  width: 100%;
 }

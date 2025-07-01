@@ -35,16 +35,20 @@ function LoginViaApp() {
     onSubmit: async (values) => {
       setLoading(true);
       try {
+        const payload = { ...values, redirect_uri: redirectURL };
+
         const response = await axios.post(
-          "https://main-fileflow-backend-production.up.railway.app/login",
-          values
+          "http://localhost:3001/login",
+          payload
         );
 
         const { token } = response.data;
 
         if (token && redirectURL) {
           toast.success("Login successful! Redirecting to app...");
-          window.location.href = `${redirectURL}?token=${token}`;
+          setTimeout(() => {
+            window.location.href = `${redirectURL}?token=${token}`;
+          }, 1500);
         } else {
           toast.error("Missing token or redirect URL.");
         }
@@ -56,6 +60,13 @@ function LoginViaApp() {
       }
     },
   });
+
+  // useEffect(() => {
+  //   if (!redirectURL) {
+  //     toast.error("This page is only for desktop app login.");
+  //     window.location.href = "/"; // or any page you want
+  //   }
+  // }, []);
 
   return (
     <PageWrapper>
@@ -94,7 +105,7 @@ function LoginViaApp() {
           )}
 
           {!loading ? (
-            <button type="submit" className="submit">
+            <button type="submit" className="fancy-button-alt">
               Login
             </button>
           ) : (

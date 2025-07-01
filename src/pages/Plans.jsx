@@ -69,7 +69,7 @@ export default function Plans() {
                 <li>✅ 1 GB Storage</li>
                 <li>❌ Email integration</li>
               </ul>
-              <button onClick={() => handleSelectPlan("basic")}>
+              <button onClick={() => handleSelectPlan("basic")} className="fancy-button-alt w-full">
                 View details
               </button>
             </div>
@@ -90,7 +90,7 @@ export default function Plans() {
                 <li>✅ 10 GB Storage</li>
                 <li>✅ Email integration</li>
               </ul>
-              <button onClick={() => handleSelectPlan("pro")}>
+              <button onClick={() => handleSelectPlan("pro")} className="fancy-button-alt w-full">
                 View details
               </button>
             </div>
@@ -113,7 +113,7 @@ export default function Plans() {
                 <li>✅ Unlimited storage</li>
                 <li>✅ Team collaboration tools</li>
               </ul>
-              <button onClick={() => handleSelectPlan("premium")}>
+              <button onClick={() => handleSelectPlan("premium")} className="fancy-button-alt w-full">
                 View details
               </button>
             </div>
@@ -142,7 +142,7 @@ export default function Plans() {
                   <li key={index}>{feature}</li>
                 ))}
               </ul>
-              <button>Join plan !</button>
+              <button className="fancy-button-alt">Join plan !</button>
             </div>
           </div>
         </div>

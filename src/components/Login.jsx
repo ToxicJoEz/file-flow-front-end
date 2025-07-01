@@ -42,7 +42,7 @@ function Login() {
       setLoading(true);
       try {
         const response = await axios.post(
-          "https://main-fileflow-backend-production.up.railway.app/login",
+          "http://localhost:3001/login",
           values
         );
         console.log("Login successful:", response.data);
@@ -109,7 +109,7 @@ function Login() {
 
           {/* Conditionally render the submit button or the loader div */}
           {!loading ? (
-            <button type="submit" className="submit">
+            <button type="submit" className="fancy-button-alt">
               Login
             </button>
           ) : (
@@ -120,9 +120,15 @@ function Login() {
 
           {errorMessage && <div className="error">{errorMessage}</div>}
           <p className="signin">
-            Don't have an account?{" "}
+            Don't have an account? .
             <Link to="/register" className="login-link">
               Register
+            </Link>
+          </p>
+          <p className="signin">
+            Forgot your password? .
+            <Link to="/forgot-password" className="login-link">
+              reset password
             </Link>
           </p>
         </form>

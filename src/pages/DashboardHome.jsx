@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PageWrapper from "../components/PageWrapper";
 import NewsCarousel from "../components/NewsCarousel";
+import LogoutButton from "../components/LogoutButton"; // Import the reusable component
 
 export default function DashboardHome() {
   const token = useSelector((state) => state.auth.token);
@@ -16,14 +17,11 @@ export default function DashboardHome() {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const response = await axios.get(
-          "https://main-fileflow-backend-production.up.railway.app/profile",
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
+        const response = await axios.get("http://localhost:3001/profile", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
         setProfile(response.data.user);
       } catch (err) {
         setError("Failed to fetch profile info.");
@@ -47,7 +45,7 @@ export default function DashboardHome() {
           {error && <p className="text-red-500 p-4">{error}</p>}
 
           {profile && (
-            <div className="flex justify-center col-span-2">
+            <div className="flex justify-center col-span-3">
               <div className="card">
                 <div className="card__img">
                   <svg xmlns="http://www.w3.org/2000/svg" width="100%">
@@ -378,40 +376,84 @@ export default function DashboardHome() {
                   {profile.username}
                 </div>
                 <div className="card__subtitle">{profile.email}</div>
-                <div className="card__wrapper mt-4"></div>
+                <div className="card__wrapper mt-4">
+                  <LogoutButton />
+                </div>
               </div>
             </div>
           )}
-          <div className="col-span-1 grid grid-cols-2 gap-4">
-            <div className="card card2 col-span-1">
-              <FontAwesomeIcon
-                icon="fa-solid fa-search"
-                size="3x"
-                className="mt-4 text-[#5d2689]"
-              />
-              <h1 className="card__title">123</h1>
-
-              <h2>Keywords searched</h2>
+          <div className="col-span-">
+            <div className="card card2">
+              <h1 className="quick_access">Quick acces</h1>
+              <div className="grid grid-cols-1 md:grid-cols-5 gap-4 w-full p-6">
+                <div className="col-span-1 quick_access_item">
+                  <FontAwesomeIcon icon="fa-solid fa-sack-dollar" size="2x" />
+                </div>
+                <div className="col-span-1 quick_access_item">
+                  <FontAwesomeIcon
+                    icon="fa-solid fa-unlock-keyhole"
+                    size="2x"
+                  />
+                </div>
+                <div className="col-span-1 quick_access_item">
+                  <FontAwesomeIcon icon="fa-solid fa-search" size="2x" />
+                </div>
+                <div className="col-span-1 quick_access_item">
+                  <FontAwesomeIcon icon="fa-solid fa-upload" size="2x" />
+                </div>
+                <div className="col-span-1 quick_access_item">
+                  <FontAwesomeIcon icon="fa-solid fa-file" size="2x" />
+                </div>
+              </div>
             </div>
-            <div className="card card2 col-span-1">
-              <FontAwesomeIcon
-                icon="fa-solid fa-unlock-keyhole"
-                size="3x"
-                className="mt-4 text-[#5d2689]"
-              />  
-              <h1 className="card__title">69</h1>
+          </div>
+          <div className="col-span-2 grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="col-span-1 grid grid-cols-1 gap-4">
+              <div className="card card3 col-span-1 quick_info_card">
+                <div className="quick_info_text">
+                  <h1>Keywords searched</h1>
+                  <p>420</p>
+                </div>
 
-              <p>Files Unlocekd</p>
+                <div className="quick_info">
+                  <FontAwesomeIcon icon="fa-solid fa-search" />
+                </div>
+              </div>
+              <div className="card card3 col-span-1 quick_info_card">
+                <div className="quick_info_text">
+                  <h1>Files unlocked</h1>
+                  <p>69</p>
+                </div>
+                <div className="quick_info">
+                  <FontAwesomeIcon icon="fa-solid fa-unlock-keyhole" />
+                </div>
+              </div>
             </div>
             <div className="card card2 col-span-2">
               <FontAwesomeIcon
                 icon="fa-solid fa-sack-dollar"
                 size="3x"
-                className="mt-4 text-[#5d2689]"
+                className="mt-4 text-[#47297b]"
               />
-              <h1 className="card__title">1st June</h1>
+              <h1 className="card__title">
+                Current plan : {profile?.plan || "unable to get tier status"}
+              </h1>
 
-              <p>Next billing date</p>
+              {/* Show formatted date or fallback text */}
+              <p>
+                {profile?.planStartDate
+                  ? `Starting Date: ${new Date(
+                      profile.planStartDate
+                    ).toLocaleDateString("en-US", {
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                    })}`
+                  : "No date"}
+              </p>
+
+              {/* Show payment status */}
+              <p>Status: {profile?.paymentStatus || "unknown"}</p>
             </div>
           </div>
           <div className="col-span-1 card">
@@ -604,12 +646,6 @@ export default function DashboardHome() {
                 <p className="recent_activity_event_time">12:06PM</p>
               </div>
             </div>
-          </div>
-          <div className="col-span-2 card">
-            <h1 className="card__title">News</h1>
-          </div>
-          <div className="col-span-1 card">
-            <h1 className="card__title">Recent activity</h1>
           </div>
         </div>
       )}

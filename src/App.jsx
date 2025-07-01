@@ -21,11 +21,18 @@ import mainBgImage from "./assets/mainBackground.png"; // adjust path if needed
 import Services from "./pages/Services";
 import DashboardLayout from "./pages/DashboardLayout";
 import DashboardHome from "./pages/DashboardHome";
+import FilesUnlocked from "./components/FilesUnlocked";
+import KeywordsSearched from "./components/KeywordsSearched";
+import MyFiles from "./components/MyFiles";
+import BillingInformation from "./components/BillingInformation";
+import ForgotPassword from "./components/ForgotPassword";
+import ResetPassword from "./components/ResetPassword";
 
 function App() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation(); // <-- Get current route location for AnimatePresence
+  const isDashboard = location.pathname.startsWith("/dashboard"); //<– Added isDashboard check
 
   useFetchProfile(); // Automatically fetch profile (and avatar) if token exists
 
@@ -100,6 +107,8 @@ function App() {
 
             {/* Public services Route */}
             <Route path="/services" element={<Services />} />
+            <Route path="/forgot-password" element={<ForgotPassword />} />
+            <Route path="/reset-password" element={<ResetPassword />} />
 
             {/* Protected Dashboard Route */}
             <Route
@@ -112,6 +121,13 @@ function App() {
             >
               <Route index element={<DashboardHome />} />
               <Route path="EditProfile" element={<EditProfile />} />
+              <Route path="files-unlocked" element={<FilesUnlocked />} />
+              <Route path="keywords-searched" element={<KeywordsSearched />} />
+              <Route path="my-files" element={<MyFiles />} />
+              <Route
+                path="billing-information"
+                element={<BillingInformation />}
+              />
             </Route>
 
             {/* Catch-All Error Route */}
@@ -121,8 +137,7 @@ function App() {
       </main>
 
       {/* Persistent Footer at the bottom */}
-      <Footer />
-
+      {!isDashboard && <Footer />}
       {/* Toast Notifications */}
       <ToastContainer
         toastClassName="my-toast"
