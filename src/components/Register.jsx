@@ -48,7 +48,7 @@ function Register() {
       const { confirmPassword, ...userData } = values;
       try {
         const response = await axios.post(
-          "http://localhost:3001/register",
+          "http://main-fileflow-backend-production.up.railway.app/register",
           userData
         );
         console.log("Registration successful:", response.data);

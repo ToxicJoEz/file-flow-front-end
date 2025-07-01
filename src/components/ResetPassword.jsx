@@ -20,7 +20,7 @@ export default function ResetPassword() {
 
     try {
       const response = await axios.post(
-        "http://localhost:3001/reset-password",
+        "http://main-fileflow-backend-production.up.railway.app/reset-password",
         {
           token,
           newPassword,

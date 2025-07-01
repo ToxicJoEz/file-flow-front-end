@@ -12,7 +12,7 @@ export default function useFetchProfile() {
     const fetchProfile = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:3001/profile",
+          "http://main-fileflow-backend-production.up.railway.app/profile",
           {
             headers: {
               Authorization: `Bearer ${token}`,
