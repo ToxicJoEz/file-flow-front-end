@@ -17,7 +17,7 @@ export default function DashboardHome() {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const response = await axios.get("http://main-fileflow-backend-production.up.railway.app/profile", {
+        const response = await axios.get("https://main-fileflow-backend-production.up.railway.app/profile", {
           headers: {
             Authorization: `Bearer ${token}`,
           },

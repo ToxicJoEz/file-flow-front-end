@@ -47,7 +47,7 @@ const EditProfile = () => {
 
     try {
       const response = await axios.patch(
-        "http://main-fileflow-backend-production.up.railway.app/profile",
+        "https://main-fileflow-backend-production.up.railway.app/profile",
         payload,
         {
           headers: {
@@ -80,7 +80,7 @@ const EditProfile = () => {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const response = await axios.get("http://main-fileflow-backend-production.up.railway.app/profile", {
+        const response = await axios.get("https://main-fileflow-backend-production.up.railway.app/profile", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -103,7 +103,7 @@ const EditProfile = () => {
 
     try {
       const response = await axios.post(
-        "http://main-fileflow-backend-production.up.railway.app/forgot-password",
+        "https://main-fileflow-backend-production.up.railway.app/forgot-password",
         {
           email: profile.email,
         }

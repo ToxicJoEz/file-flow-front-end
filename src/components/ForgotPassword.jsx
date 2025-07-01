@@ -15,7 +15,7 @@ export default function ForgotPassword() {
     setLoading(true);
     try {
       const response = await axios.post(
-        "http://main-fileflow-backend-production.up.railway.app/forgot-password",
+        "https://main-fileflow-backend-production.up.railway.app/forgot-password",
         {
           email,
         }

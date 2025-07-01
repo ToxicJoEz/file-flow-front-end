@@ -38,7 +38,7 @@ function LoginViaApp() {
         const payload = { ...values, redirect_uri: redirectURL };
 
         const response = await axios.post(
-          "http://main-fileflow-backend-production.up.railway.app/login",
+          "https://main-fileflow-backend-production.up.railway.app/login",
           payload
         );
 
