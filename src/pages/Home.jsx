@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import PageWrapper from "../components/PageWrapper";
 import heroImg from "../assets/hero-img.jpg";
 import mainBgImage from "../assets/mainBackground.png";
@@ -59,7 +60,7 @@ function Home() {
 
         {/* About us Section) */}
         <div
-          className="w-[75%] mx-auto py-16 p-12 grid gap-12 text-white rounded-b-[6rem] shadow-[16px_16px_16px_rgba(0,0,0,0.6)] 
+          className="w-[80%] md:w-[75%] mx-auto py-16 p-12 grid gap-12 text-white rounded-b-[4rem] md:rounded-b-[6rem] shadow-[16px_16px_16px_rgba(0,0,0,0.6)] 
 "
           style={{
             backgroundImage: `url(${background3})`,
@@ -68,9 +69,9 @@ function Home() {
           }}
         >
           {/* Top Full Width Section */}
-          <div className="text-center w-[50%] mx-auto">
+          <div className="text-center w-[100%] md:w-[50%] md:mx-auto">
             <h2 className="text-4xl font-bold text-yellow-400">About Us</h2>
-            <p className="text-white text-base md:text-lg opacity-90">
+            <p className="text-white text-base md:text-lg opacity-90 mt-4">
               We’re on a mission to make working with files smarter, faster, and
               simpler. FileFlow is built for everyday people who just want their
               tools to work — effortlessly.
@@ -203,7 +204,7 @@ function Home() {
 
         {/* What do we offer by section */}
         <div className="py-16 px-4 text-white">
-          <div className="w-[75%] mx-auto">
+          <div className="w-[80%] md:w-[75%] mx-auto">
             {/* Title + Description */}
             <div className="text-center max-w-2xl mx-auto mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-[#47297B] mb-4">
@@ -231,9 +232,11 @@ function Home() {
                   keyword detection. Search across your files without opening a
                   single one.
                 </p>
-                <button className="fancy-button-alt learn-more-btn">
-                  Learn more
-                </button>
+                <Link to="/services">
+                  <button className="fancy-button-alt learn-more-btn">
+                    Learn more
+                  </button>
+                </Link>
               </div>
 
               <div
@@ -248,7 +251,11 @@ function Home() {
                   FileFlow brings all your tools together in one clean platform.
                   Manage, search, convert, and create — effortlessly.
                 </p>
-                <button className="fancy-button-alt learn-more-btn">Learn more</button>
+                <Link to="/services">
+                  <button className="fancy-button-alt learn-more-btn">
+                    Learn more
+                  </button>
+                </Link>
               </div>
 
               <div
@@ -262,7 +269,11 @@ function Home() {
                   text. Our OCR engine is fast, accurate, and built for
                   real-world documents.
                 </p>
-                <button className="fancy-button-alt learn-more-btn">Learn more</button>
+                <Link to="/services">
+                  <button className="fancy-button-alt learn-more-btn">
+                    Learn more
+                  </button>
+                </Link>
               </div>
             </div>
 
@@ -274,14 +285,18 @@ function Home() {
               >
                 <img src={featured4} alt="Icon 4" className="w-[15%] mb-4" />
                 <h3 className="text-yellow-400 text-xl font-bold mb-3">
-                  Ai-driven file creation
+                  Smart File Sorting
                 </h3>
                 <p className="opacity-90 mb-6">
-                  Create structured, professional documents with just a few
-                  clicks. Our AI understands your input and turns it into clean,
-                  usable files instantly.
+                  Automatically sort and organize your files into custom
+                  folders. Define your own categories and let our tool handle
+                  the rest with precision and ease.
                 </p>
-                <button className="fancy-button-alt learn-more-btn">Learn more</button>
+                <Link to="/services">
+                  <button className="fancy-button-alt learn-more-btn">
+                    Learn more
+                  </button>
+                </Link>
               </div>
 
               <div
@@ -296,7 +311,11 @@ function Home() {
                   Remove passwords and restrictions from locked files in
                   seconds. Regain full control and access without hassle.
                 </p>
-                <button className="fancy-button-alt learn-more-btn">Learn more</button>
+                <Link to="/services">
+                  <button className="fancy-button-alt learn-more-btn">
+                    Learn more
+                  </button>
+                </Link>
               </div>
             </div>
 
@@ -312,21 +331,21 @@ function Home() {
         </div>
 
         {/* Contact us section */}
-        <div className="mx-auto w-[75%] py-16 px-4" id="contact">
-          <div className="flex rounded-2xl">
-            <div className="w-1/3">
+        <div className="mx-auto w-[90%] md:w-[75%] py-16 px-4" id="contact">
+          <div className="flex flex-col md:flex-row rounded-2xl">
+            <div className="w-full md:w-1/3">
               <img
                 src={contactImg}
                 alt=""
-                className="w-[100%] rounded-tl-2xl rounded-bl-2xl"
+                className="w-full rounded-t-2xl md:rounded-tl-2xl md:rounded-bl-2xl md:rounded-tr-none"
               />
             </div>
-            <form className="contact-form w-2/3">
+            <form className="contact-form w-full md:w-2/3 rounded-b-2xl md:rounded-none">
               <p className="contact-title">Contact Us</p>
               <p className="contact-message">We’d love to hear from you.</p>
 
               {/* Name + Email */}
-              <div className="contact-flex">
+              <div className="contact-flex flex flex-col md:flex-row gap-4">
                 <label>
                   <input
                     required
@@ -348,7 +367,7 @@ function Home() {
               </div>
 
               {/* Phone + Business (optional) */}
-              <div className="contact-flex">
+              <div className="contact-flex flex flex-col md:flex-row gap-4">
                 <label>
                   <input
                     type="text"

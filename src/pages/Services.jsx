@@ -22,14 +22,16 @@ export default function Services() {
         </p>
 
         {/* Service Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mb-12">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
           <div
             className={`service-card ${activeIndex === 0 ? "active" : ""}`}
             onClick={() => setActiveIndex(0)}
           >
             <img src={featured1} alt="" className="icon-image" />
             <h3>Keyword Search</h3>
-            <p>Find content instantly across all your files.</p>
+            <p className="hidden sm:block">
+              Find content instantly across all your files.
+            </p>
           </div>
           <div
             className={`service-card ${activeIndex === 1 ? "active" : ""}`}
@@ -37,7 +39,7 @@ export default function Services() {
           >
             <img src={featured5} alt="" className="icon-image" />
             <h3>File Unlock</h3>
-            <p>Remove restrictions from protected files.</p>
+            <p className="hidden sm:block">Remove restrictions from protected files.</p>
           </div>
           <div
             className={`service-card ${activeIndex === 2 ? "active" : ""}`}
@@ -45,15 +47,15 @@ export default function Services() {
           >
             <img src={featured3} alt="" className="icon-image" />
             <h3>OCR</h3>
-            <p>Extract text from scanned documents with ease.</p>
+            <p className="hidden sm:block">Extract text from scanned documents with ease.</p>
           </div>
           <div
             className={`service-card ${activeIndex === 3 ? "active" : ""}`}
             onClick={() => setActiveIndex(3)}
           >
             <img src={featured4} alt="" className="icon-image" />
-            <h3>AI File Creation</h3>
-            <p>Generate smart documents powered by AI.</p>
+            <h3>Smart Sorting</h3>
+            <p className="hidden sm:block">Organize your files into custom folders — automatically.</p>
           </div>
         </div>
 
@@ -102,7 +104,7 @@ export default function Services() {
                           <Link to="/plans">See Pricing & Plans</Link>
                         </button>
                       </div>
-                      <div className="services-details-2">
+                      <div className="services-details-2 hidden sm:block">
                         <img src={featured1} alt="" />
                       </div>
                     </div>
@@ -140,7 +142,7 @@ export default function Services() {
                           <Link to="/plans">See Pricing & Plans</Link>
                         </button>
                       </div>
-                      <div className="services-details-2">
+                      <div className="services-details-2 hidden sm:block">
                         <img src={featured5} alt="" />
                       </div>
                     </div>
@@ -181,7 +183,7 @@ export default function Services() {
                           <Link to="/plans">See Pricing & Plans</Link>
                         </button>
                       </div>
-                      <div className="services-details-2">
+                      <div className="services-details-2 hidden sm:block">
                         <img src={featured3} alt="" />
                       </div>
                     </div>
@@ -190,36 +192,37 @@ export default function Services() {
                     <div className="flex">
                       <div className="services-details-1">
                         <h1>
-                          Generate Smart, Customized Documents Effortlessly !
+                          Automatically Organize Your Files with Smart Sorting!
                         </h1>
                         <hr />
                         <p>
-                          Our AI File Creation tool leverages advanced
-                          artificial intelligence to help you craft documents
-                          tailored exactly to your needs. Whether you’re
-                          creating contracts, reports, or creative content, the
-                          AI suggests context-aware templates and auto-fills
-                          relevant information to save you time.
+                          Our Smart Sorting service intelligently organizes your
+                          documents into custom categories that you define.
+                          Whether you're managing work files, academic
+                          materials, or personal data, the system groups files
+                          into relevant folders — like Engineering, Programming,
+                          Accounting, and more — all based on your preferences.
                         </p>
                         <p>
-                          With natural language processing, it understands your
-                          input and generates clear, professional text, adapting
-                          tone and style as required. You can customize
-                          templates or let the AI guide the entire document
-                          creation process from scratch.
+                          Using advanced algorithms, it scans file names,
+                          content, and metadata to sort with accuracy and
+                          consistency. You can set the number of categories,
+                          naming conventions, and folder structure, and Smart
+                          Sorting does the heavy lifting for you.
                         </p>
                         <p>
-                          Ideal for businesses and individuals alike, this
-                          service streamlines your workflow by automating
-                          repetitive tasks, reducing errors, and boosting
-                          creativity — all while maintaining full control over
-                          the final output.
+                          Ideal for teams, students, and professionals who deal
+                          with cluttered file systems, this feature helps save
+                          time, reduce manual work, and ensure everything is
+                          right where it should be — neatly sorted and ready to
+                          use.
                         </p>
                         <button className="cta-button-wrapper fancy-button-alt">
                           <Link to="/plans">See Pricing & Plans</Link>
                         </button>
                       </div>
-                      <div className="services-details-2">
+
+                      <div className="services-details-2 hidden sm:block">
                         <img src={featured4} alt="" />
                       </div>
                     </div>

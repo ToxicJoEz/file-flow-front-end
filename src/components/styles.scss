@@ -545,8 +545,13 @@ $secondary-color2: #ffe863;
   gap: 10px;
   background-image: url("../assets/background4.png");
   padding: 20px;
-  border-radius: 0px 18px 18px 0px;
   position: relative;
+}
+
+@media (min-width: 768px) {
+  .contact-form {
+    border-radius: 0px 18px 18px 0px; /* Apply radius on md and up */
+  }
 }
 
 .contact-title {
@@ -842,6 +847,21 @@ $secondary-color2: #ffe863;
     color: #6b7280; // gray-600
   }
 }
+@media (max-width: 640px) {
+  .service-card {
+    height: auto;
+    padding: 1rem 0.5rem;
+  }
+
+  .service-card .icon-image {
+    width: 40px;
+    margin-bottom: 0.5rem;
+  }
+
+  .service-card h3 {
+    font-size: 0.875rem;
+  }
+}
 
 .service-carousel {
   background-color: white;
@@ -849,7 +869,7 @@ $secondary-color2: #ffe863;
   box-shadow: 12px 10px 24px rgba(0, 0, 0, 0.2);
   padding: 2rem;
   width: 100%;
-  min-height: 400px;
+  min-height: 500px;
   border: 2px solid #9d9ea0;
   text-align: left;
   overflow: hidden;
@@ -875,7 +895,6 @@ $secondary-color2: #ffe863;
 
 .detail-section.active {
   opacity: 1;
-  max-height: 500px;
   overflow: visible;
 }
 
@@ -889,6 +908,16 @@ $secondary-color2: #ffe863;
 .services-details-1 {
   width: 60%;
   padding: 12px;
+}
+
+@media (max-width: 640px) {
+  .services-details-1{
+    width: 100%;
+  }
+
+  .service-carousel{
+    height: 1100px;
+  }
 }
 
 .services-details-2 {
@@ -935,14 +964,15 @@ $secondary-color2: #ffe863;
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  padding: 0.5rem 0.75rem;
+  margin-top: 0.5rem;
+  padding: 1.25rem 0.75rem;
   border-radius: 0.375rem;
   text-decoration: none;
   color: inherit;
   transition: background-color 0.2s, color 0.2s;
 }
 
-.sidebar-download{
+.sidebar-download {
   background-color: transparent !important;
 }
 
@@ -1446,6 +1476,6 @@ $secondary-color2: #ffe863;
   padding: 5rem;
 }
 
-.reset2{
+.reset2 {
   width: 100%;
 }

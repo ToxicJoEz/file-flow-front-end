@@ -46,7 +46,7 @@ export default function Sidebar() {
           />
           <span className="sidebar-label">Keywords Searched</span>
         </NavLink>
-        <NavLink
+        {/* <NavLink
           to="my-files"
           className={({ isActive }) =>
             isActive ? "sidebar-link side-link-active" : "sidebar-link"
@@ -58,7 +58,7 @@ export default function Sidebar() {
             className="w-[16%]"
           />
           <span className="sidebar-label">My files</span>
-        </NavLink>
+        </NavLink> */}
         <NavLink
           to="billing-information"
           className={({ isActive }) =>

@@ -27,6 +27,7 @@ import MyFiles from "./components/MyFiles";
 import BillingInformation from "./components/BillingInformation";
 import ForgotPassword from "./components/ForgotPassword";
 import ResetPassword from "./components/ResetPassword";
+import ScrollToTop from "./components/ScrollToTop"; // adjust the path as needed
 
 function App() {
   const dispatch = useDispatch();
@@ -60,6 +61,7 @@ function App() {
       {/* Main content area */}
       <main className="flex-grow">
         {/* AnimatePresence allows pages to animate in and out */}
+        <ScrollToTop /> {/* Scroll to top on route change */}
         <AnimatePresence mode="wait">
           <Routes
             location={location}
@@ -123,7 +125,7 @@ function App() {
               <Route path="EditProfile" element={<EditProfile />} />
               <Route path="files-unlocked" element={<FilesUnlocked />} />
               <Route path="keywords-searched" element={<KeywordsSearched />} />
-              <Route path="my-files" element={<MyFiles />} />
+              {/* <Route path="my-files" element={<MyFiles />} /> */}
               <Route
                 path="billing-information"
                 element={<BillingInformation />}
