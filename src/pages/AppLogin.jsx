@@ -50,7 +50,7 @@ function LoginViaApp() {
             window.location.href = `${redirectURL}?token=${token}`;
           }, 1500);
         } else {
-          toast.error("Missing token or redirect URL.");
+          toast.error("Please use the link from the desktop app to login.");
         }
       } catch (error) {
         setErrorMessage(error.response?.data?.message || "Login failed");
