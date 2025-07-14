@@ -23,8 +23,8 @@ export default function FilesUnlocked() {
 
   return (
     <div>
-      <div className="grid grid-cols-1 lg:grid-cols-6 gap-4">
-        <div className="col-span-4 row-span-2 card card4">
+      <div className="grid grid-cols-1 2xl:grid-cols-6 gap-4">
+        <div className="col-span-1 2xl:col-span-4 row-span-2 card card4 order-2 2xl:order-1"> 
           <h1>Files history</h1>
           <div className="w-full overflow-x-auto p-4">
             <div className="flex justify-start items-center w-full p-2 gap-4 Dashboard_Item">
@@ -145,77 +145,79 @@ export default function FilesUnlocked() {
             )}
           </div>
         </div>
-        <div className="col-span-2 card monthly_unlocks">
-          <div className="flex justify-center items-center w-full p-2">
-            <h1>Files unlocekd status</h1>
-          </div>
-          <div className="w-full p-6 h-85 grid grid-cols-2">
-            <div className="flex flex-col justify-between h-full col-span-1">
-              <div>
-                <h2>This month</h2>
-                <p>69</p>
-                <span className="dot excel"></span> 25%
-              </div>
-              <div>
-                <h2>Last 6 months</h2>
-                <p>420</p>
-                <span className="dot word"></span> 35%
-              </div>
-
-              <div>
-                <h2>All time</h2>
-                <p>1137</p>
-                <span className="dot pdf"></span> 40%
-              </div>
+        <div className="col-span-1 2xl:col-span-2 row-span-2 grid grid-cols-6 gap-4 order-1 2xl:order-2 ">
+          <div className="col-span-3 2xl:col-span-6 card monthly_unlocks">
+            <div className="flex justify-center items-center w-full p-2">
+              <h1>Files unlocekd status</h1>
             </div>
-            <div className="h-full col-span-1 flex justify-center">
-              <div className="donut-chart">
-                <div className="legend">
-                  <div></div>
-                  <div></div>
-                  <div></div>
+            <div className="w-full p-6 h-85 grid grid-cols-2">
+              <div className="flex flex-col justify-between h-full col-span-1">
+                <div>
+                  <h2>This month</h2>
+                  <p>69</p>
+                  <span className="dot excel"></span> 25%
+                </div>
+                <div>
+                  <h2>Last 6 months</h2>
+                  <p>420</p>
+                  <span className="dot word"></span> 35%
+                </div>
+
+                <div>
+                  <h2>All time</h2>
+                  <p>1137</p>
+                  <span className="dot pdf"></span> 40%
+                </div>
+              </div>
+              <div className="h-full col-span-1 flex justify-center">
+                <div className="donut-chart">
+                  <div className="legend">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div className="col-span-2 card activity_unlocks overflow-auto">
-          <h1>Recant activity</h1>
-          <div className="activity-list">
-            <div className="activity-item">
-              <div className="flex">
-                <p>Unlocked: Report_2023.pdf</p>
-                <p className="time"> 8:47 AM</p>
+          <div className="col-span-3 2xl:col-span-6 card activity_unlocks overflow-auto">
+            <h1>Recant activity</h1>
+            <div className="activity-list">
+              <div className="activity-item">
+                <div className="flex">
+                  <p>Unlocked: Report_2023.pdf</p>
+                  <p className="time"> 8:47 AM</p>
+                </div>
+                <a href="#">Jump to file</a>
               </div>
-              <a href="#">Jump to file</a>
-            </div>
-            <div className="activity-item">
-              <div className="flex">
-                <p>Uploaded: HR_Handbook.docx</p>
-                <p className="time"> 8:54 AM</p>
+              <div className="activity-item">
+                <div className="flex">
+                  <p>Uploaded: HR_Handbook.docx</p>
+                  <p className="time"> 8:54 AM</p>
+                </div>
+                <a href="#">Jump to file</a>
               </div>
-              <a href="#">Jump to file</a>
-            </div>
-            <div className="activity-item">
-              <div className="flex">
-                <p>Viewed: Budget_Q2.xlsx</p>
-                <p className="time"> 9:07 AM</p>
+              <div className="activity-item">
+                <div className="flex">
+                  <p>Viewed: Budget_Q2.xlsx</p>
+                  <p className="time"> 9:07 AM</p>
+                </div>
+                <a href="#">Jump to file</a>
               </div>
-              <a href="#">Jump to file</a>
-            </div>
-            <div className="activity-item">
-              <div className="flex">
-                <p>Unlocked: Client_Info.pdf</p>
-                <p className="time"> 9:16 AM</p>
+              <div className="activity-item">
+                <div className="flex">
+                  <p>Unlocked: Client_Info.pdf</p>
+                  <p className="time"> 9:16 AM</p>
+                </div>
+                <a href="#">Jump to file</a>
               </div>
-              <a href="#">Jump to file</a>
-            </div>
-            <div className="activity-item">
-              <div className="flex">
-                <p>Unlocked: Testing_2023.pdf</p>
-                <p className="time"> 9:23 AM</p>
+              <div className="activity-item">
+                <div className="flex">
+                  <p>Unlocked: Testing_2023.pdf</p>
+                  <p className="time"> 9:23 AM</p>
+                </div>
+                <a href="#">Jump to file</a>
               </div>
-              <a href="#">Jump to file</a>
             </div>
           </div>
         </div>

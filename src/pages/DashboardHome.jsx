@@ -17,11 +17,14 @@ export default function DashboardHome() {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const response = await axios.get("https://main-fileflow-backend-production.up.railway.app/profile", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        const response = await axios.get(
+          "https://main-fileflow-backend-production.up.railway.app/profile",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
         setProfile(response.data.user);
       } catch (err) {
         setError("Failed to fetch profile info.");
@@ -429,6 +432,7 @@ export default function DashboardHome() {
                 </div>
               </div>
             </div>
+            {/* Current plan card */}
             <div className="card card2 col-span-2">
               <FontAwesomeIcon
                 icon="fa-solid fa-sack-dollar"
@@ -436,7 +440,8 @@ export default function DashboardHome() {
                 className="mt-4 text-[#47297b]"
               />
               <h1 className="card__title">
-                Current plan : {profile?.plan || "unable to get tier status"}
+                Current plan:&nbsp;
+                {profile?.plan?.name ?? "unable to get tier status"}
               </h1>
 
               {/* Show formatted date or fallback text */}
