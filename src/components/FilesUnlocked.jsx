@@ -181,7 +181,7 @@ export default function FilesUnlocked() {
             </div>
           </div>
           <div className="col-span-3 2xl:col-span-6 card activity_unlocks overflow-auto">
-            <h1>Recant activity</h1>
+            <h1>Recent activity</h1>
             <div className="activity-list">
               <div className="activity-item">
                 <div className="flex">

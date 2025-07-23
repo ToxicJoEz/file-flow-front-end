@@ -911,11 +911,11 @@ $secondary-color2: #ffe863;
 }
 
 @media (max-width: 640px) {
-  .services-details-1{
+  .services-details-1 {
     width: 100%;
   }
 
-  .service-carousel{
+  .service-carousel {
     height: 1100px;
   }
 }
@@ -1186,13 +1186,13 @@ $secondary-color2: #ffe863;
 }
 
 .pdf {
-  background: $primary-color2;
+  background-color: #e74c3c;
 }
 .word {
-  background: $secondary-color;
+  background-color: #2e5cb8;
 }
 .excel {
-  background: $secondary-color2;
+  background-color: #27ae60;
 }
 
 .monthly_unlocks h1 {
