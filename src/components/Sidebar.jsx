@@ -20,19 +20,7 @@ export default function Sidebar() {
           />
           <span className="sidebar-label">Dashboard home</span>
         </NavLink>
-        <NavLink
-          to="files-unlocked"
-          className={({ isActive }) =>
-            isActive ? "sidebar-link side-link-active" : "sidebar-link"
-          }
-        >
-          <FontAwesomeIcon
-            icon="fa-solid fa-unlock-keyhole"
-            size="lg"
-            className="w-[16%]"
-          />
-          <span className="sidebar-label">Files unlocked</span>
-        </NavLink>
+
         <NavLink
           to="keywords-searched"
           className={({ isActive }) =>
@@ -47,18 +35,20 @@ export default function Sidebar() {
           <span className="sidebar-label">Keywords Searched</span>
         </NavLink>
         {/* <NavLink
-          to="my-files"
+          to="files-unlocked"
           className={({ isActive }) =>
             isActive ? "sidebar-link side-link-active" : "sidebar-link"
           }
-        >
+        > */}
+        <div className="sidebar-link opacity-50 cursor-not-allowed">
           <FontAwesomeIcon
-            icon="fa-solid fa-file"
+            icon="fa-solid fa-unlock-keyhole"
             size="lg"
             className="w-[16%]"
           />
-          <span className="sidebar-label">My files</span>
-        </NavLink> */}
+          <span className="sidebar-label">Files unlocked</span>
+        </div>
+        {/* </NavLink> */}
         <NavLink
           to="billing-information"
           className={({ isActive }) =>

@@ -13,6 +13,8 @@ export default function DashboardHome() {
   const [profile, setProfile] = useState(null);
   const [error, setError] = useState("");
   const isLoading = !profile && !error;
+  const [searchLogs, setSearchLogs] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchProfile = async () => {
@@ -36,6 +38,28 @@ export default function DashboardHome() {
       fetchProfile();
     }
   }, [token]);
+
+  useEffect(() => {
+    const fetchSearchLogs = async () => {
+      try {
+        const response = await axios.get(
+          "https://main-fileflow-backend-production.up.railway.app/search-logs",
+          { headers: { authorization: `Bearer ${token}` } }
+        );
+        setSearchLogs(response.data.logs);
+        console.log(response.data.logs);
+      } catch (error) {
+        console.error("Error fetching search logs:", error);
+      } finally {
+        setLoading(false); // Stop loader
+      }
+    };
+    fetchSearchLogs();
+  }, [token]);
+
+  const totalKeywordsFound = searchLogs.reduce((total, log) => {
+    return total + (log.resultsCount || 0);
+  }, 0);
 
   return (
     <PageWrapper>
@@ -389,24 +413,39 @@ export default function DashboardHome() {
             <div className="card card2">
               <h1 className="quick_access">Quick acces</h1>
               <div className="grid grid-cols-1 md:grid-cols-5 gap-4 w-full p-6">
-                <div className="col-span-1 quick_access_item">
+                <Link
+                  to="billing-information"
+                  className="col-span-1 quick_access_item"
+                >
                   <FontAwesomeIcon icon="fa-solid fa-sack-dollar" size="2x" />
-                </div>
-                <div className="col-span-1 quick_access_item">
+                </Link>
+                <Link
+                  to="keywords-searched"
+                  className="col-span-1 quick_access_item"
+                >
                   <FontAwesomeIcon
                     icon="fa-solid fa-unlock-keyhole"
                     size="2x"
                   />
-                </div>
-                <div className="col-span-1 quick_access_item">
+                </Link>
+                <Link
+                  to="keywords-searched"
+                  className="col-span-1 quick_access_item"
+                >
                   <FontAwesomeIcon icon="fa-solid fa-search" size="2x" />
-                </div>
-                <div className="col-span-1 quick_access_item">
+                </Link>
+                <Link
+                  to="keywords-searched"
+                  className="col-span-1 quick_access_item"
+                >
                   <FontAwesomeIcon icon="fa-solid fa-upload" size="2x" />
-                </div>
-                <div className="col-span-1 quick_access_item">
+                </Link>
+                <Link
+                  to="keywords-searched"
+                  className="col-span-1 quick_access_item"
+                >
                   <FontAwesomeIcon icon="fa-solid fa-file" size="2x" />
-                </div>
+                </Link>
               </div>
             </div>
           </div>
@@ -415,7 +454,7 @@ export default function DashboardHome() {
               <div className="card card3 col-span-1 quick_info_card">
                 <div className="quick_info_text">
                   <h1>Keywords searched</h1>
-                  <p>420</p>
+                  <p>{totalKeywordsFound}</p>
                 </div>
 
                 <div className="quick_info">
@@ -425,7 +464,7 @@ export default function DashboardHome() {
               <div className="card card3 col-span-1 quick_info_card">
                 <div className="quick_info_text">
                   <h1>Files unlocked</h1>
-                  <p>69</p>
+                  <p>-</p>
                 </div>
                 <div className="quick_info">
                   <FontAwesomeIcon icon="fa-solid fa-unlock-keyhole" />
@@ -467,189 +506,42 @@ export default function DashboardHome() {
           </div>
           <div className="col-span-2 card">
             <h1 className="card__title">Recent activity</h1>
-            <div className="recent_activity_events">
-              <div className="recent_activity_event">
-                <div className="recent_activity_event_icon">
-                  <FontAwesomeIcon
-                    icon="fa-solid fa-search"
-                    size="2x"
-                    className="text-white"
-                  />
+            <div className="activity-list activity-list-home">
+              {loading ? (
+                <div className="loading-indicator">
+                  <div className="loader" />
                 </div>
-                <p>
-                  This is an example of how a notification would be desplayed
-                  for searched keywords.
-                </p>
-                <p className="recent_activity_event_time">12:55PM</p>
-              </div>
-              <div className="recent_activity_event">
-                <div className="recent_activity_event_icon">
-                  <FontAwesomeIcon
-                    icon="fa-solid fa-search"
-                    size="2x"
-                    className="text-white"
-                  />
+              ) : (
+                <div>
+                  {[...searchLogs]
+                    .reverse()
+                    .flatMap((log) =>
+                      log.fileNames.map((file, i) => ({
+                        file,
+                        time: new Date(log.createdAt).toLocaleTimeString([], {
+                          hour: "2-digit",
+                          minute: "2-digit",
+                        }),
+                        key: `${log._id}-${file}-${i}`,
+                      }))
+                    )
+                    .slice(0, 5) // Only show the latest 5 file entries total
+                    .map(({ file, time, key }) => {
+                      const truncatedFile =
+                        file.length > 25 ? file.slice(0, 25) + "..." : file;
+
+                      return (
+                        <div key={key} className="activity-item mt-2">
+                          <div className="flex justify-between w-full">
+                            <p>Searched: {truncatedFile}</p>
+                            <p className="time">{time}</p>
+                          </div>
+                          <a href="#">Jump to file</a>
+                        </div>
+                      );
+                    })}
                 </div>
-                <p>
-                  This another simple example of how a notification would be
-                  desplayed for searched keywords.
-                </p>
-                <p className="recent_activity_event_time">12:21PM</p>
-              </div>
-              <div className="recent_activity_event">
-                <div className="recent_activity_event_icon">
-                  <FontAwesomeIcon
-                    icon="fa-solid fa-unlock-keyhole"
-                    size="2x"
-                    className="text-white"
-                  />
-                </div>
-                <p>
-                  and this is also an example of how a notification would be
-                  desplayed for unlocked files.
-                </p>
-                <p className="recent_activity_event_time">1:50PM</p>
-              </div>
-              <div className="recent_activity_event">
-                <div className="recent_activity_event_icon">
-                  <FontAwesomeIcon
-                    icon="fa-solid fa-sack-dollar"
-                    size="2x"
-                    className="text-white"
-                  />
-                </div>
-                <p>
-                  This is an example of how a notification would be desplayed
-                  for a renewed subscription/new sunscription.
-                </p>
-                <p className="recent_activity_event_time">2:53PM</p>
-              </div>
-              <div className="recent_activity_event">
-                <div className="recent_activity_event_icon">
-                  <FontAwesomeIcon
-                    icon="fa-solid fa-search"
-                    size="2x"
-                    className="text-white"
-                  />
-                </div>
-                <p>
-                  This another simple example of how a notification would be
-                  desplayed for searched keywords.
-                </p>
-                <p className="recent_activity_event_time">3:59PM</p>
-              </div>
-              <div className="recent_activity_event">
-                <div className="recent_activity_event_icon">
-                  <FontAwesomeIcon
-                    icon="fa-solid fa-unlock-keyhole"
-                    size="2x"
-                    className="text-white"
-                  />
-                </div>
-                <p>
-                  and this is also an example of how a notification would be
-                  desplayed for unlocked files.
-                </p>
-                <p className="recent_activity_event_time">4:0PM</p>
-              </div>
-              <div className="recent_activity_event">
-                <div className="recent_activity_event_icon">
-                  <FontAwesomeIcon
-                    icon="fa-solid fa-unlock-keyhole"
-                    size="2x"
-                    className="text-white"
-                  />
-                </div>
-                <p>
-                  and this is also an example of how a notification would be
-                  desplayed for unlocked files.
-                </p>
-                <p className="recent_activity_event_time">12:55AM</p>
-              </div>
-              <div className="recent_activity_event">
-                <div className="recent_activity_event_icon">
-                  <FontAwesomeIcon
-                    icon="fa-solid fa-search"
-                    size="2x"
-                    className="text-white"
-                  />
-                </div>
-                <p>
-                  This is an example of how a notification would be desplayed
-                  for searched keywords.
-                </p>
-                <p className="recent_activity_event_time">5:51AM</p>
-              </div>
-              <div className="recent_activity_event">
-                <div className="recent_activity_event_icon">
-                  <FontAwesomeIcon
-                    icon="fa-solid fa-search"
-                    size="2x"
-                    className="text-white"
-                  />
-                </div>
-                <p>
-                  This another simple example of how a notification would be
-                  desplayed for searched keywords.
-                </p>
-                <p className="recent_activity_event_time">12:55PM</p>
-              </div>
-              <div className="recent_activity_event">
-                <div className="recent_activity_event_icon">
-                  <FontAwesomeIcon
-                    icon="fa-solid fa-unlock-keyhole"
-                    size="2x"
-                    className="text-white"
-                  />
-                </div>
-                <p>
-                  and this is also an example of how a notification would be
-                  desplayed for unlocked files.
-                </p>
-                <p className="recent_activity_event_time">9:25PM</p>
-              </div>
-              <div className="recent_activity_event">
-                <div className="recent_activity_event_icon">
-                  <FontAwesomeIcon
-                    icon="fa-solid fa-sack-dollar"
-                    size="2x"
-                    className="text-white"
-                  />
-                </div>
-                <p>
-                  This is an example of how a notification would be desplayed
-                  for a renewed subscription/new sunscription.
-                </p>
-                <p className="recent_activity_event_time">12:55PM</p>
-              </div>
-              <div className="recent_activity_event">
-                <div className="recent_activity_event_icon">
-                  <FontAwesomeIcon
-                    icon="fa-solid fa-search"
-                    size="2x"
-                    className="text-white"
-                  />
-                </div>
-                <p>
-                  This another simple example of how a notification would be
-                  desplayed for searched keywords.
-                </p>
-                <p className="recent_activity_event_time">3:5PM</p>
-              </div>
-              <div className="recent_activity_event">
-                <div className="recent_activity_event_icon">
-                  <FontAwesomeIcon
-                    icon="fa-solid fa-unlock-keyhole"
-                    size="2x"
-                    className="text-white"
-                  />
-                </div>
-                <p>
-                  and this is also an example of how a notification would be
-                  desplayed for unlocked files.
-                </p>
-                <p className="recent_activity_event_time">12:06PM</p>
-              </div>
+              )}
             </div>
           </div>
         </div>
