@@ -323,9 +323,11 @@ function Home() {
               <p className="text-base md:text-lg opacity-90 text-black">
                 Want to check more details about what else we got to offer ?
               </p>
-              <button className="border border-black text-black rounded-md px-4 py-2 bg-transparent hover:bg-black hover:text-white transition-colors duration-300 mt-4">
-                Learn more
-              </button>
+              <Link to="/services">
+                <button className="border border-black text-black rounded-md px-4 py-2 bg-transparent hover:bg-black hover:text-white transition-colors duration-300 mt-4">
+                  Learn more
+                </button>
+              </Link>
             </div>
           </div>
         </div>
