@@ -79,6 +79,7 @@ export default function KeywordsSearched() {
                     No keyword searches yet.
                   </div>
                 )}
+
                 {[...searchLogs].reverse().map((log, groupIndex) => (
                   <div
                     key={log._id}
@@ -96,23 +97,37 @@ export default function KeywordsSearched() {
                       else if (ext === "xlsx" || ext === "xls")
                         iconClass += " excel-icon";
                       else iconClass += " default-icon";
+
                       return (
                         <div
                           key={`${log._id}-${file}-${index}`}
-                          className="flex justify-start items-center flex-wrap w-full p-2 gap-4 Dashboard_Item"
+                          className="flex items-center w-full flex-wrap gap-4 p-2 Dashboard_Item"
                         >
-                          <div className="flex items-center gap-2 flex-6">
-                            <div className={iconClass}>{ext.toUpperCase()}</div>
-                            <a href="#" className=" text-sm">
+                          {/* File icon + name */}
+                          <div className="flex items-center gap-2 min-w-0 flex-grow basis-[40%] truncate">
+                            <div className={iconClass + " shrink-0"}>
+                              {ext.toUpperCase()}
+                            </div>
+                            <a href="#" className="text-sm truncate block">
                               {file}
                             </a>
                           </div>
 
-                          <a href="#" className="flex-2">
+                          {/* Keyword */}
+                          <a
+                            href="#"
+                            className="flex-1 min-w-[80px] text-sm truncate"
+                          >
                             {log.keyword}
                           </a>
-                          <h1 className="flex-1">{log.resultsCount}</h1>
-                          <p className="time flex-4 ml-auto text-right">
+
+                          {/* Result count */}
+                          <h1 className="flex-1 min-w-[60px] text-sm">
+                            {log.resultsCount}
+                          </h1>
+
+                          {/* Time */}
+                          <p className="time text-right flex-1 min-w-[160px] text-sm ml-auto">
                             Searched{" "}
                             {new Date(log.createdAt).toLocaleString([], {
                               dateStyle: "medium",
@@ -129,7 +144,7 @@ export default function KeywordsSearched() {
           </div>
         </div>
         <div className="col-span-1 2xl:col-span-2 row-span-2 grid grid-cols-6 gap-4 order-1 2xl:order-2 ">
-          <div className="col-span-3 2xl:col-span-6 card monthly_unlocks">
+          <div className="col-span-6  lg:col-span-3 2xl:col-span-6 card monthly_unlocks">
             <div className="flex justify-center items-center w-full p-2">
               <h1>Keywords searched status</h1>
             </div>
@@ -172,7 +187,7 @@ export default function KeywordsSearched() {
               </div>
             </div>
           </div>
-          <div className="col-span-3 2xl:col-span-6 card activity_unlocks overflow-auto">
+          <div className="col-span-6  lg:col-span-3 2xl:col-span-6 card activity_unlocks overflow-auto">
             <h1>Recent activity</h1>
             <div className="activity-list">
               {loading ? (

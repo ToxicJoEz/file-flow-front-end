@@ -945,10 +945,14 @@ $secondary-color2: #ffe863;
   background-color: #111827;
   color: #d1d5db;
   border-radius: 0px 20px 20px 0px;
-  display: flex;
   flex-direction: column;
 }
 
+.mobile_sidebar {
+  background-color: #111827;
+  color: white;
+  width: 90%;
+}
 .sidebar nav {
   flex: 1; /* take up all vertical space */
   display: flex;
@@ -1026,40 +1030,20 @@ $secondary-color2: #ffe863;
 }
 
 /* Mobile: collapse sidebar into a top nav bar */
-@media (max-width: 768px) {
+@media (max-width: 639px) {
   /* Sidebar becomes a horizontal nav bar under the header */
   .dashboard-sidebar {
-    position: fixed;
-    top: 7rem; /* same offset under your main navbar */
-    left: 0;
     width: 100%;
-    height: 12rem; /* height of the mobile nav bar */
-    flex-direction: column;
-    align-items: center;
-    overflow-x: auto; /* allow scrolling if there are many links */
-    background-color: #1f2937;
-    z-index: 10;
-  }
-
-  /* Ensure each link doesn’t wrap and has some breathing room */
-  .sidebar-link {
-    white-space: nowrap;
-    padding: 0 1rem;
   }
 
   /* Main content takes full width, pushed below header + mobile nav */
   .dashboard-main {
     margin-left: 0; /* no sidebar indent */
-    margin-top: calc(7rem + 3rem); /* header (7rem) + mobile nav (3rem) */
+    margin-top: calc(7rem + 7rem); /* header (7rem) + mobile nav (3rem) */
   }
-  .dashboard-sidebar nav {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0.5rem; /* space between items */
-  }
-  .dashboard-sidebar .sidebar-link {
-    display: flex;
-    margin: 0; /* clear Tailwind’s space-y-2 */
+  .sidebar-link:last-child {
+    background-color: unset;
+    color: white;
   }
 }
 
@@ -1255,9 +1239,8 @@ $secondary-color2: #ffe863;
   gap: 8px;
 }
 
-.activity-list-home{
+.activity-list-home {
   width: 95%;
-
 }
 
 .activity-item {

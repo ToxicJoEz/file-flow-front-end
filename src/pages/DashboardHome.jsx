@@ -47,7 +47,6 @@ export default function DashboardHome() {
           { headers: { authorization: `Bearer ${token}` } }
         );
         setSearchLogs(response.data.logs);
-        console.log(response.data.logs);
       } catch (error) {
         console.error("Error fetching search logs:", error);
       } finally {
@@ -410,7 +409,7 @@ export default function DashboardHome() {
             </div>
           )}
           <div className="col-span-">
-            <div className="card card2">
+            <div className="card card2 hidden sm:flex">
               <h1 className="quick_access">Quick acces</h1>
               <div className="grid grid-cols-1 md:grid-cols-5 gap-4 w-full p-6">
                 <Link
