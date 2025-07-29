@@ -6,7 +6,13 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PageWrapper from "../components/PageWrapper";
 import NewsCarousel from "../components/NewsCarousel";
-import LogoutButton from "../components/LogoutButton"; // Import the reusable component
+import LogoutButton from "../components/LogoutButton";
+import Search1 from "../assets/Search-1st.png";
+import Search2 from "../assets/Search-10.png";
+import Unlock1 from "../assets/Unlock-1st.png";
+import Unlock2 from "../assets/Unlock-10.png";
+import SearchAnimated from "../assets/Search-animated.webp";
+import LockAnimated from "../assets/Lock-animated.webp";
 
 export default function DashboardHome() {
   const token = useSelector((state) => state.auth.token);
@@ -71,403 +77,344 @@ export default function DashboardHome() {
           {error && <p className="text-red-500 p-4">{error}</p>}
 
           {profile && (
-            <div className="flex justify-center col-span-3">
-              <div className="card">
-                <div className="card__img">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="100%">
-                    <rect fill="#ffffff" width={540} height={450} />
-                    <defs>
-                      <linearGradient
-                        id="a"
-                        gradientUnits="userSpaceOnUse"
-                        x1={0}
-                        x2={0}
-                        y1={0}
-                        y2="100%"
-                        gradientTransform="rotate(222,648,379)"
-                      >
-                        <stop offset={0} stopColor="#9E7BDE" />
-                        <stop offset={1} stopColor="#9E7BDE" />
-                      </linearGradient>
-                      <pattern
-                        patternUnits="userSpaceOnUse"
-                        id="b"
-                        width={300}
-                        height={250}
-                        x={0}
-                        y={0}
-                        viewBox="0 0 1080 900"
-                      >
-                        <g fillOpacity="0.6">
-                          <polygon
-                            fill="#47297B"
-                            points="90 150 0 300 180 300"
-                          />
-                          <polygon fill="#5D2689" points="90 150 180 0 0 0" />
-                          <polygon
-                            fill="#5D2689"
-                            points="270 150 360 0 180 0"
-                          />
-                          <polygon
-                            fill="#8736AA"
-                            points="450 150 360 300 540 300"
-                          />
-                          <polygon
-                            fill="#47297B"
-                            points="450 150 540 0 360 0"
-                          />
-                          <polygon
-                            fill="#8736AA"
-                            points="630 150 540 300 720 300"
-                          />
-                          <polygon
-                            fill="#8736AA"
-                            points="630 150 720 0 540 0"
-                          />
-                          <polygon
-                            fill="#47297B"
-                            points="810 150 720 300 900 300"
-                          />
-                          <polygon
-                            fill="#5D2689"
-                            points="810 150 900 0 720 0"
-                          />
-                          <polygon
-                            fill="#8736AA"
-                            points="990 150 900 300 1080 300"
-                          />
-                          <polygon
-                            fill="#47297B"
-                            points="990 150 1080 0 900 0"
-                          />
-                          <polygon
-                            fill="#8736AA"
-                            points="90 450 0 600 180 600"
-                          />
-                          <polygon
-                            fill="#5D2689"
-                            points="90 450 180 300 0 300"
-                          />
-                          <polygon
-                            fill="#5D2689"
-                            points="270 450 180 600 360 600"
-                          />
-                          <polygon
-                            fill="#5D2689"
-                            points="270 450 360 300 180 300"
-                          />
-                          <polygon
-                            fill="#8736AA"
-                            points="450 450 360 600 540 600"
-                          />
-                          <polygon
-                            fill="#47297B"
-                            points="450 450 540 300 360 300"
-                          />
-                          <polygon
-                            fill="#47297B"
-                            points="630 450 540 600 720 600"
-                          />
-                          <polygon
-                            fill="#8736AA"
-                            points="630 450 720 300 540 300"
-                          />
-                          <polygon
-                            fill="#5D2689"
-                            points="810 450 720 600 900 600"
-                          />
-                          <polygon
-                            fill="#8736AA"
-                            points="810 450 900 300 720 300"
-                          />
-                          <polygon
-                            fill="#5D2689"
-                            points="990 450 900 600 1080 600"
-                          />
-                          <polygon
-                            fill="#47297B"
-                            points="990 450 1080 300 900 300"
-                          />
-                          <polygon
-                            fill="#47297B"
-                            points="90 750 0 900 180 900"
-                          />
-                          <polygon
-                            fill="#5D2689"
-                            points="270 750 180 900 360 900"
-                          />
-                          <polygon
-                            fill="#8736AA"
-                            points="270 750 360 600 180 600"
-                          />
-                          <polygon
-                            fill="#5D2689"
-                            points="450 750 540 600 360 600"
-                          />
-                          <polygon
-                            fill="#47297B"
-                            points="630 750 540 900 720 900"
-                          />
-                          <polygon
-                            fill="#47297B"
-                            points="630 750 720 600 540 600"
-                          />
-                          <polygon
-                            fill="#5D2689"
-                            points="810 750 720 900 900 900"
-                          />
-                          <polygon
-                            fill="#5D2689"
-                            points="810 750 900 600 720 600"
-                          />
-                          <polygon
-                            fill="#47297B"
-                            points="990 750 900 900 1080 900"
-                          />
-                          <polygon
-                            fill="#47297B"
-                            points="180 0 90 150 270 150"
-                          />
-                          <polygon
-                            fill="#47297B"
-                            points="360 0 270 150 450 150"
-                          />
-                          <polygon
-                            fill="#8736AA"
-                            points="540 0 450 150 630 150"
-                          />
-                          <polygon
-                            fill="#8736AA"
-                            points="900 0 810 150 990 150"
-                          />
-                          <polygon
-                            fill="#47297B"
-                            points="0 300 -90 450 90 450"
-                          />
-                          <polygon
-                            fill="#5D2689"
-                            points="0 300 90 150 -90 150"
-                          />
-                          <polygon
-                            fill="#8736AA"
-                            points="180 300 90 450 270 450"
-                          />
-                          <polygon
-                            fill="#47297B"
-                            points="180 300 270 150 90 150"
-                          />
-                          <polygon
-                            fill="#47297B"
-                            points="360 300 270 450 450 450"
-                          />
-                          <polygon
-                            fill="#8736AA"
-                            points="360 300 450 150 270 150"
-                          />
-                          <polygon
-                            fill="#47297B"
-                            points="540 300 450 450 630 450"
-                          />
-                          <polygon
-                            fill="#8736AA"
-                            points="540 300 630 150 450 150"
-                          />
-                          <polygon
-                            fill="#5D2689"
-                            points="720 300 630 450 810 450"
-                          />
-                          <polygon
-                            fill="#47297B"
-                            points="720 300 810 150 630 150"
-                          />
-                          <polygon
-                            fill="#5D2689"
-                            points="900 300 810 450 990 450"
-                          />
-                          <polygon
-                            fill="#8736AA"
-                            points="900 300 990 150 810 150"
-                          />
-                          <polygon
-                            fill="#5D2689"
-                            points="0 600 -90 750 90 750"
-                          />
-                          <polygon
-                            fill="#47297B"
-                            points="0 600 90 450 -90 450"
-                          />
-                          <polygon
-                            fill="#5D2689"
-                            points="180 600 90 750 270 750"
-                          />
-                          <polygon
-                            fill="#47297B"
-                            points="180 600 270 450 90 450"
-                          />
-                          <polygon
-                            fill="#47297B"
-                            points="360 600 270 750 450 750"
-                          />
-                          <polygon
-                            fill="#8736AA"
-                            points="360 600 450 450 270 450"
-                          />
-                          <polygon
-                            fill="#47297B"
-                            points="540 600 630 450 450 450"
-                          />
-                          <polygon
-                            fill="#8736AA"
-                            points="720 600 630 750 810 750"
-                          />
-                          <polygon
-                            fill="#5D2689"
-                            points="900 600 810 750 990 750"
-                          />
-                          <polygon
-                            fill="#47297B"
-                            points="900 600 990 450 810 450"
-                          />
-                          <polygon
-                            fill="#8736AA"
-                            points="0 900 90 750 -90 750"
-                          />
-                          <polygon
-                            fill="#47297B"
-                            points="180 900 270 750 90 750"
-                          />
-                          <polygon
-                            fill="#8736AA"
-                            points="360 900 450 750 270 750"
-                          />
-                          <polygon
-                            fill="#5D2689"
-                            points="540 900 630 750 450 750"
-                          />
-                          <polygon
-                            fill="#5D2689"
-                            points="720 900 810 750 630 750"
-                          />
-                          <polygon
-                            fill="#47297B"
-                            points="900 900 990 750 810 750"
-                          />
-                          <polygon
-                            fill="#47297B"
-                            points="1080 300 990 450 1170 450"
-                          />
-                          <polygon
-                            fill="#8736AA"
-                            points="1080 300 1170 150 990 150"
-                          />
-                          <polygon
-                            fill="#8736AA"
-                            points="1080 600 990 750 1170 750"
-                          />
-                          <polygon
-                            fill="#47297B"
-                            points="1080 600 1170 450 990 450"
-                          />
-                          <polygon
-                            fill="#8736AA"
-                            points="1080 900 1170 750 990 750"
-                          />
-                        </g>
-                      </pattern>
-                    </defs>
-                    <rect
+            <div className="flex justify-center col-span-1 md:col-span-3 card">
+              <div className="card__img">
+                <svg xmlns="http://www.w3.org/2000/svg" width="100%">
+                  <rect fill="#ffffff" width={540} height={450} />
+                  <defs>
+                    <linearGradient
+                      id="a"
+                      gradientUnits="userSpaceOnUse"
+                      x1={0}
+                      x2={0}
+                      y1={0}
+                      y2="100%"
+                      gradientTransform="rotate(222,648,379)"
+                    >
+                      <stop offset={0} stopColor="#9E7BDE" />
+                      <stop offset={1} stopColor="#9E7BDE" />
+                    </linearGradient>
+                    <pattern
+                      patternUnits="userSpaceOnUse"
+                      id="b"
+                      width={300}
+                      height={250}
                       x={0}
                       y={0}
-                      fill="url(#a)"
-                      width="100%"
-                      height="100%"
-                    />
-                    <rect
-                      x={0}
-                      y={0}
-                      fill="url(#b)"
-                      width="100%"
-                      height="100%"
-                    />
-                  </svg>
-                </div>
-                <div className="card__avatar">
-                  <img
-                    src={profile.avatar}
-                    alt="User Avatar"
-                    className="card__avatar-img"
-                  />
-                </div>
-                <div className="card__title Profile__card__title">
-                  {profile.username}
-                </div>
-                <div className="card__subtitle">{profile.email}</div>
-                <div className="card__wrapper mt-4">
-                  <LogoutButton />
-                </div>
+                      viewBox="0 0 1080 900"
+                    >
+                      <g fillOpacity="0.6">
+                        <polygon fill="#47297B" points="90 150 0 300 180 300" />
+                        <polygon fill="#5D2689" points="90 150 180 0 0 0" />
+                        <polygon fill="#5D2689" points="270 150 360 0 180 0" />
+                        <polygon
+                          fill="#8736AA"
+                          points="450 150 360 300 540 300"
+                        />
+                        <polygon fill="#47297B" points="450 150 540 0 360 0" />
+                        <polygon
+                          fill="#8736AA"
+                          points="630 150 540 300 720 300"
+                        />
+                        <polygon fill="#8736AA" points="630 150 720 0 540 0" />
+                        <polygon
+                          fill="#47297B"
+                          points="810 150 720 300 900 300"
+                        />
+                        <polygon fill="#5D2689" points="810 150 900 0 720 0" />
+                        <polygon
+                          fill="#8736AA"
+                          points="990 150 900 300 1080 300"
+                        />
+                        <polygon fill="#47297B" points="990 150 1080 0 900 0" />
+                        <polygon fill="#8736AA" points="90 450 0 600 180 600" />
+                        <polygon fill="#5D2689" points="90 450 180 300 0 300" />
+                        <polygon
+                          fill="#5D2689"
+                          points="270 450 180 600 360 600"
+                        />
+                        <polygon
+                          fill="#5D2689"
+                          points="270 450 360 300 180 300"
+                        />
+                        <polygon
+                          fill="#8736AA"
+                          points="450 450 360 600 540 600"
+                        />
+                        <polygon
+                          fill="#47297B"
+                          points="450 450 540 300 360 300"
+                        />
+                        <polygon
+                          fill="#47297B"
+                          points="630 450 540 600 720 600"
+                        />
+                        <polygon
+                          fill="#8736AA"
+                          points="630 450 720 300 540 300"
+                        />
+                        <polygon
+                          fill="#5D2689"
+                          points="810 450 720 600 900 600"
+                        />
+                        <polygon
+                          fill="#8736AA"
+                          points="810 450 900 300 720 300"
+                        />
+                        <polygon
+                          fill="#5D2689"
+                          points="990 450 900 600 1080 600"
+                        />
+                        <polygon
+                          fill="#47297B"
+                          points="990 450 1080 300 900 300"
+                        />
+                        <polygon fill="#47297B" points="90 750 0 900 180 900" />
+                        <polygon
+                          fill="#5D2689"
+                          points="270 750 180 900 360 900"
+                        />
+                        <polygon
+                          fill="#8736AA"
+                          points="270 750 360 600 180 600"
+                        />
+                        <polygon
+                          fill="#5D2689"
+                          points="450 750 540 600 360 600"
+                        />
+                        <polygon
+                          fill="#47297B"
+                          points="630 750 540 900 720 900"
+                        />
+                        <polygon
+                          fill="#47297B"
+                          points="630 750 720 600 540 600"
+                        />
+                        <polygon
+                          fill="#5D2689"
+                          points="810 750 720 900 900 900"
+                        />
+                        <polygon
+                          fill="#5D2689"
+                          points="810 750 900 600 720 600"
+                        />
+                        <polygon
+                          fill="#47297B"
+                          points="990 750 900 900 1080 900"
+                        />
+                        <polygon fill="#47297B" points="180 0 90 150 270 150" />
+                        <polygon
+                          fill="#47297B"
+                          points="360 0 270 150 450 150"
+                        />
+                        <polygon
+                          fill="#8736AA"
+                          points="540 0 450 150 630 150"
+                        />
+                        <polygon
+                          fill="#8736AA"
+                          points="900 0 810 150 990 150"
+                        />
+                        <polygon fill="#47297B" points="0 300 -90 450 90 450" />
+                        <polygon fill="#5D2689" points="0 300 90 150 -90 150" />
+                        <polygon
+                          fill="#8736AA"
+                          points="180 300 90 450 270 450"
+                        />
+                        <polygon
+                          fill="#47297B"
+                          points="180 300 270 150 90 150"
+                        />
+                        <polygon
+                          fill="#47297B"
+                          points="360 300 270 450 450 450"
+                        />
+                        <polygon
+                          fill="#8736AA"
+                          points="360 300 450 150 270 150"
+                        />
+                        <polygon
+                          fill="#47297B"
+                          points="540 300 450 450 630 450"
+                        />
+                        <polygon
+                          fill="#8736AA"
+                          points="540 300 630 150 450 150"
+                        />
+                        <polygon
+                          fill="#5D2689"
+                          points="720 300 630 450 810 450"
+                        />
+                        <polygon
+                          fill="#47297B"
+                          points="720 300 810 150 630 150"
+                        />
+                        <polygon
+                          fill="#5D2689"
+                          points="900 300 810 450 990 450"
+                        />
+                        <polygon
+                          fill="#8736AA"
+                          points="900 300 990 150 810 150"
+                        />
+                        <polygon fill="#5D2689" points="0 600 -90 750 90 750" />
+                        <polygon fill="#47297B" points="0 600 90 450 -90 450" />
+                        <polygon
+                          fill="#5D2689"
+                          points="180 600 90 750 270 750"
+                        />
+                        <polygon
+                          fill="#47297B"
+                          points="180 600 270 450 90 450"
+                        />
+                        <polygon
+                          fill="#47297B"
+                          points="360 600 270 750 450 750"
+                        />
+                        <polygon
+                          fill="#8736AA"
+                          points="360 600 450 450 270 450"
+                        />
+                        <polygon
+                          fill="#47297B"
+                          points="540 600 630 450 450 450"
+                        />
+                        <polygon
+                          fill="#8736AA"
+                          points="720 600 630 750 810 750"
+                        />
+                        <polygon
+                          fill="#5D2689"
+                          points="900 600 810 750 990 750"
+                        />
+                        <polygon
+                          fill="#47297B"
+                          points="900 600 990 450 810 450"
+                        />
+                        <polygon fill="#8736AA" points="0 900 90 750 -90 750" />
+                        <polygon
+                          fill="#47297B"
+                          points="180 900 270 750 90 750"
+                        />
+                        <polygon
+                          fill="#8736AA"
+                          points="360 900 450 750 270 750"
+                        />
+                        <polygon
+                          fill="#5D2689"
+                          points="540 900 630 750 450 750"
+                        />
+                        <polygon
+                          fill="#5D2689"
+                          points="720 900 810 750 630 750"
+                        />
+                        <polygon
+                          fill="#47297B"
+                          points="900 900 990 750 810 750"
+                        />
+                        <polygon
+                          fill="#47297B"
+                          points="1080 300 990 450 1170 450"
+                        />
+                        <polygon
+                          fill="#8736AA"
+                          points="1080 300 1170 150 990 150"
+                        />
+                        <polygon
+                          fill="#8736AA"
+                          points="1080 600 990 750 1170 750"
+                        />
+                        <polygon
+                          fill="#47297B"
+                          points="1080 600 1170 450 990 450"
+                        />
+                        <polygon
+                          fill="#8736AA"
+                          points="1080 900 1170 750 990 750"
+                        />
+                      </g>
+                    </pattern>
+                  </defs>
+                  <rect x={0} y={0} fill="url(#a)" width="100%" height="100%" />
+                  <rect x={0} y={0} fill="url(#b)" width="100%" height="100%" />
+                </svg>
+              </div>
+              <div className="card__avatar">
+                <img
+                  src={profile.avatar}
+                  alt="User Avatar"
+                  className="card__avatar-img"
+                />
+              </div>
+              <div className="card__title Profile__card__title">
+                {profile.username}
+              </div>
+              <div className="card__subtitle">{profile.email}</div>
+              <div className="card__wrapper mt-4">
+                <LogoutButton />
               </div>
             </div>
           )}
-          <div className="col-span-">
-            <div className="card card2 hidden sm:flex">
-              <h1 className="quick_access">Quick acces</h1>
-              <div className="grid grid-cols-1 md:grid-cols-5 gap-4 w-full p-6">
-                <Link
-                  to="billing-information"
-                  className="col-span-1 quick_access_item"
-                >
-                  <FontAwesomeIcon icon="fa-solid fa-sack-dollar" size="2x" />
-                </Link>
-                <Link
-                  to="keywords-searched"
-                  className="col-span-1 quick_access_item"
-                >
-                  <FontAwesomeIcon
-                    icon="fa-solid fa-unlock-keyhole"
-                    size="2x"
-                  />
-                </Link>
-                <Link
-                  to="keywords-searched"
-                  className="col-span-1 quick_access_item"
-                >
-                  <FontAwesomeIcon icon="fa-solid fa-search" size="2x" />
-                </Link>
-                <Link
-                  to="keywords-searched"
-                  className="col-span-1 quick_access_item"
-                >
-                  <FontAwesomeIcon icon="fa-solid fa-upload" size="2x" />
-                </Link>
-                <Link
-                  to="keywords-searched"
-                  className="col-span-1 quick_access_item"
-                >
-                  <FontAwesomeIcon icon="fa-solid fa-file" size="2x" />
-                </Link>
+          <div className="col-span-1 card card2">
+            <h1 className="quick_access">Milestones</h1>
+            <div className="grid grid-cols-2 2xl:grid-cols-4 gap-4 w-full p-2 milestones">
+              <div className="col-span-1 flex flex-wrap justify-center items-center">
+                <img
+                  src={Search1}
+                  alt="Milestone"
+                  className="w-[100%] md:w-[80%] max-h-24 object-contain"
+                />
+                <h2 className="mt-4 w-[100%] text-center">Searched</h2>
+                <p>first word !</p>
+              </div>
+              <div className="col-span-1 flex flex-wrap justify-center items-center">
+                <img
+                  src={Unlock1}
+                  alt="Milestone"
+                  className="w-[100%] md:w-[80%] max-h-24 object-contain"
+                />
+                <h2 className="mt-4 w-[100%] text-center">Unlocked</h2>
+
+                <p>first file !</p>
+              </div>
+              <div className="col-span-1 flex flex-wrap justify-center items-center">
+                <img
+                  src={Search2}
+                  alt="Milestone"
+                  className="w-[100%] md:w-[80%] max-h-24 object-contain"
+                />
+                <h2 className="mt-4 w-[100%] text-center">Searched</h2>
+
+                <p>10th word !</p>
+              </div>
+              <div className="col-span-1 flex flex-wrap justify-center items-center">
+                <img
+                  src={Unlock2}
+                  alt="Milestone"
+                  className="w-[100%] md:w-[80%] max-h-24 object-contain"
+                />
+                <h2 className="mt-4 w-[100%] text-center">Unlocked</h2>
+
+                <p>10th file !</p>
               </div>
             </div>
           </div>
-          <div className="col-span-2 grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="col-span-1 grid grid-cols-1 gap-4">
+          <div className="col-span-1 md:col-span-2 grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="col-span- grid grid-cols-1 gap-4">
               <div className="card card3 col-span-1 quick_info_card">
                 <div className="quick_info_text">
                   <h1>Keywords searched</h1>
                   <p>{totalKeywordsFound}</p>
                 </div>
 
-                <div className="quick_info">
-                  <FontAwesomeIcon icon="fa-solid fa-search" />
-                </div>
+                <img src={SearchAnimated} alt="search" className="w-[30%]" />
               </div>
               <div className="card card3 col-span-1 quick_info_card">
                 <div className="quick_info_text">
                   <h1>Files unlocked</h1>
                   <p>-</p>
                 </div>
-                <div className="quick_info">
-                  <FontAwesomeIcon icon="fa-solid fa-unlock-keyhole" />
-                </div>
+                <img src={LockAnimated} alt="search" className="w-[30%]" />
               </div>
             </div>
             {/* Current plan card */}
@@ -475,7 +422,7 @@ export default function DashboardHome() {
               <FontAwesomeIcon
                 icon="fa-solid fa-sack-dollar"
                 size="3x"
-                className="mt-4 text-[#47297b]"
+                className="mt-38 2xl:mt-12 text-[#47297b]"
               />
               <h1 className="card__title">
                 Current plan:&nbsp;
@@ -503,7 +450,7 @@ export default function DashboardHome() {
             <h1 className="card__title">News</h1>
             <NewsCarousel />
           </div>
-          <div className="col-span-2 card">
+          <div className="col-span-1 md:col-span-2 card">
             <h1 className="card__title">Recent activity</h1>
             <div className="activity-list activity-list-home">
               {loading ? (
@@ -544,6 +491,17 @@ export default function DashboardHome() {
             </div>
           </div>
         </div>
+        // <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4"> DONE
+        //   <div className="col-span-1 md:col-span-3 card">test1</div>
+        //   <div className="col-span-1 card card2">test2</div>
+        //   <div className="col-span-1 flex flex-wrap">
+        //     <div className="card card3 mb-2">test3-1</div>
+        //     <div className="card card3">test3-2</div>
+        //   </div>
+        //   <div className="col-span-1 card card2">test4</div>
+        //   <div className="col-span-1 card">test5</div>
+        //   <div className="col-span-1 md:col-span-2 card">test6</div>
+        // </div>
       )}
     </PageWrapper>
   );

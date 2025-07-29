@@ -243,11 +243,17 @@ $secondary-color2: #ffe863;
 }
 
 .card2 {
-  height: 184px;
+  height: 252px;
 }
 
 .card3 {
-  height: 84px;
+  height: 118px;
+}
+
+@media (max-width: 1535px) {
+  .card2 {
+    height: 422px;
+  }
 }
 .card4 {
   height: 788px;
@@ -1075,6 +1081,10 @@ $secondary-color2: #ffe863;
   color: #575656;
   padding: 12px;
   margin-left: auto;
+}
+
+.milestones h2 {
+  font-weight: bold;
 }
 
 .quick_access {
