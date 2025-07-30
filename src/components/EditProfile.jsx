@@ -80,11 +80,14 @@ const EditProfile = () => {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const response = await axios.get("https://main-fileflow-backend-production.up.railway.app/profile", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        const response = await axios.get(
+          "https://main-fileflow-backend-production.up.railway.app/profile",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
         setProfile(response.data.user);
       } catch (err) {
         toast.error("Failed to load profile info.");
@@ -120,8 +123,8 @@ const EditProfile = () => {
 
   return (
     <PageWrapper>
-      <div className="grid grid-cols-2 gap-4 mt-48">
-        <div className="reset reset2">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mt-48">
+        <div className="reset reset2 col-span-1">
           <h2 className="text-xl font-bold text-gray-800">Edit Profile</h2>
 
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -185,7 +188,7 @@ const EditProfile = () => {
 
           {message && <p className="text-sm text-gray-600">{message}</p>}
         </div>
-        <div className="flex flex-col items-center reset reset2">
+        <div className="flex flex-col items-center reset reset2 col-span-1">
           <form
             onSubmit={(e) => {
               e.preventDefault();
@@ -193,7 +196,7 @@ const EditProfile = () => {
             }}
             className="w-full max-w-sm"
           >
-            <div className="flex items-center flex-1 gap-4 mt-12">
+            <div className="flex items-center flex-wrap flex-1 gap-4 mt-12">
               <span className="text-gray-700 font-medium whitespace-nowrap">
                 Change Password :
               </span>

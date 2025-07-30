@@ -73,11 +73,11 @@ export default function DashboardHome() {
           <div className="loader" />
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+        <div className="grid grid-cols-1 xl:grid-cols-3 gap-4 mb-4">
           {error && <p className="text-red-500 p-4">{error}</p>}
 
           {profile && (
-            <div className="flex justify-center col-span-1 md:col-span-3 card">
+            <div className="flex justify-center col-span-1 xl:col-span-3 card">
               <div className="card__img">
                 <svg xmlns="http://www.w3.org/2000/svg" width="100%">
                   <rect fill="#ffffff" width={540} height={450} />
@@ -362,7 +362,7 @@ export default function DashboardHome() {
                 <img
                   src={Search1}
                   alt="Milestone"
-                  className="w-[100%] md:w-[80%] max-h-24 object-contain"
+                  className="w-[100%] xl:w-[80%] max-h-24 object-contain"
                 />
                 <h2 className="mt-4 w-[100%] text-center">Searched</h2>
                 <p>first word !</p>
@@ -371,7 +371,7 @@ export default function DashboardHome() {
                 <img
                   src={Unlock1}
                   alt="Milestone"
-                  className="w-[100%] md:w-[80%] max-h-24 object-contain"
+                  className="w-[100%] xl:w-[80%] max-h-24 object-contain"
                 />
                 <h2 className="mt-4 w-[100%] text-center">Unlocked</h2>
 
@@ -381,7 +381,7 @@ export default function DashboardHome() {
                 <img
                   src={Search2}
                   alt="Milestone"
-                  className="w-[100%] md:w-[80%] max-h-24 object-contain"
+                  className="w-[100%] xl:w-[80%] max-h-24 object-contain"
                 />
                 <h2 className="mt-4 w-[100%] text-center">Searched</h2>
 
@@ -391,7 +391,7 @@ export default function DashboardHome() {
                 <img
                   src={Unlock2}
                   alt="Milestone"
-                  className="w-[100%] md:w-[80%] max-h-24 object-contain"
+                  className="w-[100%] xl:w-[80%] max-h-24 object-contain"
                 />
                 <h2 className="mt-4 w-[100%] text-center">Unlocked</h2>
 
@@ -399,22 +399,30 @@ export default function DashboardHome() {
               </div>
             </div>
           </div>
-          <div className="col-span-1 md:col-span-2 grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="col-span- grid grid-cols-1 gap-4">
+          <div className="col-span-1 xl:col-span-2 grid grid-cols-1 xl:grid-cols-3 gap-4">
+            <div className="col-span-1 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-1 gap-4">
               <div className="card card3 col-span-1 quick_info_card">
                 <div className="quick_info_text">
                   <h1>Keywords searched</h1>
                   <p>{totalKeywordsFound}</p>
                 </div>
 
-                <img src={SearchAnimated} alt="search" className="w-[30%]" />
+                <img
+                  src={SearchAnimated}
+                  alt="search"
+                  className="w-[30%] max-w-[100px] object-contain"
+                />
               </div>
               <div className="card card3 col-span-1 quick_info_card">
                 <div className="quick_info_text">
                   <h1>Files unlocked</h1>
                   <p>-</p>
                 </div>
-                <img src={LockAnimated} alt="search" className="w-[30%]" />
+                <img
+                  src={LockAnimated}
+                  alt="search"
+                  className="w-[30%] max-w-[100px] object-contain"
+                />
               </div>
             </div>
             {/* Current plan card */}
@@ -450,7 +458,7 @@ export default function DashboardHome() {
             <h1 className="card__title">News</h1>
             <NewsCarousel />
           </div>
-          <div className="col-span-1 md:col-span-2 card">
+          <div className="col-span-1 xl:col-span-2 card">
             <h1 className="card__title">Recent activity</h1>
             <div className="activity-list activity-list-home">
               {loading ? (
