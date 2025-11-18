@@ -10,46 +10,39 @@ export default function KeywordsSearched() {
   const token = useSelector((state) => state.auth.token);
 
   useEffect(() => {
-    setLoading(true); // Start loader
+    setLoading(true);
 
     const fetchSearchLogs = async () => {
       try {
         const response = await axios.get(
           "https://main-fileflow-backend-production.up.railway.app/search-logs",
           {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
+            headers: { Authorization: `Bearer ${token}` },
           }
         );
         setSearchLogs(response.data.logs);
       } catch (error) {
         console.error("❌ Error fetching search logs:", error);
       } finally {
-        setLoading(false); // Stop loader
+        setLoading(false);
       }
     };
 
     fetchSearchLogs();
   }, [token]);
 
-  const fileCounts = {
-    pdf: 0,
-    word: 0,
-    excel: 0,
-  };
-
+  // Count files for chart
+  const fileCounts = { pdf: 0, word: 0, excel: 0 };
   searchLogs.forEach((log) => {
-    log.fileNames.forEach((file) => {
-      const ext = file.split(".").pop().toLowerCase();
+    log.files.forEach((fileObj) => {
+      const ext = fileObj.fileName.split(".").pop().toLowerCase();
       if (ext === "pdf") fileCounts.pdf++;
       else if (ext === "docx" || ext === "doc") fileCounts.word++;
       else if (ext === "xlsx" || ext === "xls") fileCounts.excel++;
     });
   });
 
-  const totalFiles = fileCounts.pdf + fileCounts.word + fileCounts.excel || 1; // avoid divide by 0
-
+  const totalFiles = fileCounts.pdf + fileCounts.word + fileCounts.excel || 1;
   const pdfPercentage = ((fileCounts.pdf / totalFiles) * 100).toFixed(0);
   const wordPercentage = ((fileCounts.word / totalFiles) * 100).toFixed(0);
   const excelPercentage = ((fileCounts.excel / totalFiles) * 100).toFixed(0);
@@ -65,6 +58,7 @@ export default function KeywordsSearched() {
   return (
     <div>
       <div className="grid grid-cols-1 2xl:grid-cols-6 gap-4">
+        {/* Keyword search history */}
         <div className="col-span-1 2xl:col-span-4 row-span-2 card card4 order-2 2xl:order-1">
           <h1>Keyword search history</h1>
           <div className="w-full overflow-x-auto p-6">
@@ -87,8 +81,11 @@ export default function KeywordsSearched() {
                       groupIndex % 2 === 0 ? "bg-gray-100" : ""
                     }`}
                   >
-                    {log.fileNames.map((file, index) => {
-                      const ext = file.split(".").pop().toLowerCase();
+                    {log.files.map((fileObj, index) => {
+                      const ext = fileObj.fileName
+                        .split(".")
+                        .pop()
+                        .toLowerCase();
 
                       let iconClass = "file-icon";
                       if (ext === "pdf") iconClass += " pdf-icon";
@@ -98,9 +95,24 @@ export default function KeywordsSearched() {
                         iconClass += " excel-icon";
                       else iconClass += " default-icon";
 
+                      // Keywords for this file
+                      const keywords =
+                        [
+                          ...new Set(
+                            fileObj.matches.map((match) => match.keyword)
+                          ),
+                        ].join(", ") || "-";
+
+                      // Total matches for this file
+                      const resultsCount =
+                        fileObj.matches.reduce(
+                          (sum, match) => sum + match.count,
+                          0
+                        ) || 0;
+
                       return (
                         <div
-                          key={`${log._id}-${file}-${index}`}
+                          key={`${log._id}-${fileObj.fileName}-${index}`}
                           className="flex items-center w-full flex-wrap gap-4 p-2 Dashboard_Item"
                         >
                           {/* File icon + name */}
@@ -109,21 +121,21 @@ export default function KeywordsSearched() {
                               {ext.toUpperCase()}
                             </div>
                             <a href="#" className="text-sm truncate block">
-                              {file}
+                              {fileObj.fileName}
                             </a>
                           </div>
 
-                          {/* Keyword */}
+                          {/* Keywords */}
                           <a
                             href="#"
                             className="flex-1 min-w-[80px] text-sm truncate"
                           >
-                            {log.keyword}
+                            {keywords}
                           </a>
 
                           {/* Result count */}
                           <h1 className="flex-1 min-w-[60px] text-sm">
-                            {log.resultsCount}
+                            {resultsCount}
                           </h1>
 
                           {/* Time */}
@@ -143,8 +155,11 @@ export default function KeywordsSearched() {
             )}
           </div>
         </div>
-        <div className="col-span-1 2xl:col-span-2 row-span-2 grid grid-cols-6 gap-4 order-1 2xl:order-2 ">
-          <div className="col-span-6  lg:col-span-3 2xl:col-span-6 card monthly_unlocks">
+
+        {/* Pie chart & recent activity */}
+        <div className="col-span-1 2xl:col-span-2 row-span-2 grid grid-cols-6 gap-4 order-1 2xl:order-2">
+          {/* Pie chart */}
+          <div className="col-span-6 lg:col-span-3 2xl:col-span-6 card monthly_unlocks">
             <div className="flex justify-center items-center w-full p-2">
               <h1>Keywords searched status</h1>
             </div>
@@ -166,7 +181,6 @@ export default function KeywordsSearched() {
                   <span className="dot excel"></span> {excelPercentage}%
                 </div>
               </div>
-
               <div className="h-full col-span-4 flex justify-center items-center">
                 <ResponsiveContainer width="100%" height={250}>
                   <PieChart>
@@ -187,7 +201,9 @@ export default function KeywordsSearched() {
               </div>
             </div>
           </div>
-          <div className="col-span-6  lg:col-span-3 2xl:col-span-6 card activity_unlocks overflow-auto">
+
+          {/* Recent activity */}
+          <div className="col-span-6 lg:col-span-3 2xl:col-span-6 card activity_unlocks overflow-auto">
             <h1>Recent activity</h1>
             <div className="activity-list">
               {loading ? (
@@ -199,16 +215,16 @@ export default function KeywordsSearched() {
                   {[...searchLogs]
                     .reverse()
                     .flatMap((log) =>
-                      log.fileNames.map((file, i) => ({
-                        file,
+                      log.files.map((fileObj, i) => ({
+                        file: fileObj.fileName,
                         time: new Date(log.createdAt).toLocaleTimeString([], {
                           hour: "2-digit",
                           minute: "2-digit",
                         }),
-                        key: `${log._id}-${file}-${i}`,
+                        key: `${log._id}-${fileObj.fileName}-${i}`,
                       }))
                     )
-                    .slice(0, 5) // Only show the latest 5 file entries total
+                    .slice(0, 5)
                     .map(({ file, time, key }) => {
                       const truncatedFile =
                         file.length > 25 ? file.slice(0, 25) + "..." : file;

@@ -62,9 +62,18 @@ export default function DashboardHome() {
     fetchSearchLogs();
   }, [token]);
 
-  const totalKeywordsFound = searchLogs.reduce((total, log) => {
-    return total + (log.resultsCount || 0);
-  }, 0);
+ // Calculate total keywords found across all logs
+const totalKeywordsFound = searchLogs.reduce((total, log) => {
+  return (
+    total +
+    log.files.reduce((fileTotal, fileObj) => {
+      return fileTotal + fileObj.matches.reduce((matchTotal, match) => {
+        return matchTotal + (match.count || 0);
+      }, 0);
+    }, 0)
+  );
+}, 0);
+
 
   return (
     <PageWrapper>
@@ -468,48 +477,38 @@ export default function DashboardHome() {
               ) : (
                 <div>
                   {[...searchLogs]
-                    .reverse()
-                    .flatMap((log) =>
-                      log.fileNames.map((file, i) => ({
-                        file,
-                        time: new Date(log.createdAt).toLocaleTimeString([], {
-                          hour: "2-digit",
-                          minute: "2-digit",
-                        }),
-                        key: `${log._id}-${file}-${i}`,
-                      }))
-                    )
-                    .slice(0, 5) // Only show the latest 5 file entries total
-                    .map(({ file, time, key }) => {
-                      const truncatedFile =
-                        file.length > 25 ? file.slice(0, 25) + "..." : file;
+  .reverse()
+  .flatMap((log) =>
+    log.files.map((fileObj, i) => ({
+      file: fileObj.fileName,
+      time: new Date(log.createdAt).toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit",
+      }),
+      key: `${log._id}-${fileObj.fileName}-${i}`,
+    }))
+  )
+  .slice(0, 5) // show latest 5 files total
+  .map(({ file, time, key }) => {
+    const truncatedFile =
+      file.length > 25 ? file.slice(0, 25) + "..." : file;
 
-                      return (
-                        <div key={key} className="activity-item mt-2">
-                          <div className="flex justify-between w-full">
-                            <p>Searched: {truncatedFile}</p>
-                            <p className="time">{time}</p>
-                          </div>
-                          <a href="#">Jump to file</a>
-                        </div>
-                      );
-                    })}
+    return (
+      <div key={key} className="activity-item mt-2">
+        <div className="flex justify-between w-full">
+          <p>Searched: {truncatedFile}</p>
+          <p className="time">{time}</p>
+        </div>
+        <a href="#">Jump to file</a>
+      </div>
+    );
+  })}
+
                 </div>
               )}
             </div>
           </div>
         </div>
-        // <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4"> DONE
-        //   <div className="col-span-1 md:col-span-3 card">test1</div>
-        //   <div className="col-span-1 card card2">test2</div>
-        //   <div className="col-span-1 flex flex-wrap">
-        //     <div className="card card3 mb-2">test3-1</div>
-        //     <div className="card card3">test3-2</div>
-        //   </div>
-        //   <div className="col-span-1 card card2">test4</div>
-        //   <div className="col-span-1 card">test5</div>
-        //   <div className="col-span-1 md:col-span-2 card">test6</div>
-        // </div>
       )}
     </PageWrapper>
   );
