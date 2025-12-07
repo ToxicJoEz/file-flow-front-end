@@ -76,8 +76,9 @@ export default function Sidebar() {
             />
             <span className="sidebar-label">Profile settings</span>
           </NavLink>
-          <NavLink
-            to="/"
+          <a
+            href="https://github.com/ToxicJoEz/FileFlow-User-App/releases/download/app/FileFlow.User.Application.3.rar"
+            download
             className="sidebar-link sidebar-download flex flex-col items-center text-center gap-2"
           >
             <FontAwesomeIcon
@@ -240,7 +241,7 @@ export default function Sidebar() {
                 </svg>
               </div>
             </button>
-          </NavLink>
+          </a>
         </nav>
       </aside>
       <nav className="flex sm:hidden mobile_sidebar mx-auto p-4 grid grid-cols-4 gap-4 rounded-lg">
