@@ -35,7 +35,7 @@ export default function KeywordsSearched() {
   const fileCounts = { pdf: 0, word: 0, excel: 0 };
   searchLogs.forEach((log) => {
     log.files.forEach((fileObj) => {
-      const ext = fileObj.fileName.split(".").pop().toLowerCase();
+      const ext = (fileObj.originalName || "").split(".").pop().toLowerCase();
       if (ext === "pdf") fileCounts.pdf++;
       else if (ext === "docx" || ext === "doc") fileCounts.word++;
       else if (ext === "xlsx" || ext === "xls") fileCounts.excel++;
@@ -77,15 +77,14 @@ export default function KeywordsSearched() {
                 {[...searchLogs].reverse().map((log, groupIndex) => (
                   <div
                     key={log._id}
-                    className={`w-full rounded-md p-2 ${
+                    className={`w-full rounded-md p-2 mb-4 ${
                       groupIndex % 2 === 0 ? "bg-gray-100" : ""
                     }`}
                   >
                     {log.files.map((fileObj, index) => {
-                      const ext = fileObj.fileName
+                      const ext = (fileObj.originalName || "")
                         .split(".")
-                        .pop()
-                        .toLowerCase();
+                        .pop().toLowerCase();
 
                       let iconClass = "file-icon";
                       if (ext === "pdf") iconClass += " pdf-icon";
@@ -99,17 +98,14 @@ export default function KeywordsSearched() {
                       const keywords =
                         [
                           ...new Set(
-                            fileObj.matches.map((match) => match.keyword)
+                            log.keywords // Use the log's keywords for overall search
                           ),
                         ].join(", ") || "-";
 
                       // Total matches for this file
-                      const resultsCount =
-                        fileObj.matches.reduce(
-                          (sum, match) => sum + match.count,
-                          0
-                        ) || 0;
+                      const resultsCount = fileObj.total_matches || 0;
 
+                      // Display only if there are matches in this file
                       return (
                         <div
                           key={`${log._id}-${fileObj.fileName}-${index}`}
@@ -119,16 +115,16 @@ export default function KeywordsSearched() {
                           <div className="flex items-center gap-2 min-w-0 flex-grow basis-[40%] truncate">
                             <div className={iconClass + " shrink-0"}>
                               {ext.toUpperCase()}
-                            </div>
+                            </div> 
                             <a href="#" className="text-sm truncate block">
-                              {fileObj.fileName}
+                              {fileObj.originalName}
                             </a>
                           </div>
 
                           {/* Keywords */}
                           <a
                             href="#"
-                            className="flex-1 min-w-[80px] text-sm truncate"
+                            className="flex-1 min-w-[80px] text-sm truncate text-gray-600"
                           >
                             {keywords}
                           </a>
@@ -141,11 +137,11 @@ export default function KeywordsSearched() {
                           {/* Time */}
                           <p className="time text-right flex-1 min-w-[160px] text-sm ml-auto">
                             Searched{" "}
-                            {new Date(log.createdAt).toLocaleString([], {
+                            {new Date(log.createdAt).toLocaleString(undefined, {
                               dateStyle: "medium",
                               timeStyle: "short",
                             })}
-                          </p>
+                          </p> 
                         </div>
                       );
                     })}
@@ -214,14 +210,14 @@ export default function KeywordsSearched() {
                 <div>
                   {[...searchLogs]
                     .reverse()
-                    .flatMap((log) =>
+                    .flatMap((log) => // Use originalName for display
                       log.files.map((fileObj, i) => ({
-                        file: fileObj.fileName,
+                        file: fileObj.originalName,
                         time: new Date(log.createdAt).toLocaleTimeString([], {
                           hour: "2-digit",
                           minute: "2-digit",
                         }),
-                        key: `${log._id}-${fileObj.fileName}-${i}`,
+                        key: `${log._id}-${fileObj.originalName}-${i}`,
                       }))
                     )
                     .slice(0, 5)
