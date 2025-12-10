@@ -62,17 +62,10 @@ export default function DashboardHome() {
     fetchSearchLogs();
   }, [token]);
 
- // Calculate total keywords found across all logs
-const totalKeywordsFound = searchLogs.reduce((total, log) => {
-  return (
-    total +
-    log.files.reduce((fileTotal, fileObj) => {
-      return fileTotal + fileObj.matches.reduce((matchTotal, match) => {
-        return matchTotal + (match.count || 0);
-      }, 0);
-    }, 0)
-  );
-}, 0);
+  // Calculate total keywords found across all logs
+  const totalKeywordsFound = searchLogs.reduce((total, log) => {
+    return total + (log.totalMatchesFound || 0);
+  }, 0);
 
 
   return (
@@ -478,14 +471,14 @@ const totalKeywordsFound = searchLogs.reduce((total, log) => {
                 <div>
                   {[...searchLogs]
   .reverse()
-  .flatMap((log) =>
+  .flatMap((log) => // Use originalName for display
     log.files.map((fileObj, i) => ({
-      file: fileObj.fileName,
+      file: fileObj.originalName,
       time: new Date(log.createdAt).toLocaleTimeString([], {
         hour: "2-digit",
         minute: "2-digit",
       }),
-      key: `${log._id}-${fileObj.fileName}-${i}`,
+      key: `${log._id}-${fileObj.originalName}-${i}`,
     }))
   )
   .slice(0, 5) // show latest 5 files total
