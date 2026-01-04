@@ -2,12 +2,12 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import PageWrapper from "../components/PageWrapper";
-import heroImg from "../assets/hero-img.jpg";
+import heroImg from "../assets/hero-img.svg";
 import mainBgImage from "../assets/mainBackground.png";
 import secondaryBgImg from "../assets/backgroundSecondary.png";
 import secondaryBgImg2 from "../assets/backgroundMain.png";
-import aboutUsImg1 from "../assets/AboutUs1.png";
-import aboutUsImg2 from "../assets/AboutUs2.png";
+import aboutUsImg1 from "../assets/AboutUs1.svg";
+import aboutUsImg2 from "../assets/AboutUs2.svg";
 import background2 from "../assets/background2.png";
 import background3 from "../assets/background3.png";
 import background4 from "../assets/background4.png";
@@ -17,11 +17,11 @@ import logo3 from "../assets/logoipsum3.svg";
 import logo4 from "../assets/logoipsum4.svg";
 import logo5 from "../assets/logoipsum5.svg";
 import logo6 from "../assets/logoipsum6.svg";
-import featured1 from "../assets/Featured1.png";
-import featured2 from "../assets/Featured2.png";
-import featured3 from "../assets/Featured3.png";
-import featured4 from "../assets/Featured4.png";
-import featured5 from "../assets/Featured5.png";
+import featured1 from "../assets/FileSearch2.svg";
+import featured2 from "../assets/Folder.svg";
+import featured3 from "../assets/OCR.svg";
+import featured4 from "../assets/FileSorting.svg";
+import featured5 from "../assets/FileUnlock.svg";
 import contactImg from "../assets/contact us.png";
 
 function Home() {
@@ -35,13 +35,19 @@ function Home() {
         <div className="h-screen bg-[url('/assets/background1.png')] bg-no-repeat bg-center bg-cover">
           <div className="pt-24 h-full flex flex-col md:flex-row">
             {/* Left Section (Text) */}
-            <div className="w-full md:w-2/6 flex items-center justify-center text-white px-6 py-8 md:py-0">
+            <div className="w-full md:w-3/6 flex items-center justify-center text-white px-6 py-8 md:py-0">
               <div>
-                <h1 className="text-4xl font-bold mb-4">
-                  Welcome to File Flow
+                <h1 className="home-title">
+                  Welcome to <span>File Flow !</span>
                 </h1>
-                <p className="text-lg">
+                <p className="text-xl mt-4  opacity-90">
                   Your all-in-one file management platform. Fast. Smart. Simple.
+                </p>
+                <p className="text-lg mt-2  opacity-90">
+                  Start with our advanced Keyword Search tool to instantly scan
+                  your documents and locate the exact information you need. No
+                  more opening files one by one—just type your keywords and let
+                  FileFlow do the rest.
                 </p>
               </div>
             </div>
@@ -51,8 +57,7 @@ function Home() {
               <img
                 src={heroImg}
                 alt="Hero"
-                className="w-[95%] md:w-[85%] h-auto rounded-tl-[20px] md:rounded-tl-[80px] rounded-bl-[20px] md:rounded-bl-[80px] rounded-tr-[20px] md:rounded-tr-[0px] rounded-br-[20px] md:rounded-br-[0px] shadow-lg 
-                         relative md:absolute md:bottom-0 md:right-0"
+                className="w-[95%] md:w-[80%] h-auto relative md:absolute md:bottom-0 md:right-20"
               />
             </div>
           </div>
@@ -85,7 +90,7 @@ function Home() {
               <div
                 className="absolute left-0 md:-left-[calc((170vw-100%)/2)] w-full md:w-screen h-full bg-black rounded-3xl z-0 bg-repeat shadow-[10px_10px_12px_rgba(0,0,0,0.4)]"
                 style={{
-                  backgroundImage: `url(${secondaryBgImg})`,
+                  backgroundImage: `url(${secondaryBgImg2})`,
                   backgroundSize: "50%",
                 }}
               ></div>
@@ -93,7 +98,7 @@ function Home() {
               <img
                 src={aboutUsImg2}
                 alt=""
-                className="relative z-10 mx-auto md:mx-0 w-[90%] md:w-[70%] p-4 md:p-0"
+                className="relative z-10 mx-auto md:mr-22 w-[90%] md:w-[80%] p-12"
               />
             </div>
 
@@ -107,10 +112,12 @@ function Home() {
                 simplifying the way people work with documents.
                 <br />
                 <br />
-                From unlocking protected PDFs to generating smart files with AI,
-                we’ve packed powerful tools into one clean platform. Whether
-                you're working from your browser or integrating with our desktop
-                app, FileFlow adapts to you — not the other way around.
+                Our Keyword Search tool is the first of many features we're
+                building to help you manage your files. It's designed to save
+                you hours of manual checking—instead of opening every file to
+                find what you need, simply enter your keywords, and our smart
+                search engine will almost instantly locate the exact lines in
+                documents containing them.
               </p>
             </div>
           </div>
@@ -128,9 +135,11 @@ function Home() {
                 that feels easy and intuitive.
                 <br />
                 <br />
-                Whether you’re unlocking documents, converting files, or
-                exploring our AI assistant, everything is designed to get you
-                results fast — without the clutter.
+                While we support various file operations, our Launch primary
+                focus is on delivering a superior search experience. We've
+                streamlined the process so you can cut through the noise and
+                find exactly what you're looking for in seconds—without the
+                clutter.
               </p>
             </div>
 
@@ -147,7 +156,7 @@ function Home() {
               <img
                 src={aboutUsImg1}
                 alt=""
-                className="relative z-10 mx-auto md:mx-0 w-[90%] md:w-[70%] p-4 md:p-0"
+                className="relative z-10 mx-auto md:ml-22 w-[90%] md:w-[80%] p-12"
               />
             </div>
           </div>
@@ -212,18 +221,19 @@ function Home() {
               </h2>
               <p className="text-base md:text-lg opacity-90 text-black">
                 Instantly search through your documents with our powerful
-                keyword detection tool. FileFlow also offers secure unlocking,
-                clean previews, and more — built for speed and simplicity.
+                keyword detection tool. FileFlow will soon also offers secure
+                unlocking, clean previews, and more — built for speed and
+                simplicity.
               </p>
             </div>
 
             {/* Top Row: 3 Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
               <div
-                className="rounded-2xl p-6 shadow-xl bg-center py-8 px-12 py-8 px-12"
+                className="rounded-2xl shadow-xl bg-center px-12 py-2"
                 style={{ backgroundImage: `url(${background4})` }}
               >
-                <img src={featured1} alt="Icon 1" className="w-[25%] mb-4" />
+                <img src={featured1} alt="Icon 1" className="w-[50%] mx-auto" />
                 <h3 className="text-yellow-400 text-xl font-bold mb-3">
                   Keyword search
                 </h3>
@@ -233,17 +243,17 @@ function Home() {
                   single one.
                 </p>
                 <Link to="/services">
-                  <button className="fancy-button-alt learn-more-btn">
+                  <button className="fancy-button-alt learn-more-btn mb-4">
                     Learn more
                   </button>
                 </Link>
               </div>
 
               <div
-                className="rounded-2xl p-6 shadow-xl bg-center py-8 px-12"
+                className="rounded-2xl shadow-xl bg-center px-12 py-2"
                 style={{ backgroundImage: `url(${background4})` }}
               >
-                <img src={featured2} alt="Icon 2" className="w-[25%] mb-4" />
+                <img src={featured2} alt="Icon 2" className="w-[50%] mx-auto" />
                 <h3 className="text-yellow-400 text-xl font-bold mb-3">
                   We focus on your file needs!
                 </h3>
@@ -252,25 +262,25 @@ function Home() {
                   Manage, search, convert, and create — effortlessly.
                 </p>
                 <Link to="/services">
-                  <button className="fancy-button-alt learn-more-btn">
+                  <button className="fancy-button-alt learn-more-btn mb-4">
                     Learn more
                   </button>
                 </Link>
               </div>
 
               <div
-                className="rounded-2xl p-6 shadow-xl bg-center py-8 px-12"
+                className="rounded-2xl shadow-xl bg-center px-12 py-2"
                 style={{ backgroundImage: `url(${background4})` }}
               >
-                <img src={featured3} alt="Icon 3" className="w-[25%] mb-4" />
-                <h3 className="text-yellow-400 text-xl font-bold mb-3">OCR</h3>
+                <img src={featured3} alt="Icon 3" className="w-[50%] mx-auto" />
+                <h3 className="text-yellow-400 text-xl font-bold mb-3">Optical Character Recognition</h3>
                 <p className="opacity-90 mb-6">
                   Convert scanned images and PDFs into editable, searchable
                   text. Our OCR engine is fast, accurate, and built for
                   real-world documents.
                 </p>
                 <Link to="/services">
-                  <button className="fancy-button-alt learn-more-btn">
+                  <button className="fancy-button-alt learn-more-btn mb-4">
                     Learn more
                   </button>
                 </Link>
@@ -280,10 +290,10 @@ function Home() {
             {/* Bottom Row: 2 Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4">
               <div
-                className="rounded-2xl p-6 shadow-xl bg-center py-8 px-12"
+                className="rounded-2xl shadow-xl bg-center px-12 py-2"
                 style={{ backgroundImage: `url(${background4})` }}
               >
-                <img src={featured4} alt="Icon 4" className="w-[15%] mb-4" />
+                <img src={featured4} alt="Icon 4" className="w-[40%] mb-4 mt-2 mx-auto" />
                 <h3 className="text-yellow-400 text-xl font-bold mb-3">
                   Smart File Sorting
                 </h3>
@@ -293,17 +303,17 @@ function Home() {
                   the rest with precision and ease.
                 </p>
                 <Link to="/services">
-                  <button className="fancy-button-alt learn-more-btn">
+                  <button className="fancy-button-alt learn-more-btn mb-4">
                     Learn more
                   </button>
                 </Link>
               </div>
 
               <div
-                className="rounded-2xl p-6 shadow-xl bg-center py-8 px-12"
+                className="rounded-2xl shadow-xl bg-center px-12 py-2"
                 style={{ backgroundImage: `url(${background4})` }}
               >
-                <img src={featured5} alt="Icon 5" className="w-[15%] mb-4" />
+                <img src={featured5} alt="Icon 5" className="w-[40%] mb-4 mt-2 mx-auto" />
                 <h3 className="text-yellow-400 text-xl font-bold mb-3">
                   File unlocking
                 </h3>
@@ -312,7 +322,7 @@ function Home() {
                   seconds. Regain full control and access without hassle.
                 </p>
                 <Link to="/services">
-                  <button className="fancy-button-alt learn-more-btn">
+                  <button className="fancy-button-alt learn-more-btn mb-4">
                     Learn more
                   </button>
                 </Link>

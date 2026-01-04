@@ -84,6 +84,16 @@ function Navbar() {
             Home
           </NavLink>
           <NavLink
+            to="/beta-signup"
+            className={({ isActive }) =>
+              isActive
+                ? "ActiveLink p-2"
+                : "text-white  hover:text-[#f5bd1f] transition p-2"
+            }
+          >
+            Signup for beta!
+          </NavLink>
+          {/* <NavLink
             to="/Services"
             className={({ isActive }) =>
               isActive
@@ -102,7 +112,7 @@ function Navbar() {
             }
           >
             Plans
-          </NavLink>
+          </NavLink> */}
           <a
             href="#"
             onClick={scrollToContact}
@@ -469,7 +479,7 @@ function Navbar() {
         >
           Home
         </NavLink>
-        <NavLink
+        {/* <NavLink
           to="/Services"
           className={({ isActive }) =>
             isActive
@@ -488,7 +498,7 @@ function Navbar() {
           }
         >
           Plans
-        </NavLink>
+        </NavLink> */}
         <a
           href="#"
           onClick={scrollToContact}

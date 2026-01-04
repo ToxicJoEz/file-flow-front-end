@@ -28,6 +28,7 @@ import BillingInformation from "./components/BillingInformation";
 import ForgotPassword from "./components/ForgotPassword";
 import ResetPassword from "./components/ResetPassword";
 import ScrollToTop from "./components/ScrollToTop"; // adjust the path as needed
+import BetaSignup from "./pages/BetaSignup";
 
 function App() {
   const dispatch = useDispatch();
@@ -80,6 +81,14 @@ function App() {
               element={
                 <PublicRoute>
                   <Register />
+                </PublicRoute>
+              }
+            />
+            <Route
+              path="/beta-signup"
+              element={
+                <PublicRoute>
+                  <BetaSignup />
                 </PublicRoute>
               }
             />
