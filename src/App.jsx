@@ -76,14 +76,14 @@ function App() {
             <Route path="/" element={<Home />} />
 
             {/* Public Registration Route */}
-            <Route
+            {/* <Route
               path="/register"
               element={
                 <PublicRoute>
                   <Register />
                 </PublicRoute>
               }
-            />
+            /> */}
             <Route
               path="/beta-signup"
               element={
@@ -104,22 +104,22 @@ function App() {
             />
 
             {/* App Public Login Route */}
-            <Route
+            {/* <Route
               path="/app-login"
               element={
                 <PublicRoute>
                   <AppLogin />
                 </PublicRoute>
               }
-            />
+            /> */}
 
             {/* Public Plans Route */}
-            <Route path="/plans" element={<Plans />} />
+            {/* <Route path="/plans" element={<Plans />} /> */}
 
             {/* Public services Route */}
-            <Route path="/services" element={<Services />} />
-            <Route path="/forgot-password" element={<ForgotPassword />} />
-            <Route path="/reset-password" element={<ResetPassword />} />
+            {/* <Route path="/services" element={<Services />} /> */}
+            {/* <Route path="/forgot-password" element={<ForgotPassword />} /> */}
+            {/* <Route path="/reset-password" element={<ResetPassword />} /> */}
 
             {/* Protected Dashboard Route */}
             <Route
