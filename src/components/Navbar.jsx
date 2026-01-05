@@ -83,16 +83,7 @@ function Navbar() {
           >
             Home
           </NavLink>
-          <NavLink
-            to="/beta-signup"
-            className={({ isActive }) =>
-              isActive
-                ? "ActiveLink p-2"
-                : "text-white  hover:text-[#f5bd1f] transition p-2"
-            }
-          >
-            Signup for beta!
-          </NavLink>
+
           {/* <NavLink
             to="/Services"
             className={({ isActive }) =>
@@ -138,6 +129,11 @@ function Navbar() {
         <div className="hidden md:flex space-x-4">
           {!isLoggedIn ? (
             <>
+              <Link to="/beta-signup">
+                <button class="bubbles">
+                  <span class="text"> Signup for beta!</span>
+                </button>
+              </Link>
               <button className="star-button">
                 <Link to="/login" className="custom-login-link">
                   Login
@@ -294,7 +290,7 @@ function Navbar() {
                 </div>
               </button>
 
-              <button className="star-button custom-register-link">
+              {/* <button className="star-button custom-register-link">
                 <Link to="/register">Register</Link>
                 <div className="star-1">
                   <svg
@@ -446,7 +442,7 @@ function Navbar() {
                     </g>
                   </svg>
                 </div>
-              </button>
+              </button> */}
             </>
           ) : (
             <Link to="/dashboard">

@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { toast } from "react-toastify";
 import PageWrapper from "../components/PageWrapper";
 import heroImg from "../assets/hero-img.svg";
 import mainBgImage from "../assets/mainBackground.png";
@@ -26,6 +28,37 @@ import contactImg from "../assets/contact us.png";
 
 function Home() {
   const token = useSelector((state) => state.auth.token);
+  const [contactData, setContactData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    business: "",
+    message: "",
+  });
+  const [isSending, setIsSending] = useState(false);
+
+  const handleContactChange = (e) => {
+    const { name, value } = e.target;
+    setContactData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleContactSubmit = async (e) => {
+    e.preventDefault();
+    setIsSending(true);
+    try {
+      await axios.post(
+        "https://main-fileflow-backend-production.up.railway.app/contact",
+        contactData
+      );
+      toast.success("Your message has been sent successfully!");
+      setContactData({ name: "", email: "", phone: "", business: "", message: "" });
+    } catch (error) {
+      toast.error("There was an error sending your message. Please try again.");
+      console.error("Contact form error:", error);
+    } finally {
+      setIsSending(false);
+    }
+  };
 
   return (
     <PageWrapper>
@@ -242,11 +275,11 @@ function Home() {
                   keyword detection. Search across your files without opening a
                   single one.
                 </p>
-                <Link to="/services">
+                {/* <Link to="/services">
                   <button className="fancy-button-alt learn-more-btn mb-4">
                     Learn more
                   </button>
-                </Link>
+                </Link> */}
               </div>
 
               <div
@@ -261,11 +294,11 @@ function Home() {
                   FileFlow brings all your tools together in one clean platform.
                   Manage, search, convert, and create — effortlessly.
                 </p>
-                <Link to="/services">
+                {/* <Link to="/services">
                   <button className="fancy-button-alt learn-more-btn mb-4">
                     Learn more
                   </button>
-                </Link>
+                </Link> */}
               </div>
 
               <div
@@ -279,11 +312,11 @@ function Home() {
                   text. Our OCR engine is fast, accurate, and built for
                   real-world documents.
                 </p>
-                <Link to="/services">
+                {/* <Link to="/services">
                   <button className="fancy-button-alt learn-more-btn mb-4">
                     Learn more
                   </button>
-                </Link>
+                </Link> */}
               </div>
             </div>
 
@@ -302,11 +335,11 @@ function Home() {
                   folders. Define your own categories and let our tool handle
                   the rest with precision and ease.
                 </p>
-                <Link to="/services">
+                {/* <Link to="/services">
                   <button className="fancy-button-alt learn-more-btn mb-4">
                     Learn more
                   </button>
-                </Link>
+                </Link> */}
               </div>
 
               <div
@@ -321,19 +354,19 @@ function Home() {
                   Remove passwords and restrictions from locked files in
                   seconds. Regain full control and access without hassle.
                 </p>
-                <Link to="/services">
+                {/* <Link to="/services">
                   <button className="fancy-button-alt learn-more-btn mb-4">
                     Learn more
                   </button>
-                </Link>
+                </Link> */}
               </div>
             </div>
 
             <div className="text-center max-w-2xl mx-auto mt-12">
               <p className="text-base md:text-lg opacity-90 text-black">
-                Want to check more details about what else we got to offer ?
+                Want to Signup for our closed beta?
               </p>
-              <Link to="/services">
+              <Link to="/beta-signup">
                 <button className="border border-black text-black rounded-md px-4 py-2 bg-transparent hover:bg-black hover:text-white transition-colors duration-300 mt-4">
                   Learn more
                 </button>
@@ -352,7 +385,10 @@ function Home() {
                 className="w-full rounded-t-2xl md:rounded-tl-2xl md:rounded-bl-2xl md:rounded-tr-none"
               />
             </div>
-            <form className="contact-form w-full md:w-2/3 rounded-b-2xl md:rounded-none">
+            <form
+              onSubmit={handleContactSubmit}
+              className="contact-form w-full md:w-2/3 rounded-b-2xl md:rounded-none"
+            >
               <p className="contact-title">Contact Us</p>
               <p className="contact-message">We’d love to hear from you.</p>
 
@@ -364,6 +400,9 @@ function Home() {
                     type="text"
                     className="contact-input"
                     placeholder=" "
+                    name="name"
+                    value={contactData.name}
+                    onChange={handleContactChange}
                   />
                   <span>Name</span>
                 </label>
@@ -373,6 +412,9 @@ function Home() {
                     type="email"
                     className="contact-input"
                     placeholder=" "
+                    name="email"
+                    value={contactData.email}
+                    onChange={handleContactChange}
                   />
                   <span>Email</span>
                 </label>
@@ -385,6 +427,9 @@ function Home() {
                     type="text"
                     className="contact-input"
                     placeholder=" "
+                    name="phone"
+                    value={contactData.phone}
+                    onChange={handleContactChange}
                   />
                   <span>Phone (optional)</span>
                 </label>
@@ -393,6 +438,9 @@ function Home() {
                     type="text"
                     className="contact-input"
                     placeholder=" "
+                    name="business"
+                    value={contactData.business}
+                    onChange={handleContactChange}
                   />
                   <span>Business Name (optional)</span>
                 </label>
@@ -405,11 +453,16 @@ function Home() {
                   placeholder=" "
                   rows={12}
                   required
+                  name="message"
+                  value={contactData.message}
+                  onChange={handleContactChange}
                 />
                 <span>Message</span>
               </label>
 
-              <button className="contact-submit">Send Message</button>
+              <button type="submit" className="contact-submit" disabled={isSending}>
+                {isSending ? "Sending..." : "Send Message"}
+              </button>
             </form>
           </div>
         </div>

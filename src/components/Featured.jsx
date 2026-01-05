@@ -135,12 +135,7 @@ export default function Featured() {
               Sign up for our closed beta now and be among the first to
               experience it!
             </p>
-            <button
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="mt-4 px-6 py-3 bg-secondaryColor btnHover hover:bg-blue-600 text-white font-bold rounded-lg transition"
-            >
-              Sign Up Now
-            </button>
+          
           </div>
         </div>
       </div>

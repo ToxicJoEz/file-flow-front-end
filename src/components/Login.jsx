@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux"; // Import useDispatch
 import { login } from "../authSlice"; // Go one level up to access authSlice.js
 import { toast } from "react-toastify";
@@ -30,6 +30,7 @@ function Login() {
   const [errorMessage, setErrorMessage] = useState("");
   const [loading, setLoading] = useState(false); // State for loader
   const navigate = useNavigate();
+  const location = useLocation();
   const dispatch = useDispatch(); // Initialize dispatch
 
   const formik = useFormik({
@@ -70,6 +71,21 @@ function Login() {
       }
     },
   });
+
+  const scrollToContact = () => {
+    if (location.pathname !== "/") {
+      navigate("/", { replace: false });
+      setTimeout(() => {
+        document
+          .getElementById("contact")
+          ?.scrollIntoView({ behavior: "smooth" });
+      }, 1000);
+    } else {
+      document
+        .getElementById("contact")
+        ?.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
     <PageWrapper>
@@ -119,17 +135,17 @@ function Login() {
           )}
 
           {errorMessage && <div className="error">{errorMessage}</div>}
-          <p className="signin">
+          {/* <p className="signin">
             Don't have an account? .
             <Link to="/register" className="login-link">
               Register
             </Link>
-          </p>
+          </p> */}
           <p className="signin">
             Forgot your password? .
-            <Link to="/forgot-password" className="login-link">
-              reset password
-            </Link>
+            <a href="#" onClick={scrollToContact} className="login-link">
+              Contact us
+            </a>
           </p>
         </form>
       </div>
