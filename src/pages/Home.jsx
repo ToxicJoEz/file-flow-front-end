@@ -82,6 +82,13 @@ function Home() {
                   more opening files one by one—just type your keywords and let
                   FileFlow do the rest.
                 </p>
+                <div className="mt-12">
+                  <Link to="/beta-signup">
+                    <button className="bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-300 hover:to-orange-400 text-[#47297B] font-bold text-2xl py-4 px-10 rounded-xl shadow-[0_0_30px_rgba(250,204,21,0.6)] transition-all duration-300 transform hover:scale-105 hover:-translate-y-1">
+                      Join the Beta!
+                    </button>
+                  </Link>
+                </div>
               </div>
             </div>
 
