@@ -13,12 +13,6 @@ import aboutUsImg2 from "../assets/AboutUs2.svg";
 import background2 from "../assets/background2.png";
 import background3 from "../assets/background3.png";
 import background4 from "../assets/background4.png";
-import logo1 from "../assets/logoipsum1.svg";
-import logo2 from "../assets/logoipsum2.svg";
-import logo3 from "../assets/logoipsum3.svg";
-import logo4 from "../assets/logoipsum4.svg";
-import logo5 from "../assets/logoipsum5.svg";
-import logo6 from "../assets/logoipsum6.svg";
 import featured1 from "../assets/FileSearch2.svg";
 import featured2 from "../assets/Folder.svg";
 import featured3 from "../assets/OCR.svg";
@@ -68,23 +62,23 @@ function Home() {
         <div className="h-screen bg-[url('/assets/background1.png')] bg-no-repeat bg-center bg-cover">
           <div className="pt-24 h-full flex flex-col md:flex-row">
             {/* Left Section (Text) */}
-            <div className="w-full md:w-3/6 flex items-center justify-center text-white px-6 py-8 md:py-0">
-              <div>
+            <div className="w-full md:w-3/6 h-full flex items-center justify-center text-white px-6">
+              <div className="text-center md:text-left">
                 <h1 className="home-title">
                   Welcome to <span>File Flow !</span>
                 </h1>
-                <p className="text-xl mt-4  opacity-90">
+                <p className="text-lg md:text-xl mt-4  opacity-90">
                   Your all-in-one file management platform. Fast. Smart. Simple.
                 </p>
-                <p className="text-lg mt-2  opacity-90">
+                <p className="text-base md:text-lg mt-2  opacity-90">
                   Start with our advanced Keyword Search tool to instantly scan
                   your documents and locate the exact information you need. No
                   more opening files one by one—just type your keywords and let
                   FileFlow do the rest.
                 </p>
-                <div className="mt-12">
+                <div className="mt-8 md:mt-12">
                   <Link to="/beta-signup">
-                    <button className="bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-300 hover:to-orange-400 text-[#47297B] font-bold text-2xl py-4 px-10 rounded-xl shadow-[0_0_30px_rgba(250,204,21,0.6)] transition-all duration-300 transform hover:scale-105 hover:-translate-y-1">
+                    <button className="bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-300 hover:to-orange-400 text-[#47297B] font-bold text-xl md:text-2xl py-3 px-8 md:py-4 md:px-10 rounded-xl shadow-[0_0_30px_rgba(250,204,21,0.6)] transition-all duration-300 transform hover:scale-105 hover:-translate-y-1">
                       Join the Beta!
                     </button>
                   </Link>
@@ -93,7 +87,7 @@ function Home() {
             </div>
 
             {/* Right Section (Image) */}
-            <div className="w-full md:w-4/6 relative flex justify-center items-end md:block">
+            <div className="hidden md:block w-full md:w-4/6 relative">
               <img
                 src={heroImg}
                 alt="Hero"
@@ -215,36 +209,24 @@ function Home() {
             <div className="flex animate-scroll w-max">
               {[...Array(12)].map((_, idx) => (
                 <React.Fragment key={idx}>
-                  <img
-                    src={logo1}
-                    alt="Logo 1"
-                    className="h-8 object-contain inline-block px-10"
-                  />
-                  <img
-                    src={logo2}
-                    alt="Logo 2"
-                    className="h-8 object-contain inline-block px-10"
-                  />
-                  <img
-                    src={logo5}
-                    alt="Logo 3"
-                    className="h-8 object-contain inline-block px-10"
-                  />
-                  <img
-                    src={logo4}
-                    alt="Logo 4"
-                    className="h-8 object-contain inline-block px-10"
-                  />
-                  <img
-                    src={logo3}
-                    alt="Logo 5"
-                    className="h-8 object-contain inline-block px-10"
-                  />
-                  <img
-                    src={logo6}
-                    alt="Logo 6"
-                    className="h-8 object-contain inline-block px-10"
-                  />
+                  <div className="h-8 flex items-center px-10 font-bold text-2xl whitespace-nowrap bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">
+                    Sponsors go here
+                  </div>
+                  <div className="h-8 flex items-center px-10 font-bold text-2xl whitespace-nowrap bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">
+                    Sponsors go here
+                  </div>
+                  <div className="h-8 flex items-center px-10 font-bold text-2xl whitespace-nowrap bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">
+                    Sponsors go here
+                  </div>
+                  <div className="h-8 flex items-center px-10 font-bold text-2xl whitespace-nowrap bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">
+                    Sponsors go here
+                  </div>
+                  <div className="h-8 flex items-center px-10 font-bold text-2xl whitespace-nowrap bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">
+                    Sponsors go here
+                  </div>
+                  <div className="h-8 flex items-center px-10 font-bold text-2xl whitespace-nowrap bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">
+                    Sponsors go here
+                  </div>
                 </React.Fragment>
               ))}
             </div>
