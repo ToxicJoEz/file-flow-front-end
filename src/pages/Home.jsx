@@ -65,7 +65,7 @@ function Home() {
             <div className="w-full md:w-3/6 h-full flex items-center justify-center text-white px-6">
               <div className="text-center md:text-left">
                 <h1 className="home-title">
-                  Welcome to <span>File Flow !</span>
+                  Welcome to <span>FileFlow !</span>
                 </h1>
                 <p className="text-lg md:text-xl mt-4  opacity-90">
                   Your all-in-one file management platform. Fast. Smart. Simple.
