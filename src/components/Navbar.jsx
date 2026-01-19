@@ -673,7 +673,7 @@ function Navbar() {
               </div>
             </button>
 
-            <button className="star-button custom-register-link">
+            {/* <button className="star-button custom-register-link">
               <Link to="/register">Register</Link>
               <div className="star-1">
                 <svg
@@ -825,7 +825,7 @@ function Navbar() {
                   </g>
                 </svg>
               </div>
-            </button>
+            </button> */}
           </div>
         ) : (
           <Link to="/dashboard">
