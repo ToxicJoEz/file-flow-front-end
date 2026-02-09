@@ -29,6 +29,7 @@ import ForgotPassword from "./components/ForgotPassword";
 import ResetPassword from "./components/ResetPassword";
 import ScrollToTop from "./components/ScrollToTop"; // adjust the path as needed
 import BetaSignup from "./pages/BetaSignup";
+import PolicyAndTerms from "./pages/PolicyAndTerms";
 
 function App() {
   const dispatch = useDispatch();
@@ -74,6 +75,7 @@ function App() {
           >
             {/* Public Home Route */}
             <Route path="/" element={<Home />} />
+            <Route path="/policy-and-terms" element={<PolicyAndTerms/>} />
 
             {/* Public Registration Route */}
             {/* <Route

@@ -19,6 +19,7 @@ import featured3 from "../assets/OCR.svg";
 import featured4 from "../assets/FileSorting.svg";
 import featured5 from "../assets/FileUnlock.svg";
 import contactImg from "../assets/contact us.png";
+import PolicyAndTerms from "../components/Policy";
 
 function Home() {
   const token = useSelector((state) => state.auth.token);
@@ -42,10 +43,16 @@ function Home() {
     try {
       await axios.post(
         "https://main-fileflow-backend-production.up.railway.app/contact",
-        contactData
+        contactData,
       );
       toast.success("Your message has been sent successfully!");
-      setContactData({ name: "", email: "", phone: "", business: "", message: "" });
+      setContactData({
+        name: "",
+        email: "",
+        phone: "",
+        business: "",
+        message: "",
+      });
     } catch (error) {
       toast.error("There was an error sending your message. Please try again.");
       console.error("Contact form error:", error);
@@ -58,7 +65,6 @@ function Home() {
     <PageWrapper>
       <div>
         {/* Hero Section) */}
-
         <div className="h-screen bg-[url('/assets/background1.png')] bg-no-repeat bg-center bg-cover">
           <div className="pt-24 h-full flex flex-col md:flex-row">
             {/* Left Section (Text) */}
@@ -96,7 +102,6 @@ function Home() {
             </div>
           </div>
         </div>
-
         {/* About us Section) */}
         <div
           className="w-[80%] md:w-[75%] mx-auto py-16 p-12 grid gap-12 text-white rounded-b-[4rem] md:rounded-b-[6rem] shadow-[16px_16px_16px_rgba(0,0,0,0.6)] 
@@ -232,7 +237,6 @@ function Home() {
             </div>
           </div>
         </div>
-
         {/* What do we offer by section */}
         <div className="py-16 px-4 text-white">
           <div className="w-[80%] md:w-[75%] mx-auto">
@@ -295,7 +299,9 @@ function Home() {
                 style={{ backgroundImage: `url(${background4})` }}
               >
                 <img src={featured3} alt="Icon 3" className="w-[50%] mx-auto" />
-                <h3 className="text-yellow-400 text-xl font-bold mb-3">Optical Character Recognition</h3>
+                <h3 className="text-yellow-400 text-xl font-bold mb-3">
+                  Optical Character Recognition
+                </h3>
                 <p className="opacity-90 mb-6">
                   Convert scanned images and PDFs into editable, searchable
                   text. Our OCR engine is fast, accurate, and built for
@@ -315,7 +321,11 @@ function Home() {
                 className="rounded-2xl shadow-xl bg-center px-12 py-2"
                 style={{ backgroundImage: `url(${background4})` }}
               >
-                <img src={featured4} alt="Icon 4" className="w-[40%] mb-4 mt-2 mx-auto" />
+                <img
+                  src={featured4}
+                  alt="Icon 4"
+                  className="w-[40%] mb-4 mt-2 mx-auto"
+                />
                 <h3 className="text-yellow-400 text-xl font-bold mb-3">
                   Smart File Sorting
                 </h3>
@@ -335,7 +345,11 @@ function Home() {
                 className="rounded-2xl shadow-xl bg-center px-12 py-2"
                 style={{ backgroundImage: `url(${background4})` }}
               >
-                <img src={featured5} alt="Icon 5" className="w-[40%] mb-4 mt-2 mx-auto" />
+                <img
+                  src={featured5}
+                  alt="Icon 5"
+                  className="w-[40%] mb-4 mt-2 mx-auto"
+                />
                 <h3 className="text-yellow-400 text-xl font-bold mb-3">
                   File unlocking
                 </h3>
@@ -449,7 +463,11 @@ function Home() {
                 <span>Message</span>
               </label>
 
-              <button type="submit" className="contact-submit" disabled={isSending}>
+              <button
+                type="submit"
+                className="contact-submit"
+                disabled={isSending}
+              >
                 {isSending ? "Sending..." : "Send Message"}
               </button>
             </form>
