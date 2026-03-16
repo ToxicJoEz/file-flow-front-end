@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-
+import PageWrapper from "../components/PageWrapper";
 import phase0image from "../assets/search.svg";
 import phase1image from "../assets/launch.svg";
 import phase2image from "../assets/idea.svg";
@@ -114,155 +114,131 @@ matures, upcoming phases will introduce more powerful tools, automation features
   const phase = phaseDetails[activePhase];
 
   return (
-    <section className="roadmap-section">
+    <PageWrapper>
+      <section className="roadmap-section">
+        {/* Header */}
 
-      {/* Header */}
+        <div className="text-center roadmap-header">
+          <h1 className="roadmap-title">
+            The <span>FileFlow </span> Roadmap
+          </h1>
 
-      <div className="text-center roadmap-header">
-        <h1 className="roadmap-title">
-          The <span>FileFlow </span> Roadmap
-        </h1>
+          <p className="text-gray-500 max-w-2xl mx-auto">
+            A transparent look at how FileFlow is evolving — from the first
+            closed beta to powerful document intelligence features in the
+            future.
+          </p>
+        </div>
 
-        <p className="text-gray-500 max-w-2xl mx-auto">
-          A transparent look at how FileFlow is evolving — from the first closed
-          beta to powerful document intelligence features in the future.
-        </p>
-      </div>
+        {/* Cards */}
 
-      {/* Cards */}
+        <div className="roadmap-cards-container">
+          {[0, 1, 2, 3, 4].map((p, i) => {
+            const titles = [
+              "Closed Beta — Core Search Foundation",
+              "Public Launch",
+              "Power Search & Smart Features",
+              "Cloud & Email Integrations",
+              "Document Intelligence",
+            ];
 
-      <div className="roadmap-cards-container">
+            const descriptions = [
+              "Build a fast and reliable search engine for local documents with indexing, organized results, and OCR for scanned files.",
+              "Launch a polished and stable desktop app focused on performance.",
+              "Introduce advanced search features and AI powered search tools.",
+              "Expand search beyond local files.",
+              "Add intelligent document analysis tools.",
+            ];
 
-        {[0,1,2,3,4].map((p,i)=>{
+            return (
+              <React.Fragment key={p}>
+                <div
+                  className={`roadmap-card p-6 ${activePhase === p ? "active" : ""}`}
+                  onClick={() => setActivePhase(p)}
+                >
+                  {p === 0 && <p className="current-phase">Current Phase</p>}
 
-          const titles = [
-            "Closed Beta — Core Search Foundation",
-            "Public Launch",
-            "Power Search & Smart Features",
-            "Cloud & Email Integrations",
-            "Document Intelligence"
-          ];
+                  <h1 className="text-2xl font-bold mb-2">Phase {p}</h1>
 
-          const descriptions = [
-            "Build a fast and reliable search engine for local documents with indexing, organized results, and OCR for scanned files.",
-            "Launch a polished and stable desktop app focused on performance.",
-            "Introduce advanced search features and AI powered search tools.",
-            "Expand search beyond local files.",
-            "Add intelligent document analysis tools."
-          ];
+                  <h2>{titles[p]}</h2>
 
-          return(
-            <React.Fragment key={p}>
+                  <p className="text-gray-600 mt-2 leading-relaxed">
+                    {descriptions[p]}
+                  </p>
 
-              <div
-                className={`roadmap-card p-6 ${activePhase === p ? "active" : ""}`}
-                onClick={()=>setActivePhase(p)}
-              >
-
-                {p === 0 && <p className="current-phase">Current Phase</p>}
-
-                <h1 className="text-2xl font-bold mb-2">Phase {p}</h1>
-
-                <h2>{titles[p]}</h2>
-
-                <p className="text-gray-600 mt-2 leading-relaxed">
-                  {descriptions[p]}
-                </p>
-
-                <div className="roadmap-icon-circle">
-                  <img src={phaseIcons[p]} />
+                  <div className="roadmap-icon-circle">
+                    <img src={phaseIcons[p]} />
+                  </div>
                 </div>
 
+                {p !== 4 && <img className="roadmap-arrow" src={rightArrow} />}
+              </React.Fragment>
+            );
+          })}
+        </div>
+
+        {/* DETAILS CARD */}
+
+        <div className="roadmap-detail-card">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activePhase}
+              initial={{ opacity: 0, x: -80 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: 80 }}
+              transition={{ duration: 0.45 }}
+            >
+              {/* NEW HEADER */}
+
+              <div className="roadmap-detail-header">
+                <div className="roadmap-phase-badge">{phase.title}</div>
+
+                <div className="roadmap-phase-icon">
+                  <img src={phaseIcons[activePhase]} />
+                </div>
               </div>
 
-              {p !== 4 && <img className="roadmap-arrow" src={rightArrow} />}
+              <h2 className="roadmap-detail-title">{phase.subtitle}</h2>
 
-            </React.Fragment>
-          )
+              <div className="roadmap-accent-bar" />
 
-        })}
+              <p className="text-gray-600 leading-relaxed">{phase.text1}</p>
 
-      </div>
+              <div className="roadmap-divider" />
 
+              <p className="roadmap-subtitle">Features in This Phase</p>
 
-      {/* DETAILS CARD */}
+              <div className="roadmap-features-grid">
+                {phase.features.map((feature, i) => {
+                  const done = feature.done;
 
-      <div className="roadmap-detail-card">
+                  return (
+                    <div key={i} className="roadmap-details-point">
+                      <div
+                        className={`roadmap-details-icon-circle ${done ? "" : "yellow"}`}
+                      >
+                        <img src={done ? check : progressArrow} />
+                      </div>
 
-        <AnimatePresence mode="wait">
-
-          <motion.div
-            key={activePhase}
-            initial={{ opacity:0, x:-80 }}
-            animate={{ opacity:1, x:0 }}
-            exit={{ opacity:0, x:80 }}
-            transition={{ duration:.45 }}
-          >
-
-            {/* NEW HEADER */}
-
-            <div className="roadmap-detail-header">
-
-              <div className="roadmap-phase-badge">
-                {phase.title}
-              </div>
-
-              <div className="roadmap-phase-icon">
-                <img src={phaseIcons[activePhase]} />
-              </div>
-
-            </div>
-
-            <h2 className="roadmap-detail-title">
-              {phase.subtitle}
-            </h2>
-
-            <div className="roadmap-accent-bar" />
-
-            <p className="text-gray-600 leading-relaxed">{phase.text1}</p>
-
-            <div className="roadmap-divider"/>
-
-            <p className="roadmap-subtitle">Features in This Phase</p>
-
-            <div className="roadmap-features-grid">
-
-              {phase.features.map((feature,i)=>{
-
-                const done = feature.done;
-
-                return(
-
-                  <div key={i} className="roadmap-details-point">
-
-                    <div className={`roadmap-details-icon-circle ${done ? "" : "yellow"}`}>
-                      <img src={done ? check : progressArrow}/>
+                      {feature.name}
                     </div>
+                  );
+                })}
+              </div>
 
-                    {feature.name}
+              <div className="roadmap-divider" />
 
-                  </div>
+              <p className="roadmap-subtitle">Our Focus</p>
 
-                )
+              <p className="text-gray-600 leading-relaxed">{phase.text2}</p>
 
-              })}
-
-            </div>
-
-            <div className="roadmap-divider"/>
-
-            <p className="roadmap-subtitle">Our Focus</p>
-
-            <p className="text-gray-600 leading-relaxed">{phase.text2}</p>
-
-            <p className="text-gray-600 leading-relaxed mt-4">{phase.text3}</p>
-
-          </motion.div>
-
-        </AnimatePresence>
-
-      </div>
-
-    </section>
+              <p className="text-gray-600 leading-relaxed mt-4">
+                {phase.text3}
+              </p>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+      </section>
+    </PageWrapper>
   );
 }

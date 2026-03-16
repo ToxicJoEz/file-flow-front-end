@@ -83,6 +83,16 @@ function Navbar() {
           >
             Home
           </NavLink>
+          <NavLink
+            to="/roadmap"
+            className={({ isActive }) =>
+              isActive
+                ? "ActiveLink p-2"
+                : "text-white  hover:text-[#f5bd1f] transition p-2"
+            }
+          >
+            Roadmap
+          </NavLink>
 
           {/* <NavLink
             to="/Services"
@@ -474,6 +484,16 @@ function Navbar() {
           }
         >
           Home
+        </NavLink>
+        <NavLink
+          to="/roadmap"
+          className={({ isActive }) =>
+            isActive
+              ? "ActiveLink block p-2"
+              : "text-white  hover:text-[#f5bd1f] transition block p-2"
+          }
+        >
+          Roadmap
         </NavLink>
         {/* <NavLink
           to="/Services"
