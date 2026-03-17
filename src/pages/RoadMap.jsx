@@ -28,7 +28,7 @@ export default function RoadMap() {
 
     setTimeout(() => {
       if (detailsRef.current) {
-        const yOffset = -80; // 🔥 adjust this value (top margin)
+        const yOffset = -120;
         const y =
           detailsRef.current.getBoundingClientRect().top +
           window.pageYOffset +
@@ -77,6 +77,8 @@ matures, upcoming phases will introduce more powerful tools, automation features
         { name: "Professional Excel Exports" },
         { name: "Open-at-Location Behavior" },
         { name: "Performance Modes" },
+        { name: "PDF editing" },
+        { name: "Bulk file editing" },
       ],
     },
 
