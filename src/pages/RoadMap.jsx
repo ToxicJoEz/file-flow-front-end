@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import PageWrapper from "../components/PageWrapper";
 import phase0image from "../assets/search.svg";
@@ -12,6 +12,7 @@ import progressArrow from "../assets/progress-arrow.svg";
 
 export default function RoadMap() {
   const [activePhase, setActivePhase] = useState(0);
+  const detailsRef = useRef(null);
 
   const phaseIcons = [
     phase0image,
@@ -20,6 +21,23 @@ export default function RoadMap() {
     phase3image,
     phase4image,
   ];
+
+  // ✅ NEW: controlled scroll with offset
+  const handlePhaseClick = (phase) => {
+    setActivePhase(phase);
+
+    setTimeout(() => {
+      if (detailsRef.current) {
+        const yOffset = -80; // 🔥 adjust this value (top margin)
+        const y =
+          detailsRef.current.getBoundingClientRect().top +
+          window.pageYOffset +
+          yOffset;
+
+        window.scrollTo({ top: y, behavior: "smooth" });
+      }
+    }, 100);
+  };
 
   const phaseDetails = {
     0: {
@@ -116,8 +134,6 @@ matures, upcoming phases will introduce more powerful tools, automation features
   return (
     <PageWrapper>
       <section className="roadmap-section">
-        {/* Header */}
-
         <div className="text-center roadmap-header">
           <h1 className="roadmap-title">
             The <span>FileFlow </span> Roadmap
@@ -130,10 +146,8 @@ matures, upcoming phases will introduce more powerful tools, automation features
           </p>
         </div>
 
-        {/* Cards */}
-
         <div className="roadmap-cards-container">
-          {[0, 1, 2, 3, 4].map((p, i) => {
+          {[0, 1, 2, 3, 4].map((p) => {
             const titles = [
               "Closed Beta — Core Search Foundation",
               "Public Launch",
@@ -153,8 +167,10 @@ matures, upcoming phases will introduce more powerful tools, automation features
             return (
               <React.Fragment key={p}>
                 <div
-                  className={`roadmap-card p-6 ${activePhase === p ? "active" : ""}`}
-                  onClick={() => setActivePhase(p)}
+                  className={`roadmap-card p-6 ${
+                    activePhase === p ? "active" : ""
+                  }`}
+                  onClick={() => handlePhaseClick(p)}
                 >
                   {p === 0 && <p className="current-phase">Current Phase</p>}
 
@@ -177,9 +193,8 @@ matures, upcoming phases will introduce more powerful tools, automation features
           })}
         </div>
 
-        {/* DETAILS CARD */}
-
-        <div className="roadmap-detail-card">
+        {/* ✅ REF ADDED HERE */}
+        <div className="roadmap-detail-card" ref={detailsRef}>
           <AnimatePresence mode="wait">
             <motion.div
               key={activePhase}
@@ -188,8 +203,6 @@ matures, upcoming phases will introduce more powerful tools, automation features
               exit={{ opacity: 0, x: 80 }}
               transition={{ duration: 0.45 }}
             >
-              {/* NEW HEADER */}
-
               <div className="roadmap-detail-header">
                 <div className="roadmap-phase-badge">{phase.title}</div>
 
@@ -215,7 +228,9 @@ matures, upcoming phases will introduce more powerful tools, automation features
                   return (
                     <div key={i} className="roadmap-details-point">
                       <div
-                        className={`roadmap-details-icon-circle ${done ? "" : "yellow"}`}
+                        className={`roadmap-details-icon-circle ${
+                          done ? "" : "yellow"
+                        }`}
                       >
                         <img src={done ? check : progressArrow} />
                       </div>

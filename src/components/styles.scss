@@ -1926,3 +1926,83 @@ $secondary-color2: #ffe863;
   border-radius:4px;
   margin-bottom:22px;
 }
+
+/* MOBILE FIRST IMPROVEMENTS */
+
+@media (max-width: 768px) {
+  .roadmap-title {
+    font-size: 2.4rem;
+  }
+
+  .roadmap-cards-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .roadmap-arrow {
+    display: none;
+  }
+
+  .roadmap-card {
+    width: 100%;
+    height: 240px;
+    padding: 16px;
+  }
+
+  .roadmap-card h1 {
+    font-size: 1.2rem;
+  }
+
+  .roadmap-card h2 {
+    font-size: 0.9rem;
+  }
+
+  .roadmap-card p {
+    font-size: 0.8rem;
+  }
+
+  .roadmap-icon-circle {
+    width: 50px;
+    height: 50px;
+    bottom: -20px;
+  }
+
+  .roadmap-icon-circle img {
+    width: 22px;
+  }
+
+  .roadmap-detail-card {
+    width: 100%;
+    padding: 24px;
+  }
+
+  .roadmap-detail-header {
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .roadmap-phase-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .roadmap-detail-title {
+    font-size: 1.2rem;
+  }
+
+  .roadmap-accent-bar {
+    width: 60%;
+  }
+
+  .roadmap-features-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .roadmap-details-point {
+    width: 100%;
+    font-size: 0.9rem;
+    word-break: break-word;
+  }
+}
