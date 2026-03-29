@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Analytics } from "@vercel/analytics/react";
 import { Routes, Route, useNavigate, useLocation } from "react-router-dom"; // <-- Added useLocation
 import { useDispatch } from "react-redux";
 import { setToken } from "./authSlice";
@@ -76,8 +77,8 @@ function App() {
           >
             {/* Public Home Route */}
             <Route path="/" element={<Home />} />
-            <Route path="/policy-and-terms" element={<PolicyAndTerms/>} />
-            <Route path="/roadmap" element={<RoadMap/>} />
+            <Route path="/policy-and-terms" element={<PolicyAndTerms />} />
+            <Route path="/roadmap" element={<RoadMap />} />
 
             {/* Public Registration Route */}
             {/* <Route
@@ -167,6 +168,7 @@ function App() {
         draggable
         pauseOnHover
       />
+      <Analytics />
     </div>
   );
 }
